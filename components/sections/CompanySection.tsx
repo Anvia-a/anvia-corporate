@@ -1,5 +1,5 @@
 "use client";
-
+/* eslint-disable react/no-unescaped-entities */
 import { AnimatedSection, AnimatedStagger, StaggerItem } from "@/components/ui/AnimatedSection";
 
 const companyDetails = [
