@@ -40,10 +40,10 @@ Google Analyticsは、Cookieを使用して以下の情報を収集します。
 ・参照元URL
 ・サイト内での行動パターン
 
-当社はGoogle Analyticsにおいて、IPアドレスの匿名化（IPマスキング）を有効化しています。収集されたデータはGoogleのプライバシーポリシーに従い処理されます。詳細は以下をご参照ください。
+当社はGoogle AnalyticsにおいてIPアドレスの匿名化（IPマスキング）を有効化しています。収集されたデータはGoogleのプライバシーポリシーに従い処理されます。
 
-Googleのプライバシーポリシー：https://policies.google.com/privacy
-Google Analyticsの利用規約：https://marketingplatform.google.com/about/analytics/terms/jp/`,
+Googleプライバシーポリシー：https://policies.google.com/privacy
+Google Analytics利用規約：https://marketingplatform.google.com/about/analytics/terms/jp/`,
   },
   {
     title: "第4条（Cookieの保存期間）",
@@ -65,25 +65,19 @@ Google Analyticsの利用規約：https://marketingplatform.google.com/about/ana
 ・Apple Safari：環境設定 → プライバシー → Cookieとウェブサイトのデータ
 ・Microsoft Edge：設定 → Cookieとサイトのアクセス許可
 
-なお、Cookieを無効化した場合、本サイトの一部機能が正常に動作しない場合がありますのでご了承ください。
+なお、Cookieを無効化した場合、本サイトの一部機能が正常に動作しない場合があります。
 
 【Google Analyticsのオプトアウト】
 
-Google Analyticsによるデータ収集を無効化したい場合は、Google Analytics オプトアウトアドオン（ブラウザプラグイン）をご利用ください。
-
-オプトアウトアドオンのダウンロード：https://tools.google.com/dlpage/gaoptout
-
-【Do Not Track（DNT）】
-
-お使いのブラウザでDo Not Track機能を有効にすることで、一部のトラッキングを制限することができます。ただし、すべてのウェブサイトがDNT信号に対応しているわけではありません。`,
+Google Analytics オプトアウトアドオン：https://tools.google.com/dlpage/gaoptout`,
   },
   {
     title: "第6条（第三者によるCookieの使用）",
-    content: `本サイトには、Google Analytics以外の第三者サービスへのリンクが含まれる場合があります。これらの第三者サービスは、それぞれ独自のCookieポリシーおよびプライバシーポリシーに基づいてCookieを設定・使用することがあります。当社は、第三者によるCookieの使用について責任を負いません。`,
+    content: `本サイトには、Google Analytics以外の第三者サービスへのリンクが含まれる場合があります。これらの第三者サービスは、それぞれ独自のCookieポリシーに基づいてCookieを設定・使用することがあります。当社は、第三者によるCookieの使用について責任を負いません。`,
   },
   {
     title: "第7条（ポリシーの変更）",
-    content: `当社は、法令の改正、サービス内容の変更等に伴い、本Cookieポリシーを随時変更することがあります。変更後のポリシーは本ページに掲載した時点から効力を生じます。重要な変更を行う場合は、ウェブサイト上でお知らせします。`,
+    content: `当社は、法令の改正、サービス内容の変更等に伴い、本Cookieポリシーを随時変更することがあります。変更後のポリシーは本ページに掲載した時点から効力を生じます。`,
   },
   {
     title: "第8条（お問い合わせ）",
@@ -98,61 +92,41 @@ Google Analyticsによるデータ収集を無効化したい場合は、Google 
 export default function CookiePolicyPage() {
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-3xl mx-auto px-6 lg:px-10 pt-32 pb-24">
-        {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-xs text-secondary/50 mb-12 jp-text">
-          <Link href="/" className="hover:text-primary transition-colors">
-            Home
-          </Link>
+      <div className="max-w-[760px] mx-auto px-6 lg:px-8 pt-32 pb-24">
+        <div className="flex items-center gap-2 text-xs text-slate-400 mb-12 jp">
+          <Link href="/" className="hover:text-[#1E3A8A] transition-colors link-hover">Home</Link>
           <span>›</span>
           <span>Cookieポリシー</span>
         </div>
 
-        {/* Title */}
-        <h1
-          className="text-4xl md:text-5xl font-bold text-accent mb-6 jp-text"
-          style={{ fontFamily: "DM Serif Display, Georgia, serif", letterSpacing: "-0.02em" }}
-        >
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold text-[#1E3A8A] mb-6"
+          style={{ background: "rgba(232,238,255,0.9)", border: "1px solid rgba(30,58,138,0.12)" }}>
+          Legal
+        </div>
+
+        <h1 className="text-4xl md:text-5xl font-black text-[#0F172A] mb-4 jp" style={{ letterSpacing: "-0.025em" }}>
           Cookieポリシー
         </h1>
-        <p className="text-secondary text-sm jp-text mb-16">
-          制定日：2025年12月1日
-          <br />
-          最終更新日：2025年12月1日
-        </p>
+        <p className="text-slate-400 text-sm jp mb-12">制定日：2025年12月1日　最終更新日：2025年12月1日</p>
 
-        {/* Intro */}
-        <div className="mb-16 p-6 bg-surface rounded-sm">
-          <p className="text-secondary text-sm leading-relaxed jp-text">
+        <div className="p-6 rounded-2xl mb-14" style={{ background: "#F5F7FB", border: "1px solid rgba(30,58,138,0.07)" }}>
+          <p className="text-slate-500 text-sm leading-relaxed jp">
             株式会社Anvia（以下「当社」といいます）は、当社が運営するウェブサイト（https://anvia.co.jp）において、ユーザーエクスペリエンスの向上およびサービス改善を目的としてCookieを使用しています。本CookieポリシーはCookieの種類、目的、管理方法について説明します。
           </p>
         </div>
 
-        {/* Sections */}
-        <div className="space-y-12">
+        <div className="space-y-10">
           {sections.map((section) => (
-            <div key={section.title}>
-              <h2
-                className="text-lg font-bold text-accent mb-4 jp-text"
-                style={{ fontFamily: "DM Serif Display, Georgia, serif" }}
-              >
-                {section.title}
-              </h2>
-              <div className="text-secondary text-sm leading-relaxed jp-text whitespace-pre-line">
-                {section.content}
-              </div>
+            <div key={section.title} className="pb-10 border-b border-[#F5F7FB]">
+              <h2 className="text-base font-bold text-[#0F172A] mb-3 jp">{section.title}</h2>
+              <div className="text-slate-500 text-sm leading-relaxed jp whitespace-pre-line">{section.content}</div>
             </div>
           ))}
         </div>
 
-        {/* Back */}
-        <div className="mt-20 pt-10 border-t border-gray-100">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-3 text-sm text-secondary hover:text-primary transition-colors jp-text"
-          >
-            <span>←</span>
-            <span>トップページへ戻る</span>
+        <div className="mt-16 pt-8 border-t border-[#F5F7FB]">
+          <Link href="/" className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-[#1E3A8A] transition-colors jp">
+            <span>←</span><span>トップページへ戻る</span>
           </Link>
         </div>
       </div>

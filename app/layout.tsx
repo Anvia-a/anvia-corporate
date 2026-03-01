@@ -12,22 +12,14 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://anvia.co.jp"),
   openGraph: {
     title: "Anvia — 構造から、事業を創る。",
-    description:
-      "Anviaは、構造設計を軸に新規事業を創出するテクノロジーカンパニーです。",
+    description: "Anviaは、構造設計を軸に新規事業を創出するテクノロジーカンパニーです。",
     type: "website",
     locale: "ja_JP",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
       <body>

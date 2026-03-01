@@ -2,57 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
 :root {
-  --font-noto: "Noto Sans JP", sans-serif;
-  --font-dm-serif: "DM Serif Display", serif;
+  --font-inter: "Inter", system-ui, sans-serif;
+  --font-noto: "Noto Sans JP", "Hiragino Sans", sans-serif;
+  --color-primary: #1E3A8A;
+  --color-primary-deep: #0F172A;
+  --color-primary-light: #3B82F6;
+  --color-surface: #F5F7FB;
+  --color-card: #E8EEFF;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+* { box-sizing: border-box; padding: 0; margin: 0; }
+html { scroll-behavior: smooth; }
 
 body {
-  color: #111111;
+  color: #1E293B;
   background: #ffffff;
-  font-family: var(--font-noto), "Hiragino Sans", "Yu Gothic", sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-::selection {
-  background: #0F172A;
-  color: #ffffff;
-}
+::selection { background: #1E3A8A; color: #ffffff; }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #f5f5f7;
-}
-::-webkit-scrollbar-thumb {
-  background: #0F172A;
-  border-radius: 3px;
-}
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #F5F7FB; }
+::-webkit-scrollbar-thumb { background: #1E3A8A; border-radius: 3px; }
 
-/* Japanese text optimization */
-.jp-text {
+.jp {
+  font-family: "Noto Sans JP", "Hiragino Sans", sans-serif;
   font-feature-settings: "palt" 1;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
 }
 
-/* Horizontal rule */
-.divider {
-  width: 40px;
-  height: 1px;
-  background: #0F172A;
+.section-py { padding-top: 120px; padding-bottom: 120px; }
+@media (max-width: 768px) { .section-py { padding-top: 80px; padding-bottom: 80px; } }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-18px) rotate(1.5deg); }
+  66% { transform: translateY(-8px) rotate(-1deg); }
 }
+@keyframes floatAlt {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-12px) rotate(-1deg); }
+  66% { transform: translateY(-22px) rotate(2deg); }
+}
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-28px); }
+}
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes rotateSlowReverse {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+@keyframes pulseOpacity {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.35; }
+}
+
+.animate-float { animation: float 10s ease-in-out infinite; }
+.animate-float-alt { animation: floatAlt 13s ease-in-out infinite; }
+.animate-float-slow { animation: floatSlow 8s ease-in-out infinite; }
+.animate-rotate-slow { animation: rotateSlow 40s linear infinite; }
+.animate-rotate-reverse { animation: rotateSlowReverse 28s linear infinite; }
+.animate-pulse-opacity { animation: pulseOpacity 5s ease-in-out infinite; }
+
+.link-hover { position: relative; display: inline-block; }
+.link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+.link-hover:hover::after { width: 100%; }

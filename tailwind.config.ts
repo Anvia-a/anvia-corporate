@@ -9,22 +9,28 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#111111",
-        secondary: "#444444",
-        accent: "#0F172A",
-        surface: "#F5F5F7",
+        primary: "#1E3A8A",
+        "primary-deep": "#0F172A",
+        "primary-light": "#3B82F6",
+        secondary: "#475569",
+        surface: "#F5F7FB",
+        card: "#E8EEFF",
+        white: "#FFFFFF",
       },
       fontFamily: {
-        sans: ["var(--font-noto)", "Hiragino Sans", "YuGothic", "sans-serif"],
-        display: ["var(--font-dm-serif)", "Georgia", "serif"],
+        sans: ["Inter", "var(--font-inter)", "system-ui", "sans-serif"],
+        jp: ["var(--font-noto)", "Noto Sans JP", "Hiragino Sans", "sans-serif"],
       },
-      letterSpacing: {
-        tightest: "-0.04em",
-        tighter: "-0.03em",
-        tight: "-0.02em",
-        wide: "0.08em",
-        wider: "0.12em",
-        widest: "0.2em",
+      maxWidth: {
+        site: "1200px",
+      },
+      borderRadius: {
+        card: "20px",
+      },
+      boxShadow: {
+        card: "0 10px 30px rgba(30,58,138,0.08)",
+        "card-hover": "0 20px 50px rgba(30,58,138,0.15)",
+        btn: "0 4px 16px rgba(30,58,138,0.25)",
       },
     },
   },

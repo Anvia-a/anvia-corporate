@@ -88,70 +88,47 @@ const sections = [
     title: "第10条（規約の変更）",
     content: `当社は、必要と判断した場合には、利用者への事前通知なく本規約を変更することがあります。変更後の規約は本サイトに掲載した時点から効力を生じます。利用者が変更後も本サービスを継続してご利用された場合、変更後の規約に同意されたものとみなします。`,
   },
-  {
-    title: "附則",
-    content: `本規約は2025年12月1日より施行します。`,
-  },
+  { title: "附則", content: `本規約は2025年12月1日より施行します。` },
 ];
 
 export default function TermsOfServicePage() {
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-3xl mx-auto px-6 lg:px-10 pt-32 pb-24">
-        {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-xs text-secondary/50 mb-12 jp-text">
-          <Link href="/" className="hover:text-primary transition-colors">
-            Home
-          </Link>
+      <div className="max-w-[760px] mx-auto px-6 lg:px-8 pt-32 pb-24">
+        <div className="flex items-center gap-2 text-xs text-slate-400 mb-12 jp">
+          <Link href="/" className="hover:text-[#1E3A8A] transition-colors link-hover">Home</Link>
           <span>›</span>
           <span>利用規約</span>
         </div>
 
-        {/* Title */}
-        <h1
-          className="text-4xl md:text-5xl font-bold text-accent mb-6 jp-text"
-          style={{ fontFamily: "DM Serif Display, Georgia, serif", letterSpacing: "-0.02em" }}
-        >
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold text-[#1E3A8A] mb-6"
+          style={{ background: "rgba(232,238,255,0.9)", border: "1px solid rgba(30,58,138,0.12)" }}>
+          Legal
+        </div>
+
+        <h1 className="text-4xl md:text-5xl font-black text-[#0F172A] mb-4 jp" style={{ letterSpacing: "-0.025em" }}>
           利用規約
         </h1>
-        <p className="text-secondary text-sm jp-text mb-16">
-          制定日：2025年12月1日
-          <br />
-          最終更新日：2025年12月1日
-        </p>
+        <p className="text-slate-400 text-sm jp mb-12">制定日：2025年12月1日　最終更新日：2025年12月1日</p>
 
-        {/* Intro */}
-        <div className="mb-16 p-6 bg-surface rounded-sm">
-          <p className="text-secondary text-sm leading-relaxed jp-text">
+        <div className="p-6 rounded-2xl mb-14" style={{ background: "#F5F7FB", border: "1px solid rgba(30,58,138,0.07)" }}>
+          <p className="text-slate-500 text-sm leading-relaxed jp">
             本利用規約をよくお読みいただき、内容をご確認の上、本サービスをご利用ください。本サービスを利用された場合、本規約に同意されたものとみなします。
           </p>
         </div>
 
-        {/* Sections */}
-        <div className="space-y-12">
+        <div className="space-y-10">
           {sections.map((section) => (
-            <div key={section.title}>
-              <h2
-                className="text-lg font-bold text-accent mb-4 jp-text"
-                style={{ fontFamily: "DM Serif Display, Georgia, serif" }}
-              >
-                {section.title}
-              </h2>
-              <div className="text-secondary text-sm leading-relaxed jp-text whitespace-pre-line">
-                {section.content}
-              </div>
+            <div key={section.title} className="pb-10 border-b border-[#F5F7FB]">
+              <h2 className="text-base font-bold text-[#0F172A] mb-3 jp">{section.title}</h2>
+              <div className="text-slate-500 text-sm leading-relaxed jp whitespace-pre-line">{section.content}</div>
             </div>
           ))}
         </div>
 
-        {/* Back */}
-        <div className="mt-20 pt-10 border-t border-gray-100">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-3 text-sm text-secondary hover:text-primary transition-colors jp-text"
-          >
-            <span>←</span>
-            <span>トップページへ戻る</span>
+        <div className="mt-16 pt-8 border-t border-[#F5F7FB]">
+          <Link href="/" className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-[#1E3A8A] transition-colors jp">
+            <span>←</span><span>トップページへ戻る</span>
           </Link>
         </div>
       </div>
