@@ -25,21 +25,32 @@ export function CompanySection() {
         </AnimatedSection>
 
         <AnimatedSection>
+          {/* Full-width table — no max-w constraint so it fills the container */}
           <div
-            className="rounded-[20px] overflow-hidden bg-white max-w-4xl"
-            style={{ border: "1px solid #E6E8EB", boxShadow: "0 16px 40px rgba(15,23,42,0.07)" }}
+            className="rounded-2xl overflow-hidden"
+            style={{ border: "1px solid #E6E8EB", boxShadow: "0 8px 32px rgba(15,23,42,0.06)" }}
           >
             <AnimatedStagger>
               {details.map((d, i) => (
                 <StaggerItem key={d.label}>
                   <div
-                    className={`flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-0 px-8 py-5 ${
-                      i < details.length - 1 ? "border-b border-[#F5F7FB]" : ""
+                    className={`flex flex-col sm:flex-row sm:items-center px-8 py-5 gap-2 sm:gap-0 ${
+                      i < details.length - 1 ? "border-b border-[#F1F3F7]" : ""
                     }`}
                   >
-                    <p className="text-[10px] font-semibold tracking-widest text-slate-400 uppercase flex-shrink-0 sm:w-40 jp">
+                    {/* Label column — fixed width */}
+                    <p
+                      className="text-[10px] font-semibold tracking-widest text-slate-400 uppercase jp flex-shrink-0"
+                      style={{ width: 160 }}
+                    >
                       {d.label}
                     </p>
+                    {/* Divider */}
+                    <div
+                      className="hidden sm:block flex-shrink-0"
+                      style={{ width: 1, height: 16, background: "#E6E8EB", marginRight: 32 }}
+                    />
+                    {/* Value */}
                     <p className="text-sm font-medium text-[#0F172A] jp">{d.value}</p>
                   </div>
                 </StaggerItem>
