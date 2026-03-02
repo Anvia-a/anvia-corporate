@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatedSection, AnimatedStagger, StaggerItem } from "@/components/ui/AnimatedSection";
+import { motion } from "framer-motion";
 
 const values = [
   {
@@ -37,74 +38,72 @@ const values = [
 
 export function ValuesSection() {
   return (
-    <section id="values" className="bg-white py-28 lg:py-40">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+    <section id="values" className="bg-white section-py">
+      <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
         {/* Header */}
-        <AnimatedSection className="mb-20">
-          <div className="flex items-center gap-3 mb-8">
-            <span className="w-8 h-px bg-accent" />
-            <span className="text-xs tracking-widest text-secondary uppercase">
-              Values
-            </span>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-end">
-            <h2
-              className="text-3xl md:text-5xl font-bold text-accent leading-tight jp-text"
-              style={{ fontFamily: "DM Serif Display, Georgia, serif", letterSpacing: "-0.02em" }}
-            >
-              Anviaとは
-            </h2>
+        <AnimatedSection className="mb-14">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end">
             <div>
-              <p className="text-secondary text-base leading-relaxed jp-text">
-                Anviaは、私たちの価値観を社名に込めています。
-                <br />
-                5つのキーワードが、意思決定とものづくりの基準です。
-              </p>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold text-[#1E3A8A] mb-6"
+                style={{ background: "rgba(232,238,255,0.9)", border: "1px solid rgba(30,58,138,0.12)" }}>
+                Values
+              </div>
+              <h2
+                className="text-3xl md:text-5xl font-black text-[#0F172A] leading-tight jp"
+                style={{ letterSpacing: "-0.025em" }}
+              >
+                Anviaとは
+              </h2>
             </div>
+            <p className="text-slate-500 text-base leading-relaxed jp lg:mb-2">
+              Anviaは、私たちの価値観を社名に込めています。
+              <br />
+              5つのキーワードが、意思決定とものづくりの基準です。
+            </p>
           </div>
         </AnimatedSection>
 
-        {/* Values Grid */}
-        <AnimatedStagger className="space-y-0" staggerDelay={0.1}>
+        {/* Values Cards */}
+        <AnimatedStagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" staggerDelay={0.09}>
           {values.map((value, index) => (
             <StaggerItem key={value.word}>
-              <div className="group flex flex-col sm:flex-row items-start gap-8 py-8 border-t border-gray-100 hover:border-accent/30 transition-colors duration-300 cursor-default">
-                {/* Letter */}
-                <div className="flex-shrink-0 w-16 h-16 flex items-center justify-center border border-accent/10 group-hover:border-accent/40 group-hover:bg-accent group-hover:text-white transition-all duration-400">
-                  <span
-                    className="text-2xl font-bold text-accent group-hover:text-white transition-colors duration-300"
-                    style={{ fontFamily: "DM Serif Display, Georgia, serif" }}
-                  >
-                    {value.letter}
-                  </span>
+              <motion.div
+                whileHover={{ y: -6, boxShadow: "0 20px 50px rgba(30,58,138,0.15)" }}
+                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                className="relative rounded-[20px] p-7 cursor-default overflow-hidden h-full"
+                style={{
+                  background: index % 2 === 0 ? "#ffffff" : "#F5F7FB",
+                  border: "1px solid rgba(30,58,138,0.07)",
+                  boxShadow: "0 10px 30px rgba(30,58,138,0.08)",
+                }}
+              >
+                {/* Number watermark */}
+                <span
+                  className="absolute top-4 right-5 text-5xl font-black text-[#1E3A8A]/[0.04] select-none"
+                  style={{ fontVariantNumeric: "tabular-nums" }}
+                >
+                  0{index + 1}
+                </span>
+
+                {/* Letter badge */}
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                  style={{ background: "#E8EEFF" }}
+                >
+                  <span className="text-xl font-black text-[#1E3A8A]">{value.letter}</span>
                 </div>
 
-                {/* Content */}
-                <div className="flex-1 flex flex-col sm:flex-row sm:items-start gap-4">
-                  <div className="sm:w-48 flex-shrink-0">
-                    <p
-                      className="text-xl font-bold text-accent mb-1"
-                      style={{ fontFamily: "DM Serif Display, Georgia, serif" }}
-                    >
-                      {value.word}
-                    </p>
-                    <p className="text-sm text-secondary/70 jp-text">{value.reading}</p>
-                  </div>
-                  <p className="text-secondary text-base leading-relaxed jp-text flex-1">
-                    {value.description}
-                  </p>
+                {/* Title */}
+                <div className="mb-3">
+                  <p className="text-lg font-bold text-[#0F172A] tracking-tight">{value.word}</p>
+                  <p className="text-sm text-[#3B82F6] font-medium jp">{value.reading}</p>
                 </div>
 
-                {/* Number */}
-                <div className="hidden lg:block flex-shrink-0 text-right">
-                  <span className="text-xs text-secondary/30 tabular-nums">
-                    0{index + 1}
-                  </span>
-                </div>
-              </div>
+                {/* Description */}
+                <p className="text-slate-500 text-sm leading-relaxed jp">{value.description}</p>
+              </motion.div>
             </StaggerItem>
           ))}
-          <div className="border-t border-gray-100" />
         </AnimatedStagger>
       </div>
     </section>
