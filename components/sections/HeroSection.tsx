@@ -5,19 +5,15 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
-/* R3F must be loaded client-only to avoid SSR crash */
 const PolyhedronCanvas = dynamic(
-  () =>
-    import("@/components/hero/PolyhedronCanvas").then(
-      (m) => m.PolyhedronCanvas
-    ),
+  () => import("@/components/hero/PolyhedronCanvas").then((m) => m.PolyhedronCanvas),
   { ssr: false }
 );
 
 export function HeroSection() {
-  const sectionRef  = useRef<HTMLElement>(null);
-  const wipeRef     = useRef<HTMLDivElement>(null);
-  const [dark, setDark] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  // 0 = fully light, 1 = fully dark
+  const [progress, setProgress] = useState(0);
 
   const onScroll = useCallback(() => {
     const el = sectionRef.current;
@@ -25,14 +21,10 @@ export function HeroSection() {
     const rect    = el.getBoundingClientRect();
     const scrolled = -rect.top;
     const viewH    = window.innerHeight;
-    /* progress 0→1 over the first 60vh of scroll within this section */
-    const pct = Math.max(0, Math.min(1, scrolled / (viewH * 0.6)));
-    /* wipe layer: starts at 100% bottom (invisible) → 0% (full) */
-    const topPct = 100 - pct * 100;
-    if (wipeRef.current) {
-      wipeRef.current.style.top = `${topPct}%`;
-    }
-    setDark(pct > 0.55);
+    // Wipe completes over first 50vh of scroll; hero section is 150vh tall
+    // so the transition finishes well before the user leaves the hero.
+    const pct = Math.max(0, Math.min(1, scrolled / (viewH * 0.5)));
+    setProgress(pct);
   }, []);
 
   useEffect(() => {
@@ -41,7 +33,12 @@ export function HeroSection() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [onScroll]);
 
-  /* Colour tokens that flip as background darkens */
+  const dark = progress > 0.6;
+
+  // Clip percentage: 0% = no dark area, 100% = fully dark
+  // The dark layer expands from the bottom using clipPath
+  const clipPct = Math.round(progress * 100);
+
   const tagBg  = dark ? "rgba(30,58,138,0.38)"  : "#E8EEFF";
   const tagBrd = dark ? "rgba(59,130,246,0.45)" : "rgba(30,58,138,0.15)";
   const tagTxt = dark ? "#93C5FD"               : "#1E3A8A";
@@ -51,56 +48,62 @@ export function HeroSection() {
 
   return (
     /*
-     * min-h-[200vh]: gives scroll room so the sticky panel lingers
-     * overflow-hidden: keeps the absolute wipe layer clipped to this section
-     * isolation: isolate: creates a new stacking context so z-index doesn't bleed
+     * 150vh height: gives scroll room; wipe completes at ~75vh scroll
+     * so by the time user exits the hero the dark fill is complete.
+     * overflow-hidden clips everything to this section only.
      */
     <section
       ref={sectionRef}
       className="relative overflow-hidden"
-      style={{ minHeight: "200vh", isolation: "isolate" } as React.CSSProperties}
+      style={{ minHeight: "150vh" }}
     >
-      {/* ── Dark wipe layer — grows from bottom as user scrolls ── */}
+      {/*
+       * LIGHT background layer — always present, fills section
+       */}
+      <div className="absolute inset-0" style={{ background: "#F5F7FB", zIndex: 0 }} />
+
+      {/*
+       * DARK wipe layer — expands from bottom using clip-path.
+       * clipPath inset(X% 0 0 0) means "hide top X%, show bottom (100-X%)".
+       * As progress goes 0→1, the dark layer fills from bottom to top.
+       */}
       <div
-        ref={wipeRef}
         aria-hidden
-        className="absolute inset-x-0 bottom-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          top: "100%",          /* starts fully hidden below viewport */
-          background: "#0B0F1A",
-          zIndex: 0,
-          willChange: "top",
+          background:  "#0B0F1A",
+          zIndex:      1,
+          clipPath:    `inset(${100 - clipPct}% 0 0 0)`,
+          willChange:  "clip-path",
         }}
       />
 
-      {/* ── Sticky full-viewport panel ── */}
+      {/* Sticky viewport content panel */}
       <div
         className="sticky top-0 h-screen flex flex-col justify-center pt-16"
-        style={{ zIndex: 1 }}
+        style={{ zIndex: 2 }}
       >
         <div className="max-w-[1200px] mx-auto px-6 lg:px-8 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
-            {/* ── Left: hero copy ── */}
+            {/* Left: copy */}
             <div>
-              {/* Eyebrow tag */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
                 className="inline-flex items-center gap-2 mb-8 px-3.5 py-1.5 rounded-full text-xs font-semibold"
                 style={{
-                  background:   tagBg,
-                  border:       `1px solid ${tagBrd}`,
-                  color:        tagTxt,
-                  transition:   "background 0.35s, color 0.35s, border-color 0.35s",
+                  background: tagBg,
+                  border:     `1px solid ${tagBrd}`,
+                  color:      tagTxt,
+                  transition: "background 0.4s, color 0.4s, border-color 0.4s",
                 }}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] animate-pulse" />
                 Technology Company — Tokyo
               </motion.div>
 
-              {/* Main headline */}
               <motion.h1
                 initial={{ opacity: 0, y: 28 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -108,8 +111,8 @@ export function HeroSection() {
                 className="text-5xl md:text-6xl lg:text-[68px] font-black leading-[1.18] mb-7 jp"
                 style={{
                   letterSpacing: "-0.022em",
-                  color:          dark ? "#F8FAFC" : "#0F172A",
-                  transition:     "color 0.35s",
+                  color:         dark ? "#F8FAFC" : "#0F172A",
+                  transition:    "color 0.4s",
                 }}
               >
                 「構造から、
@@ -117,7 +120,6 @@ export function HeroSection() {
                 事業を創る。」
               </motion.h1>
 
-              {/* Sub-copy */}
               <motion.p
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -125,7 +127,7 @@ export function HeroSection() {
                 className="text-[15px] leading-[2.05] jp mb-10 max-w-[430px]"
                 style={{
                   color:      dark ? "#94A3B8" : "#64748B",
-                  transition: "color 0.35s",
+                  transition: "color 0.4s",
                 }}
               >
                 Anviaは、構造設計を軸に新規事業を創出するテクノロジーカンパニーです。
@@ -133,7 +135,6 @@ export function HeroSection() {
                 スケール可能なプロダクトを構築します。
               </motion.p>
 
-              {/* CTA buttons */}
               <motion.div
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -155,16 +156,10 @@ export function HeroSection() {
                   className="inline-flex items-center justify-center gap-2 px-7 py-3.5
                              border text-sm font-semibold rounded-full jp"
                   style={{
-                    background:   btn2Bg,
-                    borderColor:  btn2Bd,
-                    color:        btn2Tx,
-                    transition:   "background 0.32s, border-color 0.32s, color 0.32s",
-                  }}
-                  onMouseEnter={e => {
-                    (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1.02)";
-                  }}
-                  onMouseLeave={e => {
-                    (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1)";
+                    background:  btn2Bg,
+                    borderColor: btn2Bd,
+                    color:       btn2Tx,
+                    transition:  "background 0.4s, border-color 0.4s, color 0.4s",
                   }}
                 >
                   お問い合わせ
@@ -172,7 +167,7 @@ export function HeroSection() {
               </motion.div>
             </div>
 
-            {/* ── Right: 3D polyhedron ── */}
+            {/* Right: 3D canvas */}
             <motion.div
               initial={{ opacity: 0, scale: 0.94 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -185,7 +180,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* Scroll cue — bouncing line */}
+        {/* Scroll cue */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -193,7 +188,7 @@ export function HeroSection() {
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 pointer-events-none"
           style={{
             color:      dark ? "rgba(255,255,255,0.22)" : "rgba(100,116,139,0.5)",
-            transition: "color 0.35s",
+            transition: "color 0.4s",
           }}
         >
           <motion.div
