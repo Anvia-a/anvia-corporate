@@ -4,16 +4,19 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
+/* ── Design tokens ── */
 :root {
-  --c-primary:      #1E3A8A;
-  --c-deep:         #0F172A;
-  --c-base:         #F5F7FB;
-  --c-border:       #E6E8EB;
-  --c-accent-light: #E8EEFF;
-  --c-secondary:    #3B82F6;
+  --primary:  #1E3A8A;
+  --blue:     #3B82F6;
+  --deep:     #0F172A;
+  --herodk:   #0B0F1A;
+  --base:     #F5F7FB;
+  --card:     #E8EEFF;
+  --border:   #E6E8EB;
 }
 
-* { box-sizing: border-box; padding: 0; margin: 0; }
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; padding: 0; margin: 0; }
 html { scroll-behavior: smooth; }
 
 body {
@@ -25,70 +28,55 @@ body {
 }
 
 ::selection { background: #1E3A8A; color: #fff; }
+
+/* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #F5F7FB; }
 ::-webkit-scrollbar-thumb { background: #1E3A8A; border-radius: 3px; }
 
+/* ── Japanese text ── */
 .jp {
-  font-family: "Noto Sans JP", "Hiragino Sans", sans-serif;
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic UI", sans-serif;
   font-feature-settings: "palt" 1;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.025em;
 }
 
+/* ── Section rhythm ── */
 .section-py { padding-top: 120px; padding-bottom: 120px; }
-@media (max-width: 768px) { .section-py { padding-top: 80px; padding-bottom: 80px; } }
+@media (max-width: 768px) {
+  .section-py { padding-top: 72px; padding-bottom: 72px; }
+}
 
+/* ── Underline on hover utility ── */
 .link-hover { position: relative; display: inline-block; }
 .link-hover::after {
   content: '';
   position: absolute;
-  bottom: -2px; left: 0;
-  width: 0; height: 1px;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
   background: currentColor;
   transition: width 0.28s ease;
 }
 .link-hover:hover::after { width: 100%; }
 
-/* Network visual keyframes */
-@keyframes nodeFloat {
-  0%, 100% { transform: translateY(0px);  }
-  50%       { transform: translateY(-6px); }
-}
-@keyframes nodeFloatB {
-  0%, 100% { transform: translateY(0px);  }
-  50%       { transform: translateY(-5px); }
-}
-@keyframes nodeFloatC {
-  0%, 100% { transform: translateY(0px);  }
-  50%       { transform: translateY(-7px); }
-}
-@keyframes ringPulse {
-  0%, 100% { opacity: 0.08; transform: scale(1);    }
-  50%       { opacity: 0.18; transform: scale(1.06); }
-}
-@keyframes lineSweep {
-  from { stroke-dashoffset: 300; opacity: 0; }
-  20%  { opacity: 1; }
-  to   { stroke-dashoffset: 0;   opacity: 1; }
-}
-@keyframes dotPulse {
-  0%, 100% { opacity: 0.5; }
-  50%       { opacity: 1;   }
+/* ── Shared pill tag (section eyebrow) ── */
+.pill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #1E3A8A;
+  background: #E8EEFF;
+  border: 1px solid rgba(30, 58, 138, 0.15);
+  margin-bottom: 20px;
 }
 
-.node-float-a { animation: nodeFloat  4.8s ease-in-out infinite; }
-.node-float-b { animation: nodeFloatB 5.6s ease-in-out 1.1s infinite; }
-.node-float-c { animation: nodeFloatC 4.2s ease-in-out 2.2s infinite; }
-.ring-pulse    { animation: ringPulse  3.5s ease-in-out infinite; }
-.dot-pulse     { animation: dotPulse   2.4s ease-in-out infinite; }
-.line-draw {
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
-  animation: lineSweep 1.2s ease-out forwards;
+/* ── Card shadow ── */
+.card-shadow {
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
 }
-.line-draw-d1 { animation-delay: 0.15s; }
-.line-draw-d2 { animation-delay: 0.30s; }
-.line-draw-d3 { animation-delay: 0.45s; }
-.line-draw-d4 { animation-delay: 0.60s; }
-.line-draw-d5 { animation-delay: 0.75s; }
-.line-draw-d6 { animation-delay: 0.90s; }

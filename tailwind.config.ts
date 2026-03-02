@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,32 +8,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#1E3A8A",
-        "primary-deep": "#0F172A",
-        "primary-light": "#3B82F6",
-        secondary: "#475569",
-        surface: "#F5F7FB",
-        card: "#E8EEFF",
-        white: "#FFFFFF",
+        primary:  "#1E3A8A",
+        blue:     "#3B82F6",
+        deep:     "#0F172A",
+        herodk:   "#0B0F1A",
+        base:     "#F5F7FB",
+        card:     "#E8EEFF",
+        border:   "#E6E8EB",
       },
       fontFamily: {
-        sans: ["Inter", "var(--font-inter)", "system-ui", "sans-serif"],
-        jp: ["var(--font-noto)", "Noto Sans JP", "Hiragino Sans", "sans-serif"],
-      },
-      maxWidth: {
-        site: "1200px",
-      },
-      borderRadius: {
-        card: "20px",
-      },
-      boxShadow: {
-        card: "0 10px 30px rgba(30,58,138,0.08)",
-        "card-hover": "0 20px 50px rgba(30,58,138,0.15)",
-        btn: "0 4px 16px rgba(30,58,138,0.25)",
+        sans: ["Inter", "system-ui", "sans-serif"],
+        jp:   ["Noto Sans JP", "Hiragino Sans", "sans-serif"],
       },
     },
   },
   plugins: [],
 };
-
 export default config;

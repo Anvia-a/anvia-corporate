@@ -14,37 +14,24 @@ export function CompanySection() {
   return (
     <section id="company" className="bg-white section-py">
       <div className="max-w-[1200px] mx-auto px-6 lg:px-8">
-
-        {/* Header */}
         <AnimatedSection className="mb-12">
-          <div
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold text-[#1E3A8A] mb-6"
-            style={{ background: "#E8EEFF", border: "1px solid rgba(30,58,138,0.15)" }}
-          >
-            Company
-          </div>
-          <h2
-            className="text-3xl md:text-5xl font-black text-[#0F172A] jp"
-            style={{ letterSpacing: "-0.025em" }}
-          >
+          <div className="pill-tag">Company</div>
+          <h2 className="text-3xl md:text-5xl font-black text-[#0F172A] jp"
+            style={{ letterSpacing: "-0.025em" }}>
             株式会社Anvia
           </h2>
         </AnimatedSection>
 
-        {/* Standalone info table — full width, clean */}
+        {/* Clean full-width-ish table — max-w constrained for readability */}
         <AnimatedSection>
-          <div
-            className="rounded-[20px] overflow-hidden bg-white max-w-2xl"
-            style={{ border: "1px solid #E6E8EB", boxShadow: "0 16px 40px rgba(15,23,42,0.07)" }}
-          >
+          <div className="rounded-[20px] overflow-hidden bg-white max-w-2xl"
+            style={{ border: "1px solid #E6E8EB", boxShadow: "0 16px 40px rgba(15,23,42,0.07)" }}>
             <AnimatedStagger>
               {details.map((d, i) => (
                 <StaggerItem key={d.label}>
-                  <div
-                    className={`flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-10 px-8 py-5 ${
-                      i < details.length - 1 ? "border-b border-[#F5F7FB]" : ""
-                    }`}
-                  >
+                  <div className={`flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-10 px-8 py-5 ${
+                    i < details.length - 1 ? "border-b border-[#F5F7FB]" : ""
+                  }`}>
                     <p className="text-[10px] font-semibold tracking-widest text-slate-400 uppercase flex-shrink-0 sm:w-32 jp">
                       {d.label}
                     </p>
