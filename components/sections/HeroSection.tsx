@@ -34,14 +34,16 @@ const PolyhedronCanvas = dynamic(
  * and only drives colour tokens + the R3F canvas prop, so re-render cost is minimal.
  */
 export function HeroSection() {
-  const outerRef = useRef<HTMLElement>(null);
-  const wipeRef  = useRef<HTMLDivElement>(null);
+  const outerRef  = useRef<HTMLElement>(null);
+  const wipeRef   = useRef<HTMLDivElement>(null);
+  const lightRef  = useRef<HTMLDivElement>(null);
   const darkRef  = useRef(false);
   const [dark, setDark] = React.useState(false);
 
   useEffect(() => {
     const outer = outerRef.current;
     const wipe  = wipeRef.current;
+    const light = lightRef.current;
     if (!outer || !wipe) return;
 
     const onScroll = () => {
@@ -54,6 +56,10 @@ export function HeroSection() {
 
       // Direct DOM write — no React re-render, no frame lag
       wipe.style.clipPath = `inset(${(1 - progress) * 100}% 0 0 0)`;
+      // Fade out light base so white rectangle does not show through wipe edges
+      if (lightRef.current) {
+        lightRef.current.style.opacity = String(1 - progress);
+      }
 
       // Dark threshold — only triggers a re-render on toggle
       const nowDark = progress > 0.55;
@@ -97,13 +103,15 @@ export function HeroSection() {
           overflow: "hidden",
         }}
       >
-        {/* Light base — always present underneath */}
+        {/* Light base — fades out as dark wipe advances */}
         <div
+          ref={lightRef}
           style={{
             position:   "absolute",
             inset:      0,
             background: "#F5F7FB",
             zIndex:     0,
+            willChange: "opacity",
           }}
         />
 

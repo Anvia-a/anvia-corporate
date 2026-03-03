@@ -98,8 +98,8 @@ export function ContactSection() {
               style={{ background: "rgba(255,255,255,0.7)", border: "1px solid #E6E8EB" }}
             >
               {([
-                { key: "individual" as Tab, label: "Individual" },
-                { key: "corporate"  as Tab, label: "Business"   },
+                { key: "individual" as Tab, label: "個人" },
+                { key: "corporate"  as Tab, label: "法人" },
               ]).map((t) => (
                 <button
                   key={t.key}
