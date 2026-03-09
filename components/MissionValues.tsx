@@ -6,9 +6,19 @@ import styles from './MissionValues.module.css';
 
 const timeMarks = ['08:30', '09:12', '10:45', '11:38', '12:05', '13:47', '14:20', '16:10', '18:55', '21:05', '22:40', '23:10', '00:30'];
 
+function MissionTextContent({ accentClass }: { accentClass: string }) {
+    return (
+        <>
+            <p className={styles.missionLead}>人々の<span className={accentClass}>時間</span>を<span className={accentClass}>取り戻す</span>。<br />それが私たちのミッションです。</p>
+            <p>日常には、気づかないうちに多くの摩擦や無駄な作業が存在します。<br />私たちはテクノロジーとデザインの力でそれらを取り除き、<br />人々が<span className={accentClass}>本当に価値のあること</span>に時間を使える世界をつくります。</p>
+            <p>Anviaは<br />“Make time work better.”<br />という思想のもと、<br />より<span className={accentClass}>シンプル</span>で<span className={accentClass}>軽やか</span>な体験を生み出すプロダクトを設計・開発しています。</p>
+        </>
+    );
+}
+
 export default function MissionValues() {
     const ringValues = [...timeMarks, ...timeMarks, ...timeMarks];
-    const missionTextPanelRef = useRef<HTMLDivElement>(null);
+    const missionTextRef = useRef<HTMLDivElement>(null);
 
     const spinConfig = useMemo(() => ({
         sphere: `${3.2 + Math.random() * 1.2}s`,
@@ -21,7 +31,7 @@ export default function MissionValues() {
     }), []);
 
     function handleMissionMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-        const el = missionTextPanelRef.current;
+        const el = missionTextRef.current;
         if (!el) return;
         const rect = el.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -42,14 +52,15 @@ export default function MissionValues() {
                         <div className={styles.missionRow}>
                             <AnimateOnScroll>
                                 <div
-                                    ref={missionTextPanelRef}
-                                    className={styles.missionTextPanel}
+                                    ref={missionTextRef}
+                                    className={styles.missionTextWrap}
                                     onMouseMove={handleMissionMouseMove}
                                 >
                                     <div className={styles.missionText}>
-                                        <p className={styles.missionLead}>人々の<span className={styles.accentWord}>時間</span>を<span className={styles.accentWord}>取り戻す</span>。<br />それが私たちのミッションです。</p>
-                                        <p>日常には、気づかないうちに多くの摩擦や無駄な作業が存在します。<br />私たちはテクノロジーとデザインの力でそれらを取り除き、<br />人々が<span className={styles.accentWord}>本当に価値のあること</span>に時間を使える世界をつくります。</p>
-                                        <p>Anviaは<br />“Make time work better.”<br />という思想のもと、<br />より<span className={styles.accentWord}>シンプル</span>で<span className={styles.accentWord}>軽やか</span>な体験を生み出すプロダクトを設計・開発しています。</p>
+                                        <MissionTextContent accentClass={styles.accentWord} />
+                                    </div>
+                                    <div className={styles.missionTextSpot} aria-hidden="true">
+                                        <MissionTextContent accentClass={styles.accentWordSpot} />
                                     </div>
                                 </div>
                             </AnimateOnScroll>

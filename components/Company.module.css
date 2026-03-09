@@ -70,153 +70,86 @@
 .visualPanel {
     position: relative;
     min-height: 390px;
-    background: transparent;
-    overflow: visible;
     width: 115%;
     margin-left: -5%;
-}
-
-.networkSvg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
     overflow: visible;
 }
 
-.organicLine {
-    fill: none;
-    stroke-linecap: round;
-    stroke-width: 1.8;
-    stroke: url(#lineGradient);
-    opacity: 0.56;
-    filter: drop-shadow(0 0 10px rgba(56, 136, 219, 0.25));
-    stroke-dasharray: 5 10;
+.nameField {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 390px;
 }
 
-.pathA {
-    stroke: rgba(100, 184, 255, 0.62);
-    animation: pathFlowA 14s ease-in-out infinite;
-}
-
-.pathB {
-    stroke: rgba(45, 212, 191, 0.56);
-    animation: pathFlowB 12.6s ease-in-out infinite;
-}
-
-.pathC {
-    stroke: rgba(96, 165, 250, 0.54);
-    animation: pathFlowC 13.8s ease-in-out infinite;
-}
-
-.pathD {
-    stroke: rgba(56, 189, 248, 0.5);
-    animation: pathFlowD 11.8s ease-in-out infinite;
-}
-
-.pathE {
-    stroke: rgba(45, 212, 191, 0.5);
-    animation: pathFlowE 14.4s ease-in-out infinite;
-}
-
-.node {
+.letter {
     position: absolute;
-    width: 6px;
-    height: 6px;
+    font-size: clamp(1.3rem, 2.2vw, 2.05rem);
+    font-weight: 620;
+    letter-spacing: 0.08em;
+    color: rgba(56, 139, 255, 0.86);
+    text-shadow: 0 0 14px rgba(56, 139, 255, 0.22);
+    animation: gather 10s ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+}
+
+.letterA1 { --sx: -16%; --sy: 20%; --tx: 26%; --ty: 46%; --delay: 0s; }
+.letterN { --sx: 82%; --sy: 18%; --tx: 34%; --ty: 46%; --delay: 0.15s; }
+.letterE { --sx: 18%; --sy: 78%; --tx: 42%; --ty: 46%; --delay: 0.25s; }
+.letterW { --sx: 72%; --sy: 76%; --tx: 50%; --ty: 46%; --delay: 0.35s; }
+.letterV { --sx: 6%; --sy: 50%; --tx: 58%; --ty: 46%; --delay: 0.45s; }
+.letterI { --sx: 92%; --sy: 46%; --tx: 66%; --ty: 46%; --delay: 0.55s; }
+.letterA2 { --sx: 44%; --sy: 6%; --tx: 74%; --ty: 46%; --delay: 0.65s; }
+
+@keyframes gather {
+    0%, 18% {
+        left: var(--sx);
+        top: var(--sy);
+        opacity: 0.54;
+        transform: scale(0.92);
+    }
+
+    42%, 68% {
+        left: var(--tx);
+        top: var(--ty);
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    86%, 100% {
+        left: var(--tx);
+        top: var(--ty);
+        opacity: 0;
+        transform: scale(1.04);
+    }
+}
+
+.spark {
+    position: absolute;
+    width: 5px;
+    height: 5px;
     border-radius: 999px;
     background: radial-gradient(circle at 35% 35%, #f0fcff 0%, #7dd3fc 44%, #38bdf8 100%);
-    box-shadow: 0 0 10px rgba(93, 222, 255, 0.58), 0 0 20px rgba(37, 99, 235, 0.26);
+    box-shadow: 0 0 10px rgba(93, 222, 255, 0.55);
 }
 
-.nodeA {
-    left: 22%;
-    top: 20%;
-    animation: nodeFloatA 8s ease-in-out infinite;
-}
+.sparkA { left: 18%; top: 20%; animation: sparkFloatA 6.8s ease-in-out infinite; }
+.sparkB { left: 78%; top: 26%; animation: sparkFloatB 7.2s ease-in-out infinite; }
+.sparkC { left: 24%; top: 70%; animation: sparkFloatC 7.8s ease-in-out infinite; }
+.sparkD { left: 70%; top: 74%; animation: sparkFloatD 8.2s ease-in-out infinite; }
 
-.nodeB {
-    left: 48%;
-    top: 16%;
-    animation: nodeFloatB 8.4s ease-in-out infinite;
-}
+@keyframes sparkFloatA { 0%,100%{transform:translateY(0);opacity:.48;} 50%{transform:translateY(-9px);opacity:.78;} }
+@keyframes sparkFloatB { 0%,100%{transform:translateY(0);opacity:.44;} 50%{transform:translateY(8px);opacity:.72;} }
+@keyframes sparkFloatC { 0%,100%{transform:translateY(0);opacity:.42;} 50%{transform:translateY(-8px);opacity:.7;} }
+@keyframes sparkFloatD { 0%,100%{transform:translateY(0);opacity:.4;} 50%{transform:translateY(9px);opacity:.68;} }
 
-.nodeC {
-    left: 68%;
-    top: 32%;
-    animation: nodeFloatC 9.2s ease-in-out infinite;
-}
-
-.nodeD {
-    left: 34%;
-    top: 52%;
-    animation: nodeFloatD 8.6s ease-in-out infinite;
-}
-
-.nodeE {
-    left: 62%;
-    top: 66%;
-    animation: nodeFloatE 9.4s ease-in-out infinite;
-}
-
-.nodeF {
-    left: 78%;
-    top: 78%;
-    animation: nodeFloatF 9.8s ease-in-out infinite;
-}
-
-@keyframes pathFlowA {
-    0%, 100% { transform: translate3d(0, 0, 0); stroke-dashoffset: 0; opacity: 0.52; }
-    50% { transform: translate3d(-8px, -10px, 0); stroke-dashoffset: 22; opacity: 0.74; }
-}
-
-@keyframes pathFlowB {
-    0%, 100% { transform: translate3d(0, 0, 0); stroke-dashoffset: 8; opacity: 0.46; }
-    50% { transform: translate3d(10px, -8px, 0); stroke-dashoffset: 30; opacity: 0.7; }
-}
-
-@keyframes pathFlowC {
-    0%, 100% { transform: translate3d(0, 0, 0); stroke-dashoffset: 14; opacity: 0.5; }
-    50% { transform: translate3d(-10px, 8px, 0); stroke-dashoffset: 36; opacity: 0.72; }
-}
-
-@keyframes pathFlowD {
-    0%, 100% { transform: translate3d(0, 0, 0); stroke-dashoffset: 4; opacity: 0.44; }
-    50% { transform: translate3d(8px, -8px, 0); stroke-dashoffset: 24; opacity: 0.68; }
-}
-
-@keyframes pathFlowE {
-    0%, 100% { transform: translate3d(0, 0, 0); stroke-dashoffset: 10; opacity: 0.42; }
-    50% { transform: translate3d(-8px, 8px, 0); stroke-dashoffset: 34; opacity: 0.66; }
-}
-
-@keyframes nodeFloatA {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 0.52; }
-    50% { transform: translateY(-9px) scale(1.22); opacity: 0.84; }
-}
-
-@keyframes nodeFloatB {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 0.48; }
-    50% { transform: translateY(8px) scale(1.18); opacity: 0.8; }
-}
-
-@keyframes nodeFloatC {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 0.46; }
-    50% { transform: translateY(-8px) scale(1.18); opacity: 0.78; }
-}
-
-@keyframes nodeFloatD {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 0.44; }
-    50% { transform: translateY(8px) scale(1.16); opacity: 0.76; }
-}
-
-@keyframes nodeFloatE {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 0.42; }
-    50% { transform: translateY(-8px) scale(1.15); opacity: 0.74; }
-}
-
-@keyframes nodeFloatF {
-    0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-    50% { transform: translateY(8px) scale(1.14); opacity: 0.7; }
+.meaning {
+    position: absolute;
+    left: 12%;
+    bottom: 12%;
+    font-size: 0.78rem;
+    letter-spacing: 0.01em;
+    color: rgba(55, 78, 118, 0.78);
 }
 
 @media (max-width: 1000px) {
@@ -225,10 +158,16 @@
         gap: 26px;
     }
 
-    .visualPanel {
+    .visualPanel,
+    .nameField {
         min-height: 300px;
         width: 100%;
         margin-left: 0;
+    }
+
+    .meaning {
+        left: 6%;
+        right: 6%;
     }
 }
 

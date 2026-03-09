@@ -16,7 +16,6 @@
     pointer-events: none;
 }
 
-
 .missionBlock {
     display: flex;
     flex-direction: column;
@@ -35,49 +34,66 @@
     margin-bottom: 44px;
 }
 
-.missionTextPanel {
+.missionTextWrap {
     position: relative;
-    border-radius: 20px;
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    background: #ffffff;
-    overflow: hidden;
-    isolation: isolate;
+    --mx: -120px;
+    --my: -120px;
 }
 
-.missionTextPanel::before {
+.missionTextWrap::before {
     content: '';
     position: absolute;
     width: 40px;
     height: 40px;
-    left: calc(var(--mx, -120px) - 20px);
-    top: calc(var(--my, -120px) - 20px);
+    left: calc(var(--mx) - 20px);
+    top: calc(var(--my) - 20px);
     border-radius: 50%;
     background: rgba(7, 10, 15, 0.92);
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.16s ease;
     pointer-events: none;
     z-index: 1;
 }
 
-.missionTextPanel:hover::before {
+.missionTextWrap:hover::before {
     opacity: 1;
 }
 
-.missionText {
+.missionText,
+.missionTextSpot {
     display: flex;
     flex-direction: column;
     gap: 20px;
     font-size: 1.0625rem;
     line-height: 1.8;
     max-width: 720px;
-    position: relative;
-    z-index: 2;
-    padding: 24px;
-    color: #ffffff;
-    mix-blend-mode: difference;
+    padding: 0;
 }
 
-.missionText p {
+.missionText {
+    color: var(--color-gray-600);
+    position: relative;
+    z-index: 0;
+}
+
+.missionTextSpot {
+    position: absolute;
+    inset: 0;
+    color: #ffffff;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    clip-path: circle(0px at var(--mx) var(--my));
+    transition: opacity 0.16s ease, clip-path 0.08s linear;
+}
+
+.missionTextWrap:hover .missionTextSpot {
+    opacity: 1;
+    clip-path: circle(20px at var(--mx) var(--my));
+}
+
+.missionText p,
+.missionTextSpot p {
     margin: 0;
 }
 
@@ -86,6 +102,11 @@
     line-height: 1.45;
     font-weight: 520;
     letter-spacing: -0.01em;
+    color: var(--color-gray-800);
+}
+
+.missionTextSpot .missionLead {
+    color: #ffffff;
 }
 
 .accentWord {
@@ -94,6 +115,11 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+.accentWordSpot {
+    font-weight: 650;
+    color: #ffffff;
 }
 
 .timeGraphic {
@@ -394,10 +420,10 @@
         padding: 80px 0;
     }
 
-    .missionText {
+    .missionText,
+    .missionTextSpot {
         font-size: 1rem;
         margin-bottom: 0;
-        padding: 20px 18px;
     }
 
     .missionLead {
