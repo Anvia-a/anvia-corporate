@@ -1,4 +1,4 @@
-.hero {
+﻿.hero {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -35,7 +35,6 @@
     margin: 0 auto;
 }
 
-/* ── Text Content ──────────────── */
 .textContent {
     display: flex;
     flex-direction: column;
@@ -83,7 +82,6 @@
     display: block;
     overflow: hidden;
     padding-bottom: 4px;
-    /* Fix clipping for decenders */
     animation: revealUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0s) both;
 }
 
@@ -131,9 +129,22 @@
 .btnHero {
     padding: 15px 32px !important;
     font-size: 0.9375rem !important;
+    transition: transform 0.18s ease, color 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
 }
 
-/* ── Scroll Indicator ──────────── */
+.learnMore {
+    border: 1.5px solid #111827;
+    background: #111827;
+    color: #ffffff;
+}
+
+.learnMore:hover {
+    background: #ffffff;
+    color: #111827;
+    border-color: #111827;
+    transform: translateY(-2px);
+}
+
 .scrollIndicator {
     position: absolute;
     bottom: 32px;
@@ -162,7 +173,6 @@
     color: var(--color-gray-500);
 }
 
-/* ── Keyframes ─────────────────── */
 @keyframes revealUp {
     from {
         opacity: 0;
@@ -201,7 +211,6 @@
     }
 }
 
-/* ── Responsive ────────────────── */
 @media (max-width: 900px) {
     .inner {
         padding-left: 32px;
