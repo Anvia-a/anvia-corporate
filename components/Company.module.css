@@ -57,184 +57,218 @@
 
 .visualPanel {
     position: relative;
-    border-radius: 0;
-    border: none;
-    background: transparent;
     min-height: 340px;
+    background: transparent;
     overflow: visible;
 }
 
-.prismCore,
-.prismFaceA,
-.prismFaceB,
-.prismFaceC {
-    position: absolute;
-    left: 50%;
-    top: 50%;
+.objectWrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 340px;
     transform-style: preserve-3d;
 }
 
-.prismCore {
-    width: 120px;
-    height: 120px;
-    transform: translate(-50%, -50%) rotate(45deg);
-    border-radius: 18px;
-    background: linear-gradient(145deg, rgba(56, 189, 248, 0.7), rgba(37, 99, 235, 0.65));
-    filter: blur(0.2px);
-    animation: floatCore 7.5s ease-in-out infinite;
-}
-
-.prismFaceA,
-.prismFaceB,
-.prismFaceC {
-    width: 170px;
-    height: 170px;
-    border-radius: 20px;
-    border: 1px solid rgba(56, 189, 248, 0.35);
-    background: linear-gradient(140deg, rgba(255, 255, 255, 0.22), rgba(56, 189, 248, 0.14));
-    backdrop-filter: blur(1px);
-}
-
-.prismFaceA {
-    transform: translate(-50%, -50%) rotate(24deg);
-    animation: driftA 8.2s ease-in-out infinite;
-}
-
-.prismFaceB {
-    transform: translate(-50%, -50%) rotate(-16deg);
-    animation: driftB 9.4s ease-in-out infinite;
-}
-
-.prismFaceC {
-    transform: translate(-50%, -50%) rotate(58deg);
-    animation: driftC 10.3s ease-in-out infinite;
-}
-
-.orbitRing {
+.objectCore {
     position: absolute;
-    inset: 26% 22%;
-    border-radius: 999px;
-    border: 1px solid rgba(37, 99, 235, 0.24);
-    animation: ringSpin 7.2s linear infinite;
+    left: 50%;
+    top: 48%;
+    width: 188px;
+    height: 188px;
+    transform: translate(-50%, -50%) rotateX(16deg) rotateY(-18deg);
+    transform-style: preserve-3d;
+    animation: coreRotate 9.5s linear infinite;
 }
 
-.sparkA,
-.sparkB {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(14, 165, 233, 0.8);
-    box-shadow: 0 0 0 7px rgba(14, 165, 233, 0.12);
-}
-
-.sparkA {
-    top: 28%;
-    right: 24%;
-    animation: sparkMoveA 6.2s ease-in-out infinite;
-}
-
-.sparkB {
-    bottom: 24%;
-    left: 24%;
-    animation: sparkMoveB 5.4s ease-in-out infinite;
-}
-
-.gridGlow {
+.faceMain,
+.faceLeft,
+.faceRight,
+.faceTop {
     position: absolute;
     inset: 0;
-    background-image:
-        linear-gradient(to right, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(37, 99, 235, 0.07) 1px, transparent 1px);
-    background-size: 38px 38px;
-    mask-image: radial-gradient(circle at center, black 40%, transparent 82%);
-    opacity: 0.2;
-    animation: gridShift 9s linear infinite;
+    border-radius: 18px;
 }
 
-@keyframes floatCore {
-    0%,
-    100% {
-        transform: translate(-50%, -50%) rotate(45deg) translateY(0);
-    }
-
-    50% {
-        transform: translate(-50%, -50%) rotate(48deg) translateY(-8px);
-    }
+.faceMain {
+    background: linear-gradient(150deg, #7dd3fc 8%, #38bdf8 36%, #2563eb 92%);
+    clip-path: polygon(50% 0%, 100% 34%, 84% 100%, 16% 100%, 0% 34%);
 }
 
-@keyframes driftA {
-    0%,
-    100% {
-        transform: translate(-50%, -50%) rotate(24deg) translateX(0);
-    }
-
-    50% {
-        transform: translate(-50%, -50%) rotate(28deg) translateX(6px);
-    }
+.faceLeft {
+    background: linear-gradient(165deg, rgba(37, 99, 235, 0.92), rgba(30, 64, 175, 0.86));
+    clip-path: polygon(0% 34%, 50% 0%, 50% 66%, 20% 88%);
 }
 
-@keyframes driftB {
-    0%,
-    100% {
-        transform: translate(-50%, -50%) rotate(-16deg) translateY(0);
-    }
-
-    50% {
-        transform: translate(-50%, -50%) rotate(-11deg) translateY(6px);
-    }
+.faceRight {
+    background: linear-gradient(165deg, rgba(103, 232, 249, 0.85), rgba(56, 189, 248, 0.7));
+    clip-path: polygon(50% 0%, 100% 34%, 80% 88%, 50% 66%);
 }
 
-@keyframes driftC {
-    0%,
-    100% {
-        transform: translate(-50%, -50%) rotate(58deg) translateX(0);
+.faceTop {
+    background: linear-gradient(135deg, rgba(186, 230, 253, 0.88), rgba(125, 211, 252, 0.26));
+    clip-path: polygon(28% 24%, 50% 8%, 72% 24%, 50% 38%);
+}
+
+.ringOuter,
+.ringInner {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    border-radius: 999px;
+    border: 5px solid transparent;
+}
+
+.ringOuter {
+    width: 264px;
+    height: 264px;
+    transform: translate(-50%, -50%) rotate(12deg);
+    border-top-color: rgba(14, 165, 233, 0.78);
+    border-right-color: rgba(37, 99, 235, 0.72);
+    animation: ringSpin 6.6s linear infinite;
+}
+
+.ringInner {
+    width: 212px;
+    height: 212px;
+    transform: translate(-50%, -50%) rotate(-8deg);
+    border-top-color: rgba(56, 189, 248, 0.72);
+    border-left-color: rgba(30, 64, 175, 0.7);
+    animation: ringSpinReverse 5.4s linear infinite;
+}
+
+.shardA,
+.shardB,
+.shardC,
+.shardD {
+    position: absolute;
+    width: 34px;
+    height: 20px;
+    background: linear-gradient(135deg, rgba(125, 211, 252, 0.96), rgba(37, 99, 235, 0.82));
+    clip-path: polygon(12% 50%, 44% 0%, 100% 22%, 72% 100%, 20% 84%);
+}
+
+.shardA {
+    left: calc(50% - 126px);
+    top: calc(48% - 78px);
+    animation: shardFloatA 4.2s ease-in-out infinite;
+}
+
+.shardB {
+    left: calc(50% + 104px);
+    top: calc(48% - 34px);
+    animation: shardFloatB 3.8s ease-in-out infinite;
+}
+
+.shardC {
+    left: calc(50% - 112px);
+    top: calc(48% + 54px);
+    animation: shardFloatC 4.8s ease-in-out infinite;
+}
+
+.shardD {
+    left: calc(50% + 86px);
+    top: calc(48% + 80px);
+    animation: shardFloatD 4.4s ease-in-out infinite;
+}
+
+.shadow {
+    position: absolute;
+    left: 50%;
+    top: calc(48% + 144px);
+    width: 240px;
+    height: 34px;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(37, 99, 235, 0.24) 0%, rgba(37, 99, 235, 0) 72%);
+    filter: blur(4px);
+    animation: shadowPulse 4.2s ease-in-out infinite;
+}
+
+@keyframes coreRotate {
+    from {
+        transform: translate(-50%, -50%) rotateX(16deg) rotateY(-18deg) rotateZ(0deg);
     }
 
-    50% {
-        transform: translate(-50%, -50%) rotate(53deg) translateX(-6px);
+    to {
+        transform: translate(-50%, -50%) rotateX(16deg) rotateY(-18deg) rotateZ(360deg);
     }
 }
 
 @keyframes ringSpin {
     from {
-        transform: rotate(0deg);
+        transform: translate(-50%, -50%) rotate(12deg);
     }
 
     to {
-        transform: rotate(360deg);
+        transform: translate(-50%, -50%) rotate(372deg);
     }
 }
 
-@keyframes sparkMoveA {
-    0%,
-    100% {
-        transform: translate(0, 0);
-    }
-
-    50% {
-        transform: translate(-9px, 7px);
-    }
-}
-
-@keyframes sparkMoveB {
-    0%,
-    100% {
-        transform: translate(0, 0);
-    }
-
-    50% {
-        transform: translate(10px, -8px);
-    }
-}
-
-@keyframes gridShift {
+@keyframes ringSpinReverse {
     from {
-        background-position: 0 0, 0 0;
+        transform: translate(-50%, -50%) rotate(352deg);
     }
 
     to {
-        background-position: 38px 0, 0 38px;
+        transform: translate(-50%, -50%) rotate(-8deg);
+    }
+}
+
+@keyframes shardFloatA {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-18deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(-10deg);
+    }
+}
+
+@keyframes shardFloatB {
+    0%,
+    100% {
+        transform: translateY(0) rotate(14deg);
+    }
+
+    50% {
+        transform: translateY(7px) rotate(20deg);
+    }
+}
+
+@keyframes shardFloatC {
+    0%,
+    100% {
+        transform: translateY(0) rotate(12deg);
+    }
+
+    50% {
+        transform: translateY(-6px) rotate(6deg);
+    }
+}
+
+@keyframes shardFloatD {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-10deg);
+    }
+
+    50% {
+        transform: translateY(8px) rotate(-16deg);
+    }
+}
+
+@keyframes shadowPulse {
+    0%,
+    100% {
+        opacity: 0.62;
+        transform: translateX(-50%) scaleX(1);
+    }
+
+    50% {
+        opacity: 0.42;
+        transform: translateX(-50%) scaleX(0.9);
     }
 }
 
@@ -244,8 +278,24 @@
         gap: 26px;
     }
 
-    .visualPanel {
-        min-height: 260px;
+    .visualPanel,
+    .objectWrap {
+        min-height: 280px;
+    }
+
+    .objectCore {
+        width: 156px;
+        height: 156px;
+    }
+
+    .ringOuter {
+        width: 224px;
+        height: 224px;
+    }
+
+    .ringInner {
+        width: 178px;
+        height: 178px;
     }
 }
 
@@ -255,6 +305,3 @@
         gap: 4px;
     }
 }
-
-
-

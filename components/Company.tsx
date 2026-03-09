@@ -40,14 +40,21 @@ export default function Company() {
 
                     <AnimateOnScroll delay={180}>
                         <div className={styles.visualPanel} aria-hidden="true">
-                            <div className={styles.prismCore} />
-                            <div className={styles.prismFaceA} />
-                            <div className={styles.prismFaceB} />
-                            <div className={styles.prismFaceC} />
-                            <div className={styles.orbitRing} />
-                            <div className={styles.sparkA} />
-                            <div className={styles.sparkB} />
-                            <div className={styles.gridGlow} />
+                            <div className={styles.objectWrap}>
+                                <div className={styles.objectCore}>
+                                    <span className={styles.faceMain} />
+                                    <span className={styles.faceLeft} />
+                                    <span className={styles.faceRight} />
+                                    <span className={styles.faceTop} />
+                                </div>
+                                <span className={styles.ringOuter} />
+                                <span className={styles.ringInner} />
+                                <span className={styles.shardA} />
+                                <span className={styles.shardB} />
+                                <span className={styles.shardC} />
+                                <span className={styles.shardD} />
+                                <span className={styles.shadow} />
+                            </div>
                         </div>
                     </AnimateOnScroll>
                 </div>

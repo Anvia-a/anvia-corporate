@@ -42,46 +42,52 @@
     position: relative;
     min-height: 320px;
     margin-top: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
     overflow: hidden;
-    border-radius: 20px;
     pointer-events: none;
 }
 
-.timeLayerA,
-.timeLayerB {
-    position: absolute;
-    inset: 0;
+.timeLane {
+    position: relative;
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 16%, black 84%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 16%, black 84%, transparent 100%);
+}
+
+.timeTrackA,
+.timeTrackB {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    gap: 14px;
     font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1;
     color: #0f172a;
-    opacity: 0.08;
+    letter-spacing: -0.02em;
+    opacity: 0.15;
 }
 
-.timeLayerA {
-    font-size: clamp(2.4rem, 5.2vw, 4.4rem);
-    transform: translateY(0) rotate(-9deg);
-    animation: timeDriftA 9.6s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+.timeTrackA span,
+.timeTrackB span {
+    display: block;
+    font-size: clamp(1.65rem, 3.2vw, 2.3rem);
+    line-height: 1;
 }
 
-.timeLayerB {
-    font-size: clamp(2rem, 4.3vw, 3.7rem);
-    opacity: 0.06;
-    transform: translateY(8%) translateX(8%) rotate(-9deg);
-    animation: timeDriftB 10.8s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+.timeTrackA {
+    animation: timeRollA 3.6s linear infinite;
+}
+
+.timeTrackB {
+    opacity: 0.12;
+    animation: timeRollB 4.1s linear infinite;
 }
 
 .timeLine {
     position: absolute;
-    inset: 15% 8%;
-    background-image:
-        linear-gradient(120deg, rgba(56, 189, 248, 0) 0%, rgba(56, 189, 248, 0.17) 45%, rgba(56, 189, 248, 0) 100%),
-        repeating-linear-gradient(120deg, rgba(59, 130, 246, 0.08) 0 1px, transparent 1px 30px);
-    opacity: 0.42;
-    animation: timePulse 5.8s ease-in-out infinite;
+    inset: 10% 0;
+    background-image: repeating-linear-gradient(to bottom, rgba(56, 189, 248, 0.14) 0 1px, transparent 1px 28px);
+    opacity: 0.38;
 }
 
 .valuesBlock {
@@ -194,51 +200,39 @@
     transform: translateX(2px);
 }
 
-@keyframes timeDriftA {
-    0%,
-    8% {
-        transform: translateY(0) rotate(-9deg);
+@keyframes timeRollA {
+    0% {
+        transform: translateY(0%);
+    }
+
+    42% {
+        transform: translateY(-48%);
     }
 
     48% {
-        transform: translateY(-10%) rotate(-9deg);
-    }
-
-    56% {
-        transform: translateY(-10%) rotate(-9deg);
+        transform: translateY(-48%);
     }
 
     100% {
-        transform: translateY(-18%) rotate(-9deg);
+        transform: translateY(-100%);
     }
 }
 
-@keyframes timeDriftB {
-    0%,
-    10% {
-        transform: translateY(8%) translateX(8%) rotate(-9deg);
+@keyframes timeRollB {
+    0% {
+        transform: translateY(-12%);
+    }
+
+    46% {
+        transform: translateY(-58%);
     }
 
     52% {
-        transform: translateY(-2%) translateX(8%) rotate(-9deg);
-    }
-
-    60% {
-        transform: translateY(-2%) translateX(8%) rotate(-9deg);
+        transform: translateY(-58%);
     }
 
     100% {
-        transform: translateY(-14%) translateX(8%) rotate(-9deg);
-    }
-}
-@keyframes timePulse {
-    0%,
-    100% {
-        opacity: 0.2;
-    }
-
-    50% {
-        opacity: 0.34;
+        transform: translateY(-112%);
     }
 }
 
@@ -285,5 +279,3 @@
         transform: scale(1.12) translateY(-4px);
     }
 }
-
-

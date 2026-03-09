@@ -16,7 +16,7 @@
     height: 100%;
     z-index: 0;
     pointer-events: none;
-    background: #ffffff;
+    background: #f8fafd;
 }
 
 .inner {
@@ -139,7 +139,7 @@
 }
 
 .learnMore:hover {
-    background: #ffffff;
+    background: #f8fafd;
     color: #111827;
     border-color: #111827;
     transform: translateY(-2px);
@@ -227,4 +227,5 @@
         font-size: 2.5rem;
     }
 }
+
 

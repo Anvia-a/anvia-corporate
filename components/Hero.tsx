@@ -33,17 +33,17 @@ function initCanvas(canvas: HTMLCanvasElement) {
     resize();
     window.addEventListener('resize', resize);
 
-    const lineCount = 26;
+    const lineCount = 30;
     const lines: Line[] = Array.from({ length: lineCount }, (_, i) => {
         const progress = i / (lineCount - 1);
         return {
-            baseY: -0.18 + progress * 1.4,
-            amplitude: 16 + Math.random() * 22,
-            frequency: 0.0035 + Math.random() * 0.002,
-            speed: 0.017 + Math.random() * 0.018,
+            baseY: -0.22 + progress * 1.45,
+            amplitude: 14 + Math.random() * 18,
+            frequency: 0.0032 + Math.random() * 0.0018,
+            speed: 0.018 + Math.random() * 0.02,
             phase: Math.random() * Math.PI * 2,
-            alpha: 0.05 + Math.random() * 0.04,
-            width: 0.65 + Math.random() * 0.75,
+            alpha: 0.09 + Math.random() * 0.06,
+            width: 0.8 + Math.random() * 0.9,
         };
     });
 
@@ -51,7 +51,7 @@ function initCanvas(canvas: HTMLCanvasElement) {
         const w = window.innerWidth;
         const h = window.innerHeight;
 
-        context.fillStyle = '#fcfdff';
+        context.fillStyle = '#f8fafd';
         context.fillRect(0, 0, w, h);
 
         t += 1;
@@ -60,11 +60,11 @@ function initCanvas(canvas: HTMLCanvasElement) {
             context.beginPath();
             context.lineWidth = line.width;
 
-            const hue = 202 + (index % 5) * 3;
+            const hue = 202 + (index % 4) * 6;
             const gradient = context.createLinearGradient(0, h, w, 0);
-            gradient.addColorStop(0, `hsla(${hue}, 58%, 70%, 0)`);
-            gradient.addColorStop(0.35, `hsla(${hue}, 58%, 70%, ${line.alpha})`);
-            gradient.addColorStop(1, `hsla(${hue + 8}, 62%, 66%, ${line.alpha * 0.85})`);
+            gradient.addColorStop(0, `hsla(${hue}, 58%, 74%, ${line.alpha * 0.35})`);
+            gradient.addColorStop(0.45, `hsla(${hue}, 64%, 68%, ${line.alpha})`);
+            gradient.addColorStop(1, `hsla(${hue + 8}, 70%, 62%, ${line.alpha * 0.9})`);
             context.strokeStyle = gradient;
 
             for (let x = -80; x <= w + 80; x += 6) {
@@ -74,7 +74,7 @@ function initCanvas(canvas: HTMLCanvasElement) {
                     h * line.baseY +
                     diagonalShift +
                     Math.sin(x * line.frequency + travel + line.phase) * line.amplitude +
-                    Math.sin(x * line.frequency * 0.52 - travel * 0.75 + line.phase) * (line.amplitude * 0.35);
+                    Math.sin(x * line.frequency * 0.5 - travel * 0.72 + line.phase) * (line.amplitude * 0.3);
 
                 if (x === -80) {
                     context.moveTo(x, y);
@@ -163,5 +163,3 @@ export default function Hero() {
         </section>
     );
 }
-
-

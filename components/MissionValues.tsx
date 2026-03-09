@@ -3,7 +3,12 @@
 import AnimateOnScroll from './AnimateOnScroll';
 import styles from './MissionValues.module.css';
 
+const timeMarks = ['08:30', '09:12', '10:45', '11:38', '12:05', '13:47', '14:20', '16:10', '18:55', '21:05'];
+
 export default function MissionValues() {
+    const laneA = [...timeMarks, ...timeMarks];
+    const laneB = [...timeMarks.slice(3), ...timeMarks.slice(0, 3), ...timeMarks.slice(3), ...timeMarks.slice(0, 3)];
+
     return (
         <section id="mission" className={`section ${styles.missionValues}`}>
             <div className="container">
@@ -23,17 +28,19 @@ export default function MissionValues() {
                             </AnimateOnScroll>
 
                             <div className={styles.timeGraphic} aria-hidden="true">
-                                <div className={styles.timeLayerA}>
-                                    <span>08:30</span>
-                                    <span>10:45</span>
-                                    <span>14:20</span>
-                                    <span>21:05</span>
+                                <div className={styles.timeLane}>
+                                    <div className={styles.timeTrackA}>
+                                        {laneA.map((value, i) => (
+                                            <span key={`a-${value}-${i}`}>{value}</span>
+                                        ))}
+                                    </div>
                                 </div>
-                                <div className={styles.timeLayerB}>
-                                    <span>09:12</span>
-                                    <span>11:38</span>
-                                    <span>16:10</span>
-                                    <span>23:47</span>
+                                <div className={styles.timeLane}>
+                                    <div className={styles.timeTrackB}>
+                                        {laneB.map((value, i) => (
+                                            <span key={`b-${value}-${i}`}>{value}</span>
+                                        ))}
+                                    </div>
                                 </div>
                                 <div className={styles.timeLine} />
                             </div>
@@ -68,4 +75,3 @@ export default function MissionValues() {
         </section>
     );
 }
-
