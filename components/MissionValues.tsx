@@ -12,8 +12,10 @@ export default function MissionValues() {
         sphere: `${3.6 + Math.random() * 1.2}s`,
         bandA: `${0.86 + Math.random() * 0.26}s`,
         bandB: `${0.92 + Math.random() * 0.32}s`,
+        bandC: `${0.9 + Math.random() * 0.3}s`,
         delayA: `${-(Math.random() * 1.8).toFixed(2)}s`,
         delayB: `${-(Math.random() * 1.8).toFixed(2)}s`,
+        delayC: `${-(Math.random() * 1.8).toFixed(2)}s`,
     }), []);
 
     return (
@@ -28,9 +30,9 @@ export default function MissionValues() {
                         <div className={styles.missionRow}>
                             <AnimateOnScroll>
                                 <div className={styles.missionText}>
-                                    <p>人々の時間を取り戻す。<br />それが私たちのミッションです。</p>
-                                    <p>日常には、気づかないうちに多くの摩擦や無駄な作業が存在します。<br />私たちはテクノロジーとデザインの力でそれらを取り除き、<br />人々が本当に価値のあることに時間を使える世界をつくります。</p>
-                                    <p>Anviaは<br />“Make time work better.”<br />という思想のもと、<br />よりシンプルで軽やかな体験を生み出すプロダクトを設計・開発しています。</p>
+                                    <p>人々の<span className={styles.accentWord}>時間</span>を<span className={styles.accentWord}>取り戻す</span>。<br />それが私たちのミッションです。</p>
+                                    <p>日常には、気づかないうちに多くの摩擦や無駄な作業が存在します。<br />私たちはテクノロジーとデザインの力でそれらを取り除き、<br />人々が<span className={styles.accentWord}>本当に価値のあること</span>に時間を使える世界をつくります。</p>
+                                    <p>Anviaは<br />“Make time work better.”<br />という思想のもと、<br />より<span className={styles.accentWord}>シンプル</span>で<span className={styles.accentWord}>軽やか</span>な体験を生み出すプロダクトを設計・開発しています。</p>
                                 </div>
                             </AnimateOnScroll>
 
@@ -51,6 +53,14 @@ export default function MissionValues() {
                                         >
                                             {ringValues.map((value, i) => (
                                                 <span key={`b-${value}-${i}`} style={{ '--i': i } as React.CSSProperties}>{value}</span>
+                                            ))}
+                                        </div>
+                                        <div
+                                            className={`${styles.reelBand} ${styles.reelBandC}`}
+                                            style={{ animationDuration: spinConfig.bandC, animationDelay: spinConfig.delayC } as React.CSSProperties}
+                                        >
+                                            {ringValues.map((value, i) => (
+                                                <span key={`c-${value}-${i}`} style={{ '--i': i } as React.CSSProperties}>{value}</span>
                                             ))}
                                         </div>
                                     </div>
@@ -83,10 +93,10 @@ export default function MissionValues() {
 
                             <AnimateOnScroll delay={120}>
                                 <div className={styles.valuesStatement}>
-                                    <p>Our approach is simple.</p>
-                                    <p>Build products that respect people&apos;s time.</p>
-                                    <p>Design systems that remove friction from everyday life.</p>
-                                    <p>Use technology to return time to people.</p>
+                                    <p>私たちの考え方は、<span className={styles.accentWord}>シンプル</span>です。</p>
+                                    <p>人の<span className={styles.accentWord}>時間</span>を尊重するプロダクトをつくること。</p>
+                                    <p>日常の<span className={styles.accentWord}>摩擦を減らす</span>設計を積み重ねること。</p>
+                                    <p>テクノロジーで、人に<span className={styles.accentWord}>時間を返す</span>こと。</p>
                                 </div>
                             </AnimateOnScroll>
                         </div>

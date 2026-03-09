@@ -38,6 +38,14 @@
     margin: 0;
 }
 
+.accentWord {
+    font-weight: 650;
+    background: linear-gradient(92deg, #3479ff, #26b7c6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 .timeGraphic {
     position: relative;
     min-height: 250px;
@@ -126,6 +134,11 @@
     animation: reelSpinB 1.08s linear infinite;
 }
 
+.reelBandC {
+    transform: translate(-50%, -50%) rotateX(18deg) rotateZ(35deg) scale(0.9);
+    animation: reelSpinC 1s linear infinite;
+}
+
 .valuesBlock {
     display: flex;
     flex-direction: column;
@@ -137,7 +150,7 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    padding: 26px 8px 34px;
+    padding: 26px 8px 20px;
 }
 
 .valueBubble {
@@ -237,7 +250,7 @@
 }
 
 .valuesStatement {
-    margin-top: 28px;
+    margin-top: 8px;
     max-width: 760px;
     color: var(--color-gray-600);
     font-size: 1rem;
@@ -268,11 +281,18 @@
     100% { transform: translate(-50%, -50%) rotateY(20deg) rotateZ(-142deg) scale(0.92) rotateX(-360deg); }
 }
 
+@keyframes reelSpinC {
+    0% { transform: translate(-50%, -50%) rotateX(18deg) rotateZ(35deg) scale(0.9) rotateY(0deg); }
+    33% { transform: translate(-50%, -50%) rotateX(-22deg) rotateZ(92deg) scale(0.9) rotateY(-248deg); }
+    54% { transform: translate(-50%, -50%) rotateX(-22deg) rotateZ(92deg) scale(0.9) rotateY(-248deg); }
+    100% { transform: translate(-50%, -50%) rotateX(18deg) rotateZ(150deg) scale(0.9) rotateY(-360deg); }
+}
+
 @media (max-width: 1200px) {
     .valuesBubbles {
         overflow-x: auto;
         justify-content: flex-start;
-        padding-bottom: 44px;
+        padding-bottom: 34px;
         mask-image: linear-gradient(to right, black 85%, transparent 100%);
         -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
         gap: 20px;

@@ -40,24 +40,22 @@ export default function Company() {
 
                     <AnimateOnScroll delay={180}>
                         <div className={styles.visualPanel} aria-hidden="true">
-                            <div className={styles.floatField}>
-                                <span className={`${styles.poly} ${styles.polyA}`} />
-                                <span className={`${styles.poly} ${styles.polyB}`} />
-                                <span className={`${styles.poly} ${styles.polyC}`} />
-                                <span className={`${styles.poly} ${styles.polyD}`} />
-                                <span className={`${styles.poly} ${styles.polyE}`} />
-                                <span className={`${styles.poly} ${styles.polyF}`} />
-                                <span className={`${styles.poly} ${styles.polyG}`} />
+                            <div className={styles.layerField}>
+                                <span className={`${styles.layer} ${styles.layerA}`} />
+                                <span className={`${styles.layer} ${styles.layerB}`} />
+                                <span className={`${styles.layer} ${styles.layerC}`} />
+                                <span className={`${styles.layer} ${styles.layerD}`} />
+                                <span className={`${styles.layer} ${styles.layerE}`} />
+                                <span className={`${styles.layer} ${styles.layerF}`} />
 
                                 <span className={`${styles.particle} ${styles.particleA}`} />
                                 <span className={`${styles.particle} ${styles.particleB}`} />
                                 <span className={`${styles.particle} ${styles.particleC}`} />
                                 <span className={`${styles.particle} ${styles.particleD}`} />
                                 <span className={`${styles.particle} ${styles.particleE}`} />
-                                <span className={`${styles.particle} ${styles.particleF}`} />
 
-                                <span className={`${styles.orbit} ${styles.orbitA}`} />
-                                <span className={`${styles.orbit} ${styles.orbitB}`} />
+                                <span className={`${styles.wisp} ${styles.wispA}`} />
+                                <span className={`${styles.wisp} ${styles.wispB}`} />
                             </div>
                         </div>
                     </AnimateOnScroll>

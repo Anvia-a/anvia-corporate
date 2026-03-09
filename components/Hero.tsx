@@ -108,7 +108,8 @@ function initCanvas(canvas: HTMLCanvasElement) {
             const hue = 206 + (idx % 4) * 4;
             const yAtMouse = sampleY(line, mouse.x, w, h, tick);
             const dy = Math.abs(yAtMouse - mouse.y);
-            const boost = mouse.active ? Math.max(0, 1 - dy / 160) * 0.24 : 0;
+            const linePull = mouse.active ? Math.max(0, 1 - dy / 160) : 0;
+            const boost = linePull * 0.24;
 
             context.beginPath();
             context.lineWidth = line.width;
@@ -120,7 +121,12 @@ function initCanvas(canvas: HTMLCanvasElement) {
             context.strokeStyle = gradient;
 
             for (let x = -400; x <= w + 200; x += 6) {
-                const y = sampleY(line, x, w, h, tick);
+                const baseY = sampleY(line, x, w, h, tick);
+                const localPull = mouse.active
+                    ? Math.max(0, 1 - Math.abs(x - mouse.x) / 190) * linePull
+                    : 0;
+                const y = baseY + (mouse.y - baseY) * (localPull * 0.1);
+
                 if (x === -400) context.moveTo(x, y);
                 else context.lineTo(x, y);
             }
