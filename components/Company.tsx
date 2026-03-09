@@ -42,11 +42,10 @@ export default function Company() {
                         <div className={styles.visualPanel} aria-hidden="true">
                             <div className={styles.objectWrap}>
                                 <div className={styles.objectCore}>
-                                    <span className={styles.faceFront} />
-                                    <span className={styles.faceLeft} />
-                                    <span className={styles.faceRight} />
-                                    <span className={styles.faceTop} />
-                                    <span className={styles.faceHighlight} />
+                                    <span className={`${styles.typoBand} ${styles.bandOne}`}>ANVIA ANVIA ANVIA ANVIA ANVIA</span>
+                                    <span className={`${styles.typoBand} ${styles.bandTwo}`}>TIME FLOW TIME FLOW TIME FLOW</span>
+                                    <span className={`${styles.typoBand} ${styles.bandThree}`}>SYNC CORE SYNC CORE SYNC CORE</span>
+                                    <span className={styles.coreGlow} />
                                 </div>
 
                                 <div className={styles.orbitA}><span className={styles.star} /></div>

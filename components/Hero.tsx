@@ -4,11 +4,11 @@ import { useEffect, useRef } from 'react';
 import styles from './Hero.module.css';
 
 interface Line {
-    baseY: number;
-    amplitude: number;
-    frequency: number;
-    speed: number;
+    slope: number;
+    spread: number;
     phase: number;
+    speed: number;
+    amplitude: number;
     alpha: number;
     width: number;
 }
@@ -29,7 +29,9 @@ function initCanvas(canvas: HTMLCanvasElement) {
 
     const dpr = window.devicePixelRatio || 1;
     let raf = 0;
-    let t = 0;
+    let tick = 0;
+
+    const mouse = { x: window.innerWidth * 0.85, y: window.innerHeight * 0.72, active: false };
 
     function resize() {
         const w = window.innerWidth;
@@ -39,73 +41,83 @@ function initCanvas(canvas: HTMLCanvasElement) {
         context.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
+    function onMouseMove(e: MouseEvent) {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        mouse.active = true;
+    }
+
+    function onMouseLeave() {
+        mouse.active = false;
+    }
+
     resize();
     window.addEventListener('resize', resize);
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    window.addEventListener('mouseleave', onMouseLeave);
 
-    const lineCount = 34;
+    const lineCount = 44;
     const lines: Line[] = Array.from({ length: lineCount }, (_, i) => {
         const progress = i / (lineCount - 1);
-        const baseY = 0.56 + progress * 0.62;
+        const dense = Math.pow(progress, 1.6);
         return {
-            baseY,
-            amplitude: 8 + Math.random() * 16,
-            frequency: 0.0028 + Math.random() * 0.0016,
-            speed: 0.018 + Math.random() * 0.018,
+            slope: 0.28 + Math.random() * 0.2,
+            spread: (dense - 0.5) * 130,
             phase: Math.random() * Math.PI * 2,
-            alpha: 0.07 + Math.random() * 0.07 + Math.max(0, baseY - 0.8) * 0.1,
-            width: 0.7 + Math.random() * 0.9,
+            speed: 0.018 + Math.random() * 0.02,
+            amplitude: 4 + Math.random() * 10,
+            alpha: 0.06 + dense * 0.16,
+            width: 0.65 + Math.random() * 0.95,
         };
     });
 
-    const particles: Particle[] = Array.from({ length: 14 }, () => {
-        const xBias = 1 - Math.pow(Math.random(), 2.2);
-        const yBias = 0.52 + Math.random() * 0.48;
-        return {
-            x: xBias * window.innerWidth,
-            y: yBias * window.innerHeight,
-            vx: 0.08 + Math.random() * 0.18,
-            vy: -(0.04 + Math.random() * 0.1),
-            size: 1 + Math.random() * 2.1,
-            alpha: 0.18 + Math.random() * 0.24,
-        };
-    });
+    const particles: Particle[] = Array.from({ length: 16 }, () => ({
+        x: window.innerWidth * (0.62 + Math.random() * 0.36),
+        y: window.innerHeight * (0.45 + Math.random() * 0.52),
+        vx: 0.04 + Math.random() * 0.12,
+        vy: -(0.03 + Math.random() * 0.08),
+        size: 1 + Math.random() * 2.2,
+        alpha: 0.15 + Math.random() * 0.18,
+    }));
+
+    function sampleY(line: Line, x: number, w: number, h: number, t: number) {
+        const anchorX = w * 0.94;
+        const anchorY = h * 0.86;
+        const base = anchorY + line.spread + (anchorX - x) * line.slope;
+        const wave =
+            Math.sin(x * 0.003 + t * line.speed + line.phase) * line.amplitude +
+            Math.sin(x * 0.0018 - t * line.speed * 0.72 + line.phase) * (line.amplitude * 0.35);
+        return base + wave;
+    }
 
     function draw() {
         const w = window.innerWidth;
         const h = window.innerHeight;
 
+        tick += 1;
+
         context.fillStyle = '#f8fafd';
         context.fillRect(0, 0, w, h);
 
-        t += 1;
+        lines.forEach((line, idx) => {
+            const hue = 206 + (idx % 4) * 4;
+            const yAtMouse = sampleY(line, mouse.x, w, h, tick);
+            const dy = Math.abs(yAtMouse - mouse.y);
+            const boost = mouse.active ? Math.max(0, 1 - dy / 160) * 0.24 : 0;
 
-        lines.forEach((line, index) => {
             context.beginPath();
             context.lineWidth = line.width;
 
-            const hue = 204 + (index % 4) * 6;
-            const gradient = context.createLinearGradient(0, h, w, 0);
-            gradient.addColorStop(0, `hsla(${hue}, 54%, 76%, ${line.alpha * 0.2})`);
-            gradient.addColorStop(0.55, `hsla(${hue}, 62%, 70%, ${line.alpha * 0.72})`);
-            gradient.addColorStop(1, `hsla(${hue + 8}, 70%, 64%, ${line.alpha})`);
+            const gradient = context.createLinearGradient(0, h, w, h * 0.1);
+            gradient.addColorStop(0, `hsla(${hue}, 52%, 78%, ${(line.alpha + boost) * 0.2})`);
+            gradient.addColorStop(0.56, `hsla(${hue}, 74%, 66%, ${(line.alpha + boost) * 0.8})`);
+            gradient.addColorStop(1, `hsla(${hue + 8}, 78%, 58%, ${line.alpha + boost})`);
             context.strokeStyle = gradient;
 
-            for (let x = -80; x <= w + 80; x += 6) {
-                const xRatio = x / w;
-                const sweepUp = -xRatio * (h * 0.38);
-                const rightBottomBias = Math.pow(Math.max(0, xRatio), 2.4) * (h * 0.22);
-                const y =
-                    h * line.baseY +
-                    sweepUp +
-                    rightBottomBias +
-                    Math.sin(x * line.frequency + t * line.speed + line.phase) * line.amplitude +
-                    Math.sin(x * line.frequency * 0.52 - t * line.speed * 0.66 + line.phase) * (line.amplitude * 0.3);
-
-                if (x === -80) {
-                    context.moveTo(x, y);
-                } else {
-                    context.lineTo(x, y);
-                }
+            for (let x = -180; x <= w + 80; x += 6) {
+                const y = sampleY(line, x, w, h, tick);
+                if (x === -180) context.moveTo(x, y);
+                else context.lineTo(x, y);
             }
 
             context.stroke();
@@ -115,12 +127,17 @@ function initCanvas(canvas: HTMLCanvasElement) {
             p.x += p.vx;
             p.y += p.vy;
 
-            if (p.x > w + 10) p.x = w * 0.56 + Math.random() * (w * 0.44);
-            if (p.y < -10) p.y = h * 0.5 + Math.random() * (h * 0.5);
+            if (p.x > w + 8) p.x = w * (0.62 + Math.random() * 0.36);
+            if (p.y < -8) p.y = h * (0.45 + Math.random() * 0.52);
+
+            const dx = p.x - mouse.x;
+            const dy = p.y - mouse.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const boost = mouse.active ? Math.max(0, 1 - dist / 110) * 0.2 : 0;
 
             context.beginPath();
-            context.fillStyle = `rgba(74, 140, 255, ${p.alpha})`;
-            context.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            context.fillStyle = `rgba(74, 140, 255, ${p.alpha + boost})`;
+            context.arc(p.x, p.y, p.size + boost * 2, 0, Math.PI * 2);
             context.fill();
         });
 
@@ -131,6 +148,8 @@ function initCanvas(canvas: HTMLCanvasElement) {
 
     return () => {
         window.removeEventListener('resize', resize);
+        window.removeEventListener('mousemove', onMouseMove);
+        window.removeEventListener('mouseleave', onMouseLeave);
         cancelAnimationFrame(raf);
     };
 }
@@ -201,3 +220,5 @@ export default function Hero() {
         </section>
     );
 }
+
+

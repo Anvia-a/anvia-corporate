@@ -6,6 +6,8 @@ import styles from './MissionValues.module.css';
 const timeMarks = ['08:30', '09:12', '10:45', '11:38', '12:05', '13:47', '14:20', '16:10', '18:55', '21:05'];
 
 export default function MissionValues() {
+    const ringValues = [...timeMarks, ...timeMarks];
+
     return (
         <section id="mission" className={`section ${styles.missionValues}`}>
             <div className="container">
@@ -27,9 +29,16 @@ export default function MissionValues() {
                             <div className={styles.timeGraphic} aria-hidden="true">
                                 <div className={styles.reelViewport}>
                                     <div className={styles.reelSphere}>
-                                        {timeMarks.map((value, i) => (
-                                            <span key={`${value}-${i}`} style={{ '--i': i } as React.CSSProperties}>{value}</span>
-                                        ))}
+                                        <div className={`${styles.reelBand} ${styles.reelBandA}`}>
+                                            {ringValues.map((value, i) => (
+                                                <span key={`a-${value}-${i}`} style={{ '--i': i } as React.CSSProperties}>{value}</span>
+                                            ))}
+                                        </div>
+                                        <div className={`${styles.reelBand} ${styles.reelBandB}`}>
+                                            {ringValues.map((value, i) => (
+                                                <span key={`b-${value}-${i}`} style={{ '--i': i } as React.CSSProperties}>{value}</span>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

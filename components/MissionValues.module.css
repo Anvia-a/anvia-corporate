@@ -17,9 +17,9 @@
 .missionRow {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(150px, 0.62fr);
+    grid-template-columns: minmax(0, 1.1fr) minmax(220px, 0.82fr);
     gap: 18px;
-    margin-bottom: 52px;
+    margin-bottom: 48px;
 }
 
 .missionText {
@@ -40,7 +40,7 @@
 
 .timeGraphic {
     position: relative;
-    min-height: 210px;
+    min-height: 230px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,11 +50,11 @@
 
 .reelViewport {
     position: relative;
-    width: 150px;
-    height: 188px;
-    perspective: 760px;
-    mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+    width: 360px;
+    height: 220px;
+    perspective: 920px;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%);
 }
 
 .reelViewport::before,
@@ -63,48 +63,67 @@
     position: absolute;
     left: 0;
     right: 0;
+    z-index: 3;
     pointer-events: none;
-    z-index: 2;
 }
 
 .reelViewport::before {
     top: 0;
     height: 24%;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0));
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
 }
 
 .reelViewport::after {
     bottom: 0;
     height: 24%;
-    background: linear-gradient(to top, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0));
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
 }
 
 .reelSphere {
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 120px;
-    height: 120px;
+    width: 300px;
+    height: 300px;
+    transform: translate(-50%, -50%);
     transform-style: preserve-3d;
-    transform: translate(-50%, -50%) rotateY(-12deg);
-    animation: reelSpin 1.9s linear infinite;
+    animation: sphereYaw 6.5s linear infinite;
 }
 
-.reelSphere span {
-    --step: 36deg;
+.reelBand {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 240px;
+    height: 240px;
+    transform-style: preserve-3d;
+}
+
+.reelBand span {
+    --step: 18deg;
     position: absolute;
     left: 50%;
     top: 50%;
     transform-style: preserve-3d;
-    transform: translate(-50%, -50%) rotateX(calc(var(--i) * var(--step))) translateZ(78px);
-    font-size: 1.55rem;
+    transform: translate(-50%, -50%) rotateX(calc(var(--i) * var(--step))) translateZ(122px);
+    font-size: 1.9rem;
     font-weight: 700;
     color: #0f172a;
     letter-spacing: -0.02em;
     opacity: 0.16;
-    filter: blur(0.2px);
+    filter: blur(0.16px);
     line-height: 1;
-    text-shadow: 0 6px 14px rgba(37, 99, 235, 0.08);
+    text-shadow: 0 8px 20px rgba(37, 99, 235, 0.12);
+}
+
+.reelBandA {
+    transform: translate(-50%, -50%) rotateY(-14deg);
+    animation: reelSpinA 1.2s linear infinite;
+}
+
+.reelBandB {
+    transform: translate(-50%, -50%) rotateY(14deg) scale(0.9);
+    animation: reelSpinB 1.35s linear infinite;
 }
 
 .valuesBlock {
@@ -217,22 +236,23 @@
     transform: translateX(2px);
 }
 
-@keyframes reelSpin {
-    0% {
-        transform: translate(-50%, -50%) rotateY(-12deg) rotateX(0deg);
-    }
+@keyframes sphereYaw {
+    from { transform: translate(-50%, -50%) rotateY(0deg); }
+    to { transform: translate(-50%, -50%) rotateY(360deg); }
+}
 
-    46% {
-        transform: translate(-50%, -50%) rotateY(-12deg) rotateX(-210deg);
-    }
+@keyframes reelSpinA {
+    0% { transform: translate(-50%, -50%) rotateY(-14deg) rotateX(0deg); }
+    44% { transform: translate(-50%, -50%) rotateY(-14deg) rotateX(-240deg); }
+    50% { transform: translate(-50%, -50%) rotateY(-14deg) rotateX(-240deg); }
+    100% { transform: translate(-50%, -50%) rotateY(-14deg) rotateX(-360deg); }
+}
 
-    52% {
-        transform: translate(-50%, -50%) rotateY(-12deg) rotateX(-210deg);
-    }
-
-    100% {
-        transform: translate(-50%, -50%) rotateY(-12deg) rotateX(-360deg);
-    }
+@keyframes reelSpinB {
+    0% { transform: translate(-50%, -50%) rotateY(14deg) scale(0.9) rotateX(0deg); }
+    46% { transform: translate(-50%, -50%) rotateY(14deg) scale(0.9) rotateX(-252deg); }
+    52% { transform: translate(-50%, -50%) rotateY(14deg) scale(0.9) rotateX(-252deg); }
+    100% { transform: translate(-50%, -50%) rotateY(14deg) scale(0.9) rotateX(-360deg); }
 }
 
 @media (max-width: 1200px) {
@@ -251,16 +271,32 @@
 
     .missionRow {
         grid-template-columns: 1fr;
-        gap: 20px;
-        margin-bottom: 42px;
+        gap: 18px;
+        margin-bottom: 40px;
     }
 
     .timeGraphic {
-        min-height: 148px;
+        min-height: 156px;
     }
 
     .reelViewport {
-        height: 132px;
+        width: 280px;
+        height: 150px;
+    }
+
+    .reelSphere {
+        width: 210px;
+        height: 210px;
+    }
+
+    .reelBand {
+        width: 170px;
+        height: 170px;
+    }
+
+    .reelBand span {
+        transform: translate(-50%, -50%) rotateX(calc(var(--i) * var(--step))) translateZ(88px);
+        font-size: 1.35rem;
     }
 }
 

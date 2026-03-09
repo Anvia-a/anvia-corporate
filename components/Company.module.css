@@ -67,53 +67,61 @@
     width: 100%;
     height: 100%;
     min-height: 340px;
+    perspective: 950px;
 }
 
 .objectCore {
     position: absolute;
     left: 50%;
     top: 48%;
-    width: 196px;
-    height: 196px;
-    transform: translate(-50%, -50%) rotateX(20deg) rotateY(-26deg);
+    width: 224px;
+    height: 224px;
+    transform: translate(-50%, -50%) rotateX(18deg) rotateY(-18deg);
     transform-style: preserve-3d;
-    animation: coreSpin 10s linear infinite;
+    animation: coreSpin 12s linear infinite;
 }
 
-.faceFront,
-.faceLeft,
-.faceRight,
-.faceTop,
-.faceHighlight {
+.typoBand {
     position: absolute;
-    inset: 0;
-    border-radius: 20px;
+    left: 50%;
+    top: 50%;
+    transform-style: preserve-3d;
+    color: #0d1226;
+    font-weight: 700;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-shadow: 0 6px 20px rgba(22, 88, 216, 0.28);
 }
 
-.faceFront {
-    clip-path: polygon(50% 2%, 98% 30%, 86% 100%, 14% 100%, 2% 30%);
-    background: linear-gradient(160deg, #bff6ff 4%, #56d4ff 38%, #2457d8 94%);
-    box-shadow: inset -22px -28px 34px rgba(16, 42, 132, 0.46), inset 12px 10px 22px rgba(202, 245, 255, 0.3);
+.bandOne {
+    font-size: 1.45rem;
+    transform: translate(-50%, -50%) rotateX(68deg) rotateZ(5deg) translateZ(62px);
+    opacity: 0.34;
 }
 
-.faceLeft {
-    clip-path: polygon(2% 30%, 50% 2%, 50% 70%, 20% 90%);
-    background: linear-gradient(170deg, rgba(36, 87, 216, 0.95), rgba(27, 59, 176, 0.9));
+.bandTwo {
+    font-size: 1.2rem;
+    transform: translate(-50%, -50%) rotateX(0deg) rotateZ(-10deg) translateZ(88px);
+    opacity: 0.3;
 }
 
-.faceRight {
-    clip-path: polygon(50% 2%, 98% 30%, 80% 90%, 50% 70%);
-    background: linear-gradient(165deg, rgba(125, 235, 255, 0.92), rgba(58, 171, 245, 0.75));
+.bandThree {
+    font-size: 1rem;
+    transform: translate(-50%, -50%) rotateX(-62deg) rotateZ(10deg) translateZ(58px);
+    opacity: 0.26;
 }
 
-.faceTop {
-    clip-path: polygon(28% 22%, 50% 8%, 72% 22%, 50% 36%);
-    background: linear-gradient(135deg, rgba(223, 249, 255, 0.96), rgba(130, 221, 255, 0.28));
-}
-
-.faceHighlight {
-    clip-path: polygon(50% 38%, 80% 90%, 56% 100%, 50% 70%);
-    background: linear-gradient(160deg, rgba(255, 255, 255, 0.18), rgba(40, 118, 230, 0.36));
+.coreGlow {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 144px;
+    height: 144px;
+    transform: translate(-50%, -50%) translateZ(16px);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(86, 212, 255, 0.78) 0%, rgba(37, 99, 235, 0.34) 58%, rgba(37, 99, 235, 0) 78%);
+    filter: blur(1.2px);
 }
 
 .orbitA,
@@ -122,27 +130,27 @@
     position: absolute;
     left: 50%;
     top: 48%;
-    width: 260px;
-    height: 260px;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    border: 1px solid rgba(100, 183, 255, 0.18);
+    border: 1px solid rgba(100, 183, 255, 0.16);
 }
 
 .orbitA {
-    animation: orbitSpin 5.8s linear infinite;
+    width: 286px;
+    height: 286px;
+    animation: orbitSpin 6.2s linear infinite;
 }
 
 .orbitB {
-    width: 228px;
-    height: 228px;
-    animation: orbitSpinReverse 4.6s linear infinite;
+    width: 236px;
+    height: 236px;
+    animation: orbitSpinReverse 4.8s linear infinite;
 }
 
 .orbitC {
-    width: 294px;
-    height: 294px;
-    animation: orbitSpin 7.2s linear infinite;
+    width: 324px;
+    height: 324px;
+    animation: orbitSpin 8s linear infinite;
 }
 
 .star {
@@ -151,26 +159,25 @@
     top: 50%;
     width: 8px;
     height: 8px;
-    transform: translate(-50%, -50%) translateX(50%);
     border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #dcfbff 0%, #6ee7ff 42%, #2563eb 100%);
-    box-shadow: 0 0 10px rgba(94, 234, 255, 0.9), 0 0 24px rgba(59, 130, 246, 0.46);
+    background: radial-gradient(circle at 35% 35%, #ebfdff 0%, #6ee7ff 42%, #2563eb 100%);
+    box-shadow: 0 0 10px rgba(94, 234, 255, 0.88), 0 0 26px rgba(59, 130, 246, 0.46);
 }
 
 .orbitA .star {
-    transform: translate(-50%, -50%) translateX(130px);
+    transform: translate(-50%, -50%) translateX(143px);
 }
 
 .orbitB .star {
     width: 6px;
     height: 6px;
-    transform: translate(-50%, -50%) translateX(114px);
+    transform: translate(-50%, -50%) translateX(118px);
 }
 
 .orbitC .star {
     width: 5px;
     height: 5px;
-    transform: translate(-50%, -50%) translateX(148px);
+    transform: translate(-50%, -50%) translateX(162px);
 }
 
 .shardA,
@@ -180,54 +187,54 @@
     position: absolute;
     width: 30px;
     height: 18px;
-    background: linear-gradient(135deg, rgba(133, 234, 255, 0.98), rgba(37, 99, 235, 0.82));
+    background: linear-gradient(135deg, rgba(133, 234, 255, 0.96), rgba(37, 99, 235, 0.76));
     clip-path: polygon(10% 50%, 45% 0%, 100% 24%, 72% 100%, 20% 86%);
 }
 
 .shardA {
-    left: calc(50% - 124px);
-    top: calc(48% - 78px);
-    animation: shardFloatA 4.4s ease-in-out infinite;
+    left: calc(50% - 138px);
+    top: calc(48% - 86px);
+    animation: shardFloatA 4.6s ease-in-out infinite;
 }
 
 .shardB {
-    left: calc(50% + 102px);
-    top: calc(48% - 32px);
-    animation: shardFloatB 3.7s ease-in-out infinite;
+    left: calc(50% + 114px);
+    top: calc(48% - 34px);
+    animation: shardFloatB 3.9s ease-in-out infinite;
 }
 
 .shardC {
-    left: calc(50% - 110px);
-    top: calc(48% + 60px);
-    animation: shardFloatC 4.9s ease-in-out infinite;
+    left: calc(50% - 124px);
+    top: calc(48% + 66px);
+    animation: shardFloatC 5.2s ease-in-out infinite;
 }
 
 .shardD {
-    left: calc(50% + 84px);
-    top: calc(48% + 84px);
-    animation: shardFloatD 4.3s ease-in-out infinite;
+    left: calc(50% + 92px);
+    top: calc(48% + 92px);
+    animation: shardFloatD 4.5s ease-in-out infinite;
 }
 
 .shadow {
     position: absolute;
     left: 50%;
-    top: calc(48% + 148px);
-    width: 230px;
-    height: 32px;
+    top: calc(48% + 154px);
+    width: 240px;
+    height: 34px;
     transform: translateX(-50%);
     border-radius: 50%;
     background: radial-gradient(ellipse, rgba(37, 99, 235, 0.24) 0%, rgba(37, 99, 235, 0) 72%);
     filter: blur(4px);
-    animation: shadowPulse 4.2s ease-in-out infinite;
+    animation: shadowPulse 4.4s ease-in-out infinite;
 }
 
 @keyframes coreSpin {
     from {
-        transform: translate(-50%, -50%) rotateX(18deg) rotateY(-20deg) rotateZ(0deg);
+        transform: translate(-50%, -50%) rotateX(18deg) rotateY(-18deg) rotateZ(0deg);
     }
 
     to {
-        transform: translate(-50%, -50%) rotateX(18deg) rotateY(-20deg) rotateZ(360deg);
+        transform: translate(-50%, -50%) rotateX(18deg) rotateY(-18deg) rotateZ(360deg);
     }
 }
 
@@ -258,7 +265,7 @@
     }
 
     50% {
-        transform: translateY(-8px) rotate(-10deg);
+        transform: translateY(-8px) rotate(-9deg);
     }
 }
 
@@ -269,18 +276,18 @@
     }
 
     50% {
-        transform: translateY(7px) rotate(20deg);
+        transform: translateY(7px) rotate(21deg);
     }
 }
 
 @keyframes shardFloatC {
     0%,
     100% {
-        transform: translateY(0) rotate(12deg);
+        transform: translateY(0) rotate(11deg);
     }
 
     50% {
-        transform: translateY(-6px) rotate(6deg);
+        transform: translateY(-6px) rotate(5deg);
     }
 }
 
@@ -291,7 +298,7 @@
     }
 
     50% {
-        transform: translateY(8px) rotate(-16deg);
+        transform: translateY(8px) rotate(-15deg);
     }
 }
 
@@ -320,35 +327,47 @@
     }
 
     .objectCore {
-        width: 158px;
-        height: 158px;
+        width: 176px;
+        height: 176px;
+    }
+
+    .bandOne {
+        font-size: 1.2rem;
+    }
+
+    .bandTwo {
+        font-size: 1rem;
+    }
+
+    .bandThree {
+        font-size: 0.9rem;
     }
 
     .orbitA {
-        width: 212px;
-        height: 212px;
+        width: 228px;
+        height: 228px;
     }
 
     .orbitB {
-        width: 186px;
-        height: 186px;
+        width: 192px;
+        height: 192px;
     }
 
     .orbitC {
-        width: 242px;
-        height: 242px;
+        width: 260px;
+        height: 260px;
     }
 
     .orbitA .star {
-        transform: translate(-50%, -50%) translateX(106px);
+        transform: translate(-50%, -50%) translateX(114px);
     }
 
     .orbitB .star {
-        transform: translate(-50%, -50%) translateX(93px);
+        transform: translate(-50%, -50%) translateX(96px);
     }
 
     .orbitC .star {
-        transform: translate(-50%, -50%) translateX(121px);
+        transform: translate(-50%, -50%) translateX(130px);
     }
 }
 
@@ -358,4 +377,3 @@
         gap: 4px;
     }
 }
-
