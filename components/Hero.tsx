@@ -13,6 +13,15 @@ interface Line {
     width: number;
 }
 
+interface Particle {
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+    size: number;
+    alpha: number;
+}
+
 function initCanvas(canvas: HTMLCanvasElement) {
     const ctx = canvas.getContext('2d');
     if (!ctx) return () => undefined;
@@ -33,7 +42,7 @@ function initCanvas(canvas: HTMLCanvasElement) {
     resize();
     window.addEventListener('resize', resize);
 
-    const lineCount = 28;
+    const lineCount = 34;
     const lines: Line[] = Array.from({ length: lineCount }, (_, i) => {
         const progress = i / (lineCount - 1);
         const baseY = 0.56 + progress * 0.62;
@@ -43,8 +52,21 @@ function initCanvas(canvas: HTMLCanvasElement) {
             frequency: 0.0028 + Math.random() * 0.0016,
             speed: 0.018 + Math.random() * 0.018,
             phase: Math.random() * Math.PI * 2,
-            alpha: 0.06 + Math.random() * 0.06 + Math.max(0, baseY - 0.8) * 0.08,
+            alpha: 0.07 + Math.random() * 0.07 + Math.max(0, baseY - 0.8) * 0.1,
             width: 0.7 + Math.random() * 0.9,
+        };
+    });
+
+    const particles: Particle[] = Array.from({ length: 14 }, () => {
+        const xBias = 1 - Math.pow(Math.random(), 2.2);
+        const yBias = 0.52 + Math.random() * 0.48;
+        return {
+            x: xBias * window.innerWidth,
+            y: yBias * window.innerHeight,
+            vx: 0.08 + Math.random() * 0.18,
+            vy: -(0.04 + Math.random() * 0.1),
+            size: 1 + Math.random() * 2.1,
+            alpha: 0.18 + Math.random() * 0.24,
         };
     });
 
@@ -63,8 +85,8 @@ function initCanvas(canvas: HTMLCanvasElement) {
 
             const hue = 204 + (index % 4) * 6;
             const gradient = context.createLinearGradient(0, h, w, 0);
-            gradient.addColorStop(0, `hsla(${hue}, 54%, 76%, ${line.alpha * 0.22})`);
-            gradient.addColorStop(0.55, `hsla(${hue}, 62%, 70%, ${line.alpha * 0.75})`);
+            gradient.addColorStop(0, `hsla(${hue}, 54%, 76%, ${line.alpha * 0.2})`);
+            gradient.addColorStop(0.55, `hsla(${hue}, 62%, 70%, ${line.alpha * 0.72})`);
             gradient.addColorStop(1, `hsla(${hue + 8}, 70%, 64%, ${line.alpha})`);
             context.strokeStyle = gradient;
 
@@ -87,6 +109,19 @@ function initCanvas(canvas: HTMLCanvasElement) {
             }
 
             context.stroke();
+        });
+
+        particles.forEach((p) => {
+            p.x += p.vx;
+            p.y += p.vy;
+
+            if (p.x > w + 10) p.x = w * 0.56 + Math.random() * (w * 0.44);
+            if (p.y < -10) p.y = h * 0.5 + Math.random() * (h * 0.5);
+
+            context.beginPath();
+            context.fillStyle = `rgba(74, 140, 255, ${p.alpha})`;
+            context.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            context.fill();
         });
 
         raf = requestAnimationFrame(draw);
