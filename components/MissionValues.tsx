@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import AnimateOnScroll from './AnimateOnScroll';
 import styles from './MissionValues.module.css';
 
@@ -8,6 +8,8 @@ const timeMarks = ['08:30', '09:12', '10:45', '11:38', '12:05', '13:47', '14:20'
 
 export default function MissionValues() {
     const ringValues = [...timeMarks, ...timeMarks, ...timeMarks];
+    const missionTextPanelRef = useRef<HTMLDivElement>(null);
+
     const spinConfig = useMemo(() => ({
         sphere: `${3.6 + Math.random() * 1.2}s`,
         bandA: `${0.86 + Math.random() * 0.26}s`,
@@ -17,6 +19,16 @@ export default function MissionValues() {
         delayB: `${-(Math.random() * 1.8).toFixed(2)}s`,
         delayC: `${-(Math.random() * 1.8).toFixed(2)}s`,
     }), []);
+
+    function handleMissionMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+        const el = missionTextPanelRef.current;
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        el.style.setProperty('--mx', `${x}px`);
+        el.style.setProperty('--my', `${y}px`);
+    }
 
     return (
         <section id="mission" className={`section ${styles.missionValues}`}>
@@ -29,7 +41,11 @@ export default function MissionValues() {
 
                         <div className={styles.missionRow}>
                             <AnimateOnScroll>
-                                <div className={styles.missionTextPanel}>
+                                <div
+                                    ref={missionTextPanelRef}
+                                    className={styles.missionTextPanel}
+                                    onMouseMove={handleMissionMouseMove}
+                                >
                                     <div className={styles.missionText}>
                                         <p className={styles.missionLead}>人々の<span className={styles.accentWord}>時間</span>を<span className={styles.accentWord}>取り戻す</span>。<br />それが私たちのミッションです。</p>
                                         <p>日常には、気づかないうちに多くの摩擦や無駄な作業が存在します。<br />私たちはテクノロジーとデザインの力でそれらを取り除き、<br />人々が<span className={styles.accentWord}>本当に価値のあること</span>に時間を使える世界をつくります。</p>

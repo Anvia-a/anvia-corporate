@@ -108,7 +108,7 @@ function initCanvas(canvas: HTMLCanvasElement) {
             const hue = 206 + (idx % 4) * 4;
             const yAtMouse = sampleY(line, mouse.x, w, h, tick);
             const dy = Math.abs(yAtMouse - mouse.y);
-            const linePull = mouse.active ? Math.max(0, 1 - dy / 160) : 0;
+            const linePull = mouse.active ? Math.max(0, 1 - dy / 180) : 0;
             const boost = linePull * 0.24;
 
             context.beginPath();
@@ -123,9 +123,11 @@ function initCanvas(canvas: HTMLCanvasElement) {
             for (let x = -400; x <= w + 200; x += 6) {
                 const baseY = sampleY(line, x, w, h, tick);
                 const localPull = mouse.active
-                    ? Math.max(0, 1 - Math.abs(x - mouse.x) / 190) * linePull
+                    ? Math.max(0, 1 - Math.abs(x - mouse.x) / 230) * linePull
                     : 0;
-                const y = baseY + (mouse.y - baseY) * (localPull * 0.1);
+                const pullToMouse = (mouse.y - baseY) * (localPull * 0.24);
+                const elasticBend = Math.sin((x - mouse.x) * 0.02) * (localPull * 6);
+                const y = baseY + pullToMouse + elasticBend;
 
                 if (x === -400) context.moveTo(x, y);
                 else context.lineTo(x, y);

@@ -57,210 +57,215 @@
 
 .visualPanel {
     position: relative;
-    min-height: 360px;
+    min-height: 380px;
     background: transparent;
     overflow: visible;
 }
 
-.layerField {
+.networkField {
     position: relative;
-    width: 100%;
+    width: 115%;
     height: 100%;
-    min-height: 360px;
-    transform-style: preserve-3d;
+    min-height: 380px;
+    margin-left: -5%;
 }
 
-.layer {
+.networkLine {
     position: absolute;
+    height: 1.5px;
     border-radius: 999px;
-    opacity: 0.54;
-    background: linear-gradient(120deg, rgba(198, 246, 255, 0.28), rgba(95, 177, 255, 0.42) 40%, rgba(36, 192, 219, 0.34));
-    filter: blur(0.2px);
-    box-shadow: 0 12px 30px rgba(53, 119, 202, 0.14);
+    background: linear-gradient(90deg, rgba(96, 165, 250, 0), rgba(96, 165, 250, 0.58), rgba(34, 211, 238, 0.62), rgba(34, 211, 238, 0));
+    box-shadow: 0 0 14px rgba(59, 130, 246, 0.2);
 }
 
-.layerA {
-    width: 280px;
-    height: 34px;
-    left: 38%;
+.lineA {
+    width: 340px;
+    left: 18%;
+    top: 18%;
+    transform: rotate(-14deg);
+    animation: lineDriftA 11.2s ease-in-out infinite;
+}
+
+.lineB {
+    width: 300px;
+    left: 32%;
     top: 24%;
-    transform: rotate(-16deg);
-    animation: streamA 10.8s ease-in-out infinite;
-}
-
-.layerB {
-    width: 248px;
-    height: 28px;
-    left: 50%;
-    top: 33%;
     transform: rotate(10deg);
-    animation: streamB 9.6s ease-in-out infinite;
+    animation: lineDriftB 10.4s ease-in-out infinite;
 }
 
-.layerC {
-    width: 312px;
-    height: 30px;
-    left: 34%;
-    top: 42%;
+.lineC {
+    width: 360px;
+    left: 12%;
+    top: 34%;
     transform: rotate(-8deg);
-    animation: streamC 11.2s ease-in-out infinite;
+    animation: lineDriftC 12s ease-in-out infinite;
 }
 
-.layerD {
-    width: 260px;
-    height: 26px;
-    left: 48%;
-    top: 51%;
-    transform: rotate(18deg);
-    animation: streamD 10.2s ease-in-out infinite;
-}
-
-.layerE {
-    width: 292px;
-    height: 32px;
+.lineD {
+    width: 316px;
     left: 36%;
-    top: 60%;
-    transform: rotate(-12deg);
-    animation: streamE 11.8s ease-in-out infinite;
-}
-
-.layerF {
-    width: 236px;
-    height: 24px;
-    left: 54%;
-    top: 68%;
-    transform: rotate(14deg);
-    animation: streamF 9.8s ease-in-out infinite;
-}
-
-.particle {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    border-radius: 999px;
-    background: radial-gradient(circle at 35% 35%, #f1fdff 0%, #7be6ff 44%, #3b82f6 100%);
-    box-shadow: 0 0 10px rgba(93, 222, 255, 0.52);
-    opacity: 0.56;
-}
-
-.particleA {
-    left: 44%;
-    top: 20%;
-    animation: particleA 8.8s ease-in-out infinite;
-}
-
-.particleB {
-    left: 72%;
-    top: 30%;
-    animation: particleB 9.6s ease-in-out infinite;
-}
-
-.particleC {
-    left: 64%;
-    top: 56%;
-    animation: particleC 10.2s ease-in-out infinite;
-}
-
-.particleD {
-    left: 40%;
-    top: 66%;
-    animation: particleD 9.2s ease-in-out infinite;
-}
-
-.particleE {
-    left: 78%;
-    top: 62%;
-    animation: particleE 10.4s ease-in-out infinite;
-}
-
-.wisp {
-    position: absolute;
-    border-radius: 999px;
-    border: 1px solid rgba(102, 191, 255, 0.18);
-    opacity: 0.42;
-}
-
-.wispA {
-    width: 280px;
-    height: 120px;
-    left: 40%;
-    top: 38%;
-    transform: rotate(-12deg);
-    animation: wispA 13s linear infinite;
-}
-
-.wispB {
-    width: 240px;
-    height: 104px;
-    left: 52%;
-    top: 46%;
+    top: 42%;
     transform: rotate(16deg);
-    animation: wispB 11.2s linear infinite;
+    animation: lineDriftD 10.8s ease-in-out infinite;
 }
 
-@keyframes streamA {
-    0%, 100% { transform: rotate(-16deg) translate3d(0, 0, 0); }
-    50% { transform: rotate(-11deg) translate3d(-12px, -10px, 0); }
+.lineE {
+    width: 348px;
+    left: 20%;
+    top: 52%;
+    transform: rotate(-12deg);
+    animation: lineDriftE 11.6s ease-in-out infinite;
 }
 
-@keyframes streamB {
-    0%, 100% { transform: rotate(10deg) translate3d(0, 0, 0); }
-    50% { transform: rotate(14deg) translate3d(10px, -8px, 0); }
+.lineF {
+    width: 286px;
+    left: 44%;
+    top: 60%;
+    transform: rotate(18deg);
+    animation: lineDriftF 9.9s ease-in-out infinite;
 }
 
-@keyframes streamC {
-    0%, 100% { transform: rotate(-8deg) translate3d(0, 0, 0); }
-    50% { transform: rotate(-3deg) translate3d(-14px, 8px, 0); }
+.lineG {
+    width: 332px;
+    left: 10%;
+    top: 68%;
+    transform: rotate(-6deg);
+    animation: lineDriftG 12.2s ease-in-out infinite;
 }
 
-@keyframes streamD {
-    0%, 100% { transform: rotate(18deg) translate3d(0, 0, 0); }
-    50% { transform: rotate(13deg) translate3d(12px, -9px, 0); }
+.lineH {
+    width: 278px;
+    left: 40%;
+    top: 74%;
+    transform: rotate(14deg);
+    animation: lineDriftH 10.2s ease-in-out infinite;
 }
 
-@keyframes streamE {
-    0%, 100% { transform: rotate(-12deg) translate3d(0, 0, 0); }
-    50% { transform: rotate(-7deg) translate3d(-10px, 9px, 0); }
+.node {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: radial-gradient(circle at 35% 35%, #f0fcff 0%, #7dd3fc 44%, #38bdf8 100%);
+    box-shadow: 0 0 10px rgba(93, 222, 255, 0.58), 0 0 20px rgba(37, 99, 235, 0.26);
 }
 
-@keyframes streamF {
-    0%, 100% { transform: rotate(14deg) translate3d(0, 0, 0); }
-    50% { transform: rotate(9deg) translate3d(10px, -8px, 0); }
+.nodeA {
+    left: 30%;
+    top: 16%;
+    animation: nodePulseA 6.8s ease-in-out infinite;
 }
 
-@keyframes particleA {
-    0%, 100% { transform: translateY(0); opacity: 0.48; }
-    50% { transform: translateY(-10px); opacity: 0.72; }
+.nodeB {
+    left: 58%;
+    top: 22%;
+    animation: nodePulseB 7.4s ease-in-out infinite;
 }
 
-@keyframes particleB {
-    0%, 100% { transform: translateY(0); opacity: 0.44; }
-    50% { transform: translateY(9px); opacity: 0.68; }
+.nodeC {
+    left: 24%;
+    top: 40%;
+    animation: nodePulseC 8.2s ease-in-out infinite;
 }
 
-@keyframes particleC {
-    0%, 100% { transform: translateY(0); opacity: 0.42; }
-    50% { transform: translateY(-8px); opacity: 0.66; }
+.nodeD {
+    left: 68%;
+    top: 48%;
+    animation: nodePulseD 7.8s ease-in-out infinite;
 }
 
-@keyframes particleD {
-    0%, 100% { transform: translateY(0); opacity: 0.4; }
-    50% { transform: translateY(8px); opacity: 0.62; }
+.nodeE {
+    left: 36%;
+    top: 62%;
+    animation: nodePulseE 8.6s ease-in-out infinite;
 }
 
-@keyframes particleE {
-    0%, 100% { transform: translateY(0); opacity: 0.36; }
-    50% { transform: translateY(-9px); opacity: 0.58; }
+.nodeF {
+    left: 72%;
+    top: 70%;
+    animation: nodePulseF 7.6s ease-in-out infinite;
 }
 
-@keyframes wispA {
-    from { transform: rotate(-12deg) rotateZ(0deg); }
-    to { transform: rotate(-12deg) rotateZ(360deg); }
+.nodeG {
+    left: 52%;
+    top: 80%;
+    animation: nodePulseG 8.4s ease-in-out infinite;
 }
 
-@keyframes wispB {
-    from { transform: rotate(16deg) rotateZ(360deg); }
-    to { transform: rotate(16deg) rotateZ(0deg); }
+@keyframes lineDriftA {
+    0%, 100% { transform: rotate(-14deg) translate3d(0, 0, 0); opacity: 0.52; }
+    50% { transform: rotate(-9deg) translate3d(-10px, -8px, 0); opacity: 0.76; }
+}
+
+@keyframes lineDriftB {
+    0%, 100% { transform: rotate(10deg) translate3d(0, 0, 0); opacity: 0.46; }
+    50% { transform: rotate(14deg) translate3d(10px, -6px, 0); opacity: 0.72; }
+}
+
+@keyframes lineDriftC {
+    0%, 100% { transform: rotate(-8deg) translate3d(0, 0, 0); opacity: 0.5; }
+    50% { transform: rotate(-3deg) translate3d(-12px, 8px, 0); opacity: 0.74; }
+}
+
+@keyframes lineDriftD {
+    0%, 100% { transform: rotate(16deg) translate3d(0, 0, 0); opacity: 0.48; }
+    50% { transform: rotate(12deg) translate3d(10px, -8px, 0); opacity: 0.7; }
+}
+
+@keyframes lineDriftE {
+    0%, 100% { transform: rotate(-12deg) translate3d(0, 0, 0); opacity: 0.5; }
+    50% { transform: rotate(-6deg) translate3d(-10px, 8px, 0); opacity: 0.72; }
+}
+
+@keyframes lineDriftF {
+    0%, 100% { transform: rotate(18deg) translate3d(0, 0, 0); opacity: 0.44; }
+    50% { transform: rotate(13deg) translate3d(12px, -8px, 0); opacity: 0.68; }
+}
+
+@keyframes lineDriftG {
+    0%, 100% { transform: rotate(-6deg) translate3d(0, 0, 0); opacity: 0.46; }
+    50% { transform: rotate(-1deg) translate3d(-12px, 6px, 0); opacity: 0.7; }
+}
+
+@keyframes lineDriftH {
+    0%, 100% { transform: rotate(14deg) translate3d(0, 0, 0); opacity: 0.42; }
+    50% { transform: rotate(10deg) translate3d(10px, -8px, 0); opacity: 0.66; }
+}
+
+@keyframes nodePulseA {
+    0%, 100% { transform: scale(1); opacity: 0.54; }
+    50% { transform: scale(1.28); opacity: 0.9; }
+}
+
+@keyframes nodePulseB {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.24); opacity: 0.84; }
+}
+
+@keyframes nodePulseC {
+    0%, 100% { transform: scale(1); opacity: 0.56; }
+    50% { transform: scale(1.22); opacity: 0.86; }
+}
+
+@keyframes nodePulseD {
+    0%, 100% { transform: scale(1); opacity: 0.48; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+@keyframes nodePulseE {
+    0%, 100% { transform: scale(1); opacity: 0.46; }
+    50% { transform: scale(1.2); opacity: 0.78; }
+}
+
+@keyframes nodePulseF {
+    0%, 100% { transform: scale(1); opacity: 0.44; }
+    50% { transform: scale(1.2); opacity: 0.76; }
+}
+
+@keyframes nodePulseG {
+    0%, 100% { transform: scale(1); opacity: 0.42; }
+    50% { transform: scale(1.18); opacity: 0.74; }
 }
 
 @media (max-width: 1000px) {
@@ -270,20 +275,13 @@
     }
 
     .visualPanel,
-    .layerField {
+    .networkField {
         min-height: 300px;
     }
 
-    .layerA {
-        left: 30%;
-    }
-
-    .layerB {
-        left: 44%;
-    }
-
-    .layerD {
-        left: 42%;
+    .networkField {
+        width: 100%;
+        margin-left: 0;
     }
 }
 

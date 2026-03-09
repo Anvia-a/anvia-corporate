@@ -40,22 +40,23 @@ export default function Company() {
 
                     <AnimateOnScroll delay={180}>
                         <div className={styles.visualPanel} aria-hidden="true">
-                            <div className={styles.layerField}>
-                                <span className={`${styles.layer} ${styles.layerA}`} />
-                                <span className={`${styles.layer} ${styles.layerB}`} />
-                                <span className={`${styles.layer} ${styles.layerC}`} />
-                                <span className={`${styles.layer} ${styles.layerD}`} />
-                                <span className={`${styles.layer} ${styles.layerE}`} />
-                                <span className={`${styles.layer} ${styles.layerF}`} />
+                            <div className={styles.networkField}>
+                                <span className={`${styles.networkLine} ${styles.lineA}`} />
+                                <span className={`${styles.networkLine} ${styles.lineB}`} />
+                                <span className={`${styles.networkLine} ${styles.lineC}`} />
+                                <span className={`${styles.networkLine} ${styles.lineD}`} />
+                                <span className={`${styles.networkLine} ${styles.lineE}`} />
+                                <span className={`${styles.networkLine} ${styles.lineF}`} />
+                                <span className={`${styles.networkLine} ${styles.lineG}`} />
+                                <span className={`${styles.networkLine} ${styles.lineH}`} />
 
-                                <span className={`${styles.particle} ${styles.particleA}`} />
-                                <span className={`${styles.particle} ${styles.particleB}`} />
-                                <span className={`${styles.particle} ${styles.particleC}`} />
-                                <span className={`${styles.particle} ${styles.particleD}`} />
-                                <span className={`${styles.particle} ${styles.particleE}`} />
-
-                                <span className={`${styles.wisp} ${styles.wispA}`} />
-                                <span className={`${styles.wisp} ${styles.wispB}`} />
+                                <span className={`${styles.node} ${styles.nodeA}`} />
+                                <span className={`${styles.node} ${styles.nodeB}`} />
+                                <span className={`${styles.node} ${styles.nodeC}`} />
+                                <span className={`${styles.node} ${styles.nodeD}`} />
+                                <span className={`${styles.node} ${styles.nodeE}`} />
+                                <span className={`${styles.node} ${styles.nodeF}`} />
+                                <span className={`${styles.node} ${styles.nodeG}`} />
                             </div>
                         </div>
                     </AnimateOnScroll>
