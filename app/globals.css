@@ -1,219 +1,306 @@
-﻿:root {
-  --bg: #06090f;
-  --panel: #0e1524;
-  --panel-border: rgba(255, 255, 255, 0.11);
-  --text: #f7f9ff;
-  --muted: #a7b2cb;
-  --accent: #9ed9ff;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ─── Design Tokens ──────────────────────────────────────────── */
+:root {
+    --color-white: #ffffff;
+    --color-black: #0a0a0a;
+    --color-gray-50: #f9fafb;
+    --color-gray-100: #f3f4f6;
+    --color-gray-200: #e5e7eb;
+    --color-gray-400: #9ca3af;
+    --color-gray-500: #6b7280;
+    --color-gray-700: #374151;
+    --color-gray-900: #111827;
+
+    --color-blue: #2563eb;
+    --color-blue-soft: #eff6ff;
+    --color-teal: #0d9488;
+    --color-teal-soft: #f0fdfa;
+
+    /* Brand gradient */
+    --gradient-brand: linear-gradient(135deg, var(--color-blue) 0%, var(--color-teal) 100%);
+    --gradient-subtle: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(13, 148, 136, 0.08) 100%);
+
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    --radius-full: 9999px;
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.10), 0 4px 12px rgba(0, 0, 0, 0.06);
+    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.06);
+
+    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --nav-height: 72px;
+    --section-pad: 120px;
+    --max-width: 1280px;
 }
 
-* {
-  box-sizing: border-box;
+/* ─── Reset ──────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  margin: 0;
-  color: var(--text);
-  font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-  background:
-    radial-gradient(1200px 520px at 92% -10%, rgba(158, 217, 255, 0.22), transparent),
-    radial-gradient(900px 460px at -15% 20%, rgba(108, 133, 255, 0.2), transparent),
-    var(--bg);
+    font-family: var(--font-sans);
+    background-color: var(--color-white);
+    color: var(--color-gray-900);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+img,
+video,
+canvas {
+    display: block;
+    max-width: 100%;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
-.renew-shell {
-  padding: 0 24px 72px;
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
 }
 
-.renew-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  width: min(1080px, 100%);
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  padding: 26px 8px;
-  transition: all 0.25s ease;
+/* ─── Typography ─────────────────────────────────────────────── */
+.text-xs {
+    font-size: 0.75rem;
+    line-height: 1;
 }
 
-.renew-header-scrolled {
-  padding: 14px 8px;
-  backdrop-filter: blur(12px);
-  background: rgba(6, 9, 15, 0.68);
+.text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
 }
 
-.renew-brand {
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+.text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
 }
 
-.renew-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 16px;
-  color: var(--muted);
-  font-size: 0.88rem;
+.text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
 }
 
-.renew-hero,
-.renew-section {
-  width: min(1080px, 100%);
-  margin: 0 auto 22px;
-  border: 1px solid var(--panel-border);
-  border-radius: 24px;
-  padding: clamp(28px, 4vw, 56px);
-  background: linear-gradient(170deg, rgba(14, 21, 36, 0.96), rgba(9, 13, 23, 0.9));
+.text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
 }
 
-.renew-hero h1 {
-  margin: 8px 0 18px;
-  max-width: 13ch;
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  font-size: clamp(2rem, 5.8vw, 4.8rem);
+.text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
 }
 
-.renew-kicker,
-.renew-section-label {
-  margin: 0;
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent);
+.text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
 }
 
-.renew-lead,
-.renew-section p {
-  max-width: 72ch;
-  line-height: 1.85;
-  color: var(--muted);
+.text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
 }
 
-.renew-actions {
-  margin-top: 24px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+.text-5xl {
+    font-size: 3rem;
+    line-height: 1.15;
 }
 
-.cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  padding: 12px 20px;
-  border: 1px solid transparent;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.text-6xl {
+    font-size: 3.75rem;
+    line-height: 1.1;
 }
 
-.cta:hover {
-  transform: translateY(-1px);
+.text-7xl {
+    font-size: 4.5rem;
+    line-height: 1.05;
 }
 
-.cta-primary {
-  color: #031225;
-  font-weight: 700;
-  background: var(--accent);
+/* ─── Layout Utilities ───────────────────────────────────────── */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 32px;
 }
 
-.cta-secondary {
-  color: var(--text);
-  border-color: var(--panel-border);
+.section {
+    padding: var(--section-pad) 0;
+    position: relative;
 }
 
-.renew-section h2 {
-  margin: 10px 0 8px;
-  font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+/* ─── Scroll Reveal ──────────────────────────────────────────── */
+.reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.renew-grid {
-  list-style: none;
-  margin: 20px 0 0;
-  padding: 0;
-  display: grid;
-  gap: 14px;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.renew-grid li {
-  border: 1px solid var(--panel-border);
-  border-radius: 16px;
-  padding: 18px;
-  background: rgba(255, 255, 255, 0.02);
+/* ─── Buttons ────────────────────────────────────────────────── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: var(--radius-full);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    transition: all var(--transition-base);
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
 }
 
-.renew-grid h3 {
-  margin: 0 0 8px;
-  font-size: 1rem;
+.btn-primary {
+    background: var(--color-black);
+    color: var(--color-white);
 }
 
-.renew-grid p {
-  margin: 0;
-  font-size: 0.92rem;
+.btn-primary:hover {
+    background: var(--color-gray-700);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
 
-.renew-company {
-  margin: 16px 0 0;
-  display: grid;
-  gap: 10px;
+.btn-outline {
+    background: transparent;
+    color: var(--color-black);
+    border: 1.5px solid var(--color-gray-200);
 }
 
-.renew-company div {
-  display: grid;
-  gap: 10px;
-  grid-template-columns: 120px 1fr;
+.btn-outline:hover {
+    border-color: var(--color-black);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
-.renew-company dt {
-  color: #dbe5ff;
+.btn-gradient {
+    background: var(--gradient-brand);
+    color: var(--color-white);
 }
 
-.renew-company dd {
-  margin: 0;
-  color: var(--muted);
+.btn-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(37, 99, 235, 0.35);
 }
 
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+/* ─── Section Labels ─────────────────────────────────────────── */
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-blue);
+    margin-bottom: 20px;
 }
 
-[data-reveal].is-visible {
-  opacity: 1;
-  transform: none;
+.section-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1.5px;
+    background: var(--color-blue);
+    border-radius: 2px;
 }
 
-@media (max-width: 700px) {
-  .renew-shell {
-    padding-inline: 14px;
-  }
+/* ─── Section Heading ────────────────────────────────────────── */
+.section-heading {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--color-black);
+    margin-bottom: 20px;
+}
 
-  .renew-header {
-    position: static;
-    padding: 20px 6px;
-  }
+.section-subheading {
+    font-size: 1.125rem;
+    color: var(--color-gray-500);
+    line-height: 1.7;
+    max-width: 560px;
+}
 
-  .renew-nav {
-    gap: 12px;
-    font-size: 0.8rem;
-  }
+/* ─── Gradient Text ──────────────────────────────────────────── */
+.gradient-text {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 
-  .renew-company div {
-    grid-template-columns: 1fr;
-  }
+/* ─── Glass Card ─────────────────────────────────────────────── */
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-gray-200);
+    border-radius: 99px;
+}
+
+/* ─── Selection ──────────────────────────────────────────────── */
+::selection {
+    background: rgba(37, 99, 235, 0.15);
+    color: var(--color-black);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    :root {
+        --section-pad: 72px;
+        --nav-height: 64px;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
 }

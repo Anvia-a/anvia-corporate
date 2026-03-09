@@ -1,0 +1,121 @@
+.partnerships {
+    background: var(--color-gray-50);
+    position: relative;
+    overflow: hidden;
+}
+
+.bgGrid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+}
+
+.inner {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 100px;
+    align-items: start;
+}
+
+.left {
+    position: sticky;
+    top: calc(var(--nav-height) + 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.intro {
+    font-size: 1.0625rem;
+    color: var(--color-gray-500);
+    line-height: 1.75;
+    margin-bottom: 32px;
+    margin-top: 16px;
+}
+
+.cta {
+    align-self: flex-start;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    background-size: 200% auto;
+}
+
+.cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.15);
+    background-position: right center;
+}
+
+.cta svg {
+    transition: transform 0.3s ease;
+}
+
+.cta:hover svg {
+    transform: translateX(4px);
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.item {
+    display: flex;
+    gap: 20px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--color-gray-100);
+    transition: all var(--transition-base);
+}
+
+.item:first-child {
+    border-top: 1px solid var(--color-gray-100);
+}
+
+.item:hover {
+    transform: translateX(8px);
+}
+
+.itemDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gradient-brand);
+    flex-shrink: 0;
+    margin-top: 6px;
+    transition: transform var(--transition-spring);
+}
+
+.item:hover .itemDot {
+    transform: scale(1.8);
+}
+
+.itemTitle {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-black);
+    letter-spacing: -0.015em;
+    margin-bottom: 6px;
+}
+
+.itemDesc {
+    font-size: 0.9375rem;
+    color: var(--color-gray-500);
+    line-height: 1.65;
+}
+
+@media (max-width: 960px) {
+    .inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .left {
+        position: static;
+    }
+}

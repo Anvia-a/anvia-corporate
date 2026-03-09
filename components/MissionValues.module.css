@@ -1,0 +1,173 @@
+.missionValues {
+    background: var(--color-white);
+    padding: 120px 0;
+    overflow: hidden;
+}
+
+.missionBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.sectionHeader {
+    margin-bottom: 32px;
+}
+
+.missionText {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 1.0625rem;
+    color: var(--color-gray-600);
+    line-height: 1.8;
+    margin-bottom: 80px;
+    /* Reduced from 120px */
+    max-width: 720px;
+    /* Narrower width */
+}
+
+.missionText p {
+    margin: 0;
+}
+
+.valuesBlock {
+    display: flex;
+    flex-direction: column;
+}
+
+.valuesBubbles {
+    display: flex;
+    position: relative;
+    padding: 60px 0;
+    width: 100%;
+    gap: 0;
+    /* Changed from 80px to allow margin-left overlap to work */
+}
+
+.valueBubble {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    /* Darkened border as requested */
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: default;
+    position: relative;
+    z-index: 1;
+}
+
+/* Overlap handling - significantly more overlap as requested */
+.valueBubble:not(:first-child) {
+    margin-left: -120px;
+    /* Increased from -40px for very clear overlap */
+}
+
+.valueBubble:hover {
+    background: var(--color-black);
+    color: var(--color-white);
+    transform: scale(1.15) translateY(-10px);
+    /* Slightly increased scale */
+    z-index: 10;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+    border-color: transparent;
+}
+
+.bubbleInner {
+    padding: 32px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.bubbleCategory {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-gray-400);
+    margin-bottom: 4px;
+    transition: color 0.4s;
+}
+
+.valueBubble:hover .bubbleCategory {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.bubbleTitle {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    letter-spacing: -0.01em;
+}
+
+.bubbleText {
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: var(--color-gray-500);
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 10px;
+}
+
+.valueBubble:hover .bubbleText {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 180px;
+    /* Increased from 150px to prevent overflow */
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 8px;
+}
+
+.bubbleArrow {
+    font-size: 1rem;
+    margin-top: 8px;
+    opacity: 0.2;
+    transition: all 0.4s;
+}
+
+.valueBubble:hover .bubbleArrow {
+    opacity: 0.6;
+    transform: translateX(4px);
+}
+
+@media (max-width: 1200px) {
+    .valuesBubbles {
+        overflow-x: auto;
+        padding-bottom: 60px;
+        mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        gap: 40px;
+    }
+
+    .valueBubble:not(:first-child) {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .missionValues {
+        padding: 80px 0;
+    }
+
+    .missionText {
+        font-size: 1rem;
+        margin-bottom: 80px;
+    }
+
+    .valueBubble {
+        width: 240px;
+        height: 240px;
+    }
+}
