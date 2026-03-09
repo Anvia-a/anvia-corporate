@@ -1,10 +1,9 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import styles from './Header.module.css';
 
 const navLinks = [
-    { label: 'Home', href: '/#home' },
     { label: 'Our Vision', href: '/#vision' },
     { label: 'Services', href: '/#services' },
     { label: 'Partnerships', href: '/#partnerships' },
@@ -25,9 +24,8 @@ export default function Header() {
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         setMenuOpen(false);
 
-        // If we are on the home page, do smooth scroll
         if (window.location.pathname === '/') {
-            const id = href.replace('/', ''); // Fix for /#id
+            const id = href.replace('/', '');
             const target = document.querySelector(id);
             if (target) {
                 e.preventDefault();
@@ -36,18 +34,15 @@ export default function Header() {
                 window.scrollTo({ top, behavior: 'smooth' });
             }
         }
-        // If not on home page, allow default link behavior to load the home page with hash
     };
 
     return (
         <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
             <div className={styles.inner}>
-                {/* Logo */}
                 <a href="/#home" className={styles.logo} onClick={(e) => handleNavClick(e, '/#home')}>
                     <span className={styles.logoText}>Anvia</span>
                 </a>
 
-                {/* Desktop Nav */}
                 <nav className={styles.nav}>
                     {navLinks.map((link) => (
                         <a
@@ -61,7 +56,6 @@ export default function Header() {
                     ))}
                 </nav>
 
-                {/* CTA */}
                 <a
                     href="#contact"
                     className={`btn btn-primary ${styles.ctaBtn}`}
@@ -70,7 +64,6 @@ export default function Header() {
                     Contact
                 </a>
 
-                {/* Hamburger */}
                 <button
                     className={`${styles.hamburger} ${menuOpen ? styles.open : ''}`}
                     onClick={() => setMenuOpen(!menuOpen)}
@@ -82,7 +75,6 @@ export default function Header() {
                 </button>
             </div>
 
-            {/* Mobile Menu */}
             <div className={`${styles.mobileMenu} ${menuOpen ? styles.mobileOpen : ''}`}>
                 {navLinks.map((link) => (
                     <a

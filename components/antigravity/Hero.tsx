@@ -1,9 +1,8 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useRef, useCallback } from 'react';
 import styles from './Hero.module.css';
 
-/* ── Premium Fluid Mesh Animation ─────────────────────────── */
 interface Line {
     yOffset: number;
     amplitude: number;
@@ -30,29 +29,27 @@ function initCanvas(canvas: HTMLCanvasElement) {
     const W = () => window.innerWidth;
     const H = () => window.innerHeight;
 
-    // Layered flowing lines for depth
     const lines: (Line & { layer: 'primary' | 'secondary' | 'background' })[] = [];
     const layerConfigs = {
-        primary: { count: 6, opacity: 0.25, width: dpr * 1.2, speedMult: 1.2, ampMult: 1.2 },
-        secondary: { count: 12, opacity: 0.15, width: dpr * 0.6, speedMult: 1.0, ampMult: 1.0 },
-        background: { count: 10, opacity: 0.08, width: dpr * 0.3, speedMult: 0.6, ampMult: 0.8 }
+        primary: { count: 9, opacity: 0.27, width: dpr * 1.15, speedMult: 1.45, ampMult: 1.1 },
+        secondary: { count: 14, opacity: 0.17, width: dpr * 0.65, speedMult: 1.2, ampMult: 0.95 },
+        background: { count: 12, opacity: 0.1, width: dpr * 0.35, speedMult: 0.9, ampMult: 0.75 },
     };
 
     (Object.entries(layerConfigs) as [keyof typeof layerConfigs, any][]).forEach(([layer, config]) => {
         for (let i = 0; i < config.count; i++) {
             lines.push({
                 layer,
-                yOffset: 0.15 + (Math.random() * 0.6),
-                amplitude: (80 + Math.random() * 100) * config.ampMult,
-                frequency: (0.0005 + Math.random() * 0.001),
-                speed: (0.001 + Math.random() * 0.0015) * config.speedMult,
+                yOffset: 0.2 + (Math.random() * 0.58),
+                amplitude: (75 + Math.random() * 85) * config.ampMult,
+                frequency: (0.00055 + Math.random() * 0.0011),
+                speed: (0.0012 + Math.random() * 0.0018) * config.speedMult,
                 phase: Math.random() * Math.PI * 2,
                 baseColor: `hsla(${200 + Math.random() * 40}, 70%, 75%, ${config.opacity})`,
             });
         }
     });
 
-    // Particles system
     const particles: { x: number, y: number, vx: number, vy: number, size: number, opacity: number, t: number }[] = [];
     for (let i = 0; i < 40; i++) {
         particles.push({
@@ -62,7 +59,7 @@ function initCanvas(canvas: HTMLCanvasElement) {
             vy: (Math.random() - 0.5) * 0.5,
             size: 1 + Math.random() * 2,
             opacity: Math.random(),
-            t: Math.random() * Math.PI * 2
+            t: Math.random() * Math.PI * 2,
         });
     }
 
@@ -89,7 +86,6 @@ function initCanvas(canvas: HTMLCanvasElement) {
         const w = W() * dpr;
         const h = H() * dpr;
 
-        // Pristine white background
         ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, w, h);
 
@@ -100,17 +96,16 @@ function initCanvas(canvas: HTMLCanvasElement) {
         lerpMouse.y += (targetY * dpr - lerpMouse.y) * 0.03;
 
         t += 1;
-
         ctx.globalCompositeOperation = 'multiply';
 
         for (let i = 0; i < lines.length; i++) {
             const line = lines[i];
             const config = layerConfigs[line.layer];
+            const startX = w * 0.48;
 
             ctx.beginPath();
             ctx.lineWidth = config.width;
 
-            // Subtle glow for primary lines
             if (line.layer === 'primary') {
                 ctx.shadowBlur = 20;
                 ctx.shadowColor = line.baseColor;
@@ -118,16 +113,13 @@ function initCanvas(canvas: HTMLCanvasElement) {
                 ctx.shadowBlur = 0;
             }
 
-            for (let x = 0; x < w; x += 3) {
-                // Stronger diagonal flow from bottom-left to top-right
-                // At x=0 (left), diagonalShift is large (positive), moving line down (towards bottom).
-                // At x=w (right), diagonalShift is 0, keeping line at its base offset.
-                const diagonalShift = (w - x) * 0.45;
+            for (let x = startX; x < w; x += 2.5) {
+                const rightRegionWidth = w - startX;
+                const diagonalShift = (w - x) * (0.23 + (0.07 * (rightRegionWidth / w)));
                 let y = (h * line.yOffset) + diagonalShift +
                     Math.sin(x * line.frequency + (t * line.speed) + line.phase) * line.amplitude;
 
-                // Secondary organic wave
-                y += Math.sin(x * 0.002 - (t * 0.0008)) * 35;
+                y += Math.sin(x * 0.002 - (t * 0.001)) * 32;
 
                 const dx = x - lerpMouse.x;
                 const dy = y - lerpMouse.y;
@@ -135,22 +127,21 @@ function initCanvas(canvas: HTMLCanvasElement) {
 
                 const radius = 600 * dpr;
                 if (dist < radius) {
-                    // Smoother cubic-bezier like intensity for mouse reaction
                     const intensity = Math.pow(1 - (dist / radius), 3);
-                    y -= (dy / dist) * intensity * 80;
+                    y -= (dy / Math.max(dist, 1)) * intensity * 70;
                 }
 
-                if (x === 0) ctx.moveTo(x, y);
+                if (x === startX) ctx.moveTo(x, y);
                 else ctx.lineTo(x, y);
             }
 
-            const grad = ctx.createLinearGradient(0, 0, w, h);
+            const grad = ctx.createLinearGradient(startX, 0, w, h);
             const baseAlpha = config.opacity;
 
             let activeAlpha = baseAlpha;
             if (mouse.x !== -1000) {
                 const proximity = Math.abs(lerpMouse.y - (h * line.yOffset)) / h;
-                activeAlpha = baseAlpha + (Math.max(0, 1 - proximity * 3) * 0.35);
+                activeAlpha = baseAlpha + (Math.max(0, 1 - proximity * 3) * 0.3);
             }
 
             grad.addColorStop(0, `hsla(210, 20%, 98%, 0)`);
@@ -161,7 +152,6 @@ function initCanvas(canvas: HTMLCanvasElement) {
             ctx.stroke();
         }
 
-        // --- Draw Particles ---
         ctx.shadowBlur = 0;
         for (let p of particles) {
             p.x += p.vx;
@@ -172,7 +162,7 @@ function initCanvas(canvas: HTMLCanvasElement) {
             if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
 
             const pulse = (Math.sin(p.t) + 1) * 0.5;
-            ctx.fillStyle = `rgba(37, 99, 235, ${pulse * p.opacity * 0.25})`;
+            ctx.fillStyle = `rgba(37, 99, 235, ${pulse * p.opacity * 0.22})`;
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.size * dpr, 0, Math.PI * 2);
             ctx.fill();
@@ -192,13 +182,12 @@ function initCanvas(canvas: HTMLCanvasElement) {
     };
 }
 
-/* ── Staggered text reveal ───────────────────────────────── */
 function HeroText() {
     return (
         <div className={styles.textContent}>
             <p className={styles.eyebrow}>
                 <span className={styles.eyebrowLine} />
-                テクノロジー · デザイン · 時間
+                繝・け繝弱Ο繧ｸ繝ｼ ﾂｷ 繝・じ繧､繝ｳ ﾂｷ 譎る俣
             </p>
 
             <h1 className={styles.headline}>
@@ -211,7 +200,7 @@ function HeroText() {
             </h1>
 
             <p className={styles.jaSubtitle} style={{ '--delay': '0.3s' } as React.CSSProperties}>
-                時間を、もっと自由に。
+                譎る俣繧偵√ｂ縺｣縺ｨ閾ｪ逕ｱ縺ｫ縲・
             </p>
 
             <p className={styles.en1} style={{ '--delay': '0.4s' } as React.CSSProperties}>
@@ -223,7 +212,7 @@ function HeroText() {
             </p>
 
             <div className={styles.ctas} style={{ '--delay': '0.7s' } as React.CSSProperties}>
-                <a href="#vision" className={`btn btn-primary ${styles.btnHero}`}>
+                <a href="#vision" className={`btn btn-primary ${styles.btnHero} ${styles.learnMore}`}>
                     Learn More
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -237,7 +226,6 @@ function HeroText() {
     );
 }
 
-/* ── Hero Component ──────────────────────────────────────── */
 export default function Hero() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -257,15 +245,12 @@ export default function Hero() {
 
     return (
         <section id="home" className={styles.hero}>
-            {/* Full background fluid animation */}
             <canvas ref={canvasRef} className={styles.canvasBackground} />
 
-            {/* Content deeply left aligned, no container restrictions */}
             <div className={styles.inner}>
                 <HeroText />
             </div>
 
-            {/* Bottom scroll indicator */}
             <div className={styles.scrollIndicator}>
                 <div className={styles.scrollLine} />
                 <span>Scroll</span>

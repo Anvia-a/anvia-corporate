@@ -1,4 +1,4 @@
-.missionValues {
+﻿.missionValues {
     background: var(--color-white);
     padding: 120px 0;
     overflow: hidden;
@@ -22,9 +22,7 @@
     color: var(--color-gray-600);
     line-height: 1.8;
     margin-bottom: 80px;
-    /* Reduced from 120px */
     max-width: 720px;
-    /* Narrower width */
 }
 
 .missionText p {
@@ -39,116 +37,113 @@
 .valuesBubbles {
     display: flex;
     position: relative;
-    padding: 60px 0;
     width: 100%;
-    gap: 0;
-    /* Changed from 80px to allow margin-left overlap to work */
+    justify-content: space-between;
+    align-items: center;
+    padding: 26px 8px 34px;
 }
 
 .valueBubble {
-    width: 250px;
-    height: 250px;
+    width: clamp(220px, 23vw, 280px);
+    height: clamp(220px, 23vw, 280px);
     border-radius: 50%;
     background: var(--color-white);
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    /* Darkened border as requested */
+    border: 1px solid rgba(0, 0, 0, 0.14);
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, color 0.18s ease;
     cursor: default;
     position: relative;
     z-index: 1;
 }
 
-/* Overlap handling - significantly more overlap as requested */
 .valueBubble:not(:first-child) {
-    margin-left: -120px;
-    /* Increased from -40px for very clear overlap */
+    margin-left: -44px;
 }
 
 .valueBubble:hover {
     background: var(--color-black);
     color: var(--color-white);
-    transform: scale(1.15) translateY(-10px);
-    /* Slightly increased scale */
+    transform: scale(1.28) translateY(-8px);
     z-index: 10;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 24px 44px rgba(0, 0, 0, 0.2);
     border-color: transparent;
 }
 
 .bubbleInner {
-    padding: 32px;
+    padding: 24px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
+    width: 100%;
 }
 
 .bubbleCategory {
-    font-size: 0.6875rem;
+    font-size: 0.68rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     color: var(--color-gray-400);
-    margin-bottom: 4px;
-    transition: color 0.4s;
+    margin-bottom: 2px;
+    transition: color 0.18s ease;
 }
 
 .valueBubble:hover .bubbleCategory {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.46);
 }
 
 .bubbleTitle {
     font-size: 1rem;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     white-space: nowrap;
     letter-spacing: -0.01em;
 }
 
 .bubbleText {
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     line-height: 1.6;
     color: var(--color-gray-500);
     opacity: 0;
-    transform: translateY(15px);
-    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateY(10px);
+    transition: opacity 0.18s ease, transform 0.18s ease, max-height 0.18s ease;
     max-height: 0;
     overflow: hidden;
-    padding: 0 10px;
+    padding: 0 8px;
 }
 
 .valueBubble:hover .bubbleText {
     opacity: 1;
     transform: translateY(0);
-    max-height: 180px;
-    /* Increased from 150px to prevent overflow */
-    color: rgba(255, 255, 255, 0.85);
-    margin-top: 8px;
+    max-height: 260px;
+    color: rgba(255, 255, 255, 0.88);
+    margin-top: 6px;
 }
 
 .bubbleArrow {
     font-size: 1rem;
-    margin-top: 8px;
-    opacity: 0.2;
-    transition: all 0.4s;
+    margin-top: 6px;
+    opacity: 0.25;
+    transition: transform 0.18s ease, opacity 0.18s ease;
 }
 
 .valueBubble:hover .bubbleArrow {
-    opacity: 0.6;
+    opacity: 0.62;
     transform: translateX(4px);
 }
 
 @media (max-width: 1200px) {
     .valuesBubbles {
         overflow-x: auto;
-        padding-bottom: 60px;
+        justify-content: flex-start;
+        padding-bottom: 44px;
         mask-image: linear-gradient(to right, black 85%, transparent 100%);
         -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
-        gap: 40px;
+        gap: 28px;
     }
 
     .valueBubble:not(:first-child) {
@@ -163,11 +158,15 @@
 
     .missionText {
         font-size: 1rem;
-        margin-bottom: 80px;
+        margin-bottom: 72px;
     }
 
     .valueBubble {
         width: 240px;
         height: 240px;
+    }
+
+    .valueBubble:hover {
+        transform: scale(1.18) translateY(-6px);
     }
 }
