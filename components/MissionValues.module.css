@@ -1,8 +1,21 @@
 ﻿.missionValues {
-    background: var(--color-white);
+    background: #ffffff;
     padding: 120px 0;
     overflow: hidden;
+    position: relative;
 }
+
+.missionValues::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -1px;
+    height: 44px;
+    background: linear-gradient(to bottom, rgba(88, 139, 255, 0.08), rgba(88, 139, 255, 0));
+    pointer-events: none;
+}
+
 
 .missionBlock {
     display: flex;
@@ -26,7 +39,7 @@
     position: relative;
     border-radius: 20px;
     border: 1px solid rgba(15, 23, 42, 0.08);
-    background: #fff;
+    background: #ffffff;
     overflow: hidden;
     isolation: isolate;
 }
@@ -34,15 +47,14 @@
 .missionTextPanel::before {
     content: '';
     position: absolute;
-    width: 78px;
-    height: 78px;
-    left: calc(var(--mx, 50%) - 39px);
-    top: calc(var(--my, 50%) - 39px);
+    width: 40px;
+    height: 40px;
+    left: calc(var(--mx, -120px) - 20px);
+    top: calc(var(--my, -120px) - 20px);
     border-radius: 50%;
-    background: rgba(12, 12, 14, 0.9);
+    background: rgba(7, 10, 15, 0.92);
     opacity: 0;
-    filter: blur(0.2px);
-    transition: opacity 0.24s ease;
+    transition: opacity 0.2s ease;
     pointer-events: none;
     z-index: 1;
 }
@@ -78,7 +90,10 @@
 
 .accentWord {
     font-weight: 650;
-    color: inherit;
+    background: linear-gradient(92deg, #3479ff, #26b7c6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .timeGraphic {
@@ -161,27 +176,32 @@
 
 .reelBandA {
     transform: translate(-50%, -50%) rotateY(-20deg) rotateZ(12deg);
-    animation: reelSpinA 0.94s linear infinite;
+    animation: reelSpinA 0.9s linear infinite;
 }
 
 .reelBandB {
     transform: translate(-50%, -50%) rotateY(20deg) rotateZ(-14deg) scale(0.92);
-    animation: reelSpinB 1.08s linear infinite;
+    animation: reelSpinB 0.96s linear infinite;
 }
 
 .reelBandC {
     transform: translate(-50%, -50%) rotateX(18deg) rotateZ(35deg) scale(0.9);
-    animation: reelSpinC 1s linear infinite;
+    animation: reelSpinC 0.92s linear infinite;
 }
 
 .valuesBlock {
     display: flex;
     flex-direction: column;
+    margin-top: 6px;
+    padding-top: 18px;
+    background: #f7fafc;
+    border-radius: 24px;
+    border: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .valuesStatement {
-    margin-top: 0;
-    margin-bottom: 18px;
+    margin: 0 0 18px;
+    padding: 0 20px;
     max-width: 760px;
     color: var(--color-gray-600);
     font-size: 1rem;
@@ -305,22 +325,22 @@
 
 @keyframes reelSpinA {
     0% { transform: translate(-50%, -50%) rotateY(-20deg) rotateZ(12deg) rotateX(0deg); }
-    36% { transform: translate(-50%, -50%) rotateY(26deg) rotateZ(72deg) rotateX(-250deg); }
-    57% { transform: translate(-50%, -50%) rotateY(26deg) rotateZ(72deg) rotateX(-250deg); }
+    42% { transform: translate(-50%, -50%) rotateY(26deg) rotateZ(72deg) rotateX(-260deg); }
+    58% { transform: translate(-50%, -50%) rotateY(26deg) rotateZ(72deg) rotateX(-260deg); }
     100% { transform: translate(-50%, -50%) rotateY(-20deg) rotateZ(132deg) rotateX(-360deg); }
 }
 
 @keyframes reelSpinB {
     0% { transform: translate(-50%, -50%) rotateY(20deg) rotateZ(-14deg) scale(0.92) rotateX(0deg); }
-    38% { transform: translate(-50%, -50%) rotateY(-24deg) rotateZ(-80deg) scale(0.92) rotateX(-266deg); }
-    59% { transform: translate(-50%, -50%) rotateY(-24deg) rotateZ(-80deg) scale(0.92) rotateX(-266deg); }
+    43% { transform: translate(-50%, -50%) rotateY(-24deg) rotateZ(-80deg) scale(0.92) rotateX(-270deg); }
+    59% { transform: translate(-50%, -50%) rotateY(-24deg) rotateZ(-80deg) scale(0.92) rotateX(-270deg); }
     100% { transform: translate(-50%, -50%) rotateY(20deg) rotateZ(-142deg) scale(0.92) rotateX(-360deg); }
 }
 
 @keyframes reelSpinC {
     0% { transform: translate(-50%, -50%) rotateX(18deg) rotateZ(35deg) scale(0.9) rotateY(0deg); }
-    33% { transform: translate(-50%, -50%) rotateX(-22deg) rotateZ(92deg) scale(0.9) rotateY(-248deg); }
-    54% { transform: translate(-50%, -50%) rotateX(-22deg) rotateZ(92deg) scale(0.9) rotateY(-248deg); }
+    41% { transform: translate(-50%, -50%) rotateX(-22deg) rotateZ(92deg) scale(0.9) rotateY(-258deg); }
+    57% { transform: translate(-50%, -50%) rotateX(-22deg) rotateZ(92deg) scale(0.9) rotateY(-258deg); }
     100% { transform: translate(-50%, -50%) rotateX(18deg) rotateZ(150deg) scale(0.9) rotateY(-360deg); }
 }
 
@@ -387,6 +407,7 @@
     .valuesStatement {
         font-size: 0.95rem;
         line-height: 1.75;
+        padding: 0 16px;
     }
 
     .valueBubble {

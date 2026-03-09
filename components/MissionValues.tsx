@@ -11,10 +11,10 @@ export default function MissionValues() {
     const missionTextPanelRef = useRef<HTMLDivElement>(null);
 
     const spinConfig = useMemo(() => ({
-        sphere: `${3.6 + Math.random() * 1.2}s`,
-        bandA: `${0.86 + Math.random() * 0.26}s`,
-        bandB: `${0.92 + Math.random() * 0.32}s`,
-        bandC: `${0.9 + Math.random() * 0.3}s`,
+        sphere: `${3.2 + Math.random() * 1.2}s`,
+        bandA: `${0.78 + Math.random() * 0.22}s`,
+        bandB: `${0.82 + Math.random() * 0.24}s`,
+        bandC: `${0.8 + Math.random() * 0.24}s`,
         delayA: `${-(Math.random() * 1.8).toFixed(2)}s`,
         delayB: `${-(Math.random() * 1.8).toFixed(2)}s`,
         delayC: `${-(Math.random() * 1.8).toFixed(2)}s`,
@@ -95,7 +95,7 @@ export default function MissionValues() {
                                 <div className={styles.valuesStatement}>
                                     <p>私たちの考え方は、<span className={styles.accentWord}>シンプル</span>です。</p>
                                     <p>人の<span className={styles.accentWord}>時間</span>を尊重するプロダクトをつくること。</p>
-                                    <p>日常の<span className={styles.accentWord}>摩擦を減らす</span>設計を積み重ねること。</p>
+                                    <p>日常の<span className={styles.accentWord}>摩擦</span>を減らす設計を積み重ねること。</p>
                                     <p>テクノロジーで、人に<span className={styles.accentWord}>時間を返す</span>こと。</p>
                                 </div>
                             </AnimateOnScroll>

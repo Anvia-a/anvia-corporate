@@ -1,6 +1,18 @@
 ﻿.company {
-    background: var(--color-white);
+    background: #ffffff;
     padding: 80px 0;
+    position: relative;
+}
+
+.company::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -1px;
+    height: 44px;
+    background: linear-gradient(to bottom, rgba(88, 139, 255, 0.08), rgba(88, 139, 255, 0));
+    pointer-events: none;
 }
 
 .header {
@@ -57,89 +69,54 @@
 
 .visualPanel {
     position: relative;
-    min-height: 380px;
+    min-height: 390px;
     background: transparent;
     overflow: visible;
-}
-
-.networkField {
-    position: relative;
     width: 115%;
-    height: 100%;
-    min-height: 380px;
     margin-left: -5%;
 }
 
-.networkLine {
+.networkSvg {
     position: absolute;
-    height: 1.5px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, rgba(96, 165, 250, 0), rgba(96, 165, 250, 0.58), rgba(34, 211, 238, 0.62), rgba(34, 211, 238, 0));
-    box-shadow: 0 0 14px rgba(59, 130, 246, 0.2);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
 }
 
-.lineA {
-    width: 340px;
-    left: 18%;
-    top: 18%;
-    transform: rotate(-14deg);
-    animation: lineDriftA 11.2s ease-in-out infinite;
+.organicLine {
+    fill: none;
+    stroke-linecap: round;
+    stroke-width: 1.8;
+    stroke: url(#lineGradient);
+    opacity: 0.56;
+    filter: drop-shadow(0 0 10px rgba(56, 136, 219, 0.25));
+    stroke-dasharray: 5 10;
 }
 
-.lineB {
-    width: 300px;
-    left: 32%;
-    top: 24%;
-    transform: rotate(10deg);
-    animation: lineDriftB 10.4s ease-in-out infinite;
+.pathA {
+    stroke: rgba(100, 184, 255, 0.62);
+    animation: pathFlowA 14s ease-in-out infinite;
 }
 
-.lineC {
-    width: 360px;
-    left: 12%;
-    top: 34%;
-    transform: rotate(-8deg);
-    animation: lineDriftC 12s ease-in-out infinite;
+.pathB {
+    stroke: rgba(45, 212, 191, 0.56);
+    animation: pathFlowB 12.6s ease-in-out infinite;
 }
 
-.lineD {
-    width: 316px;
-    left: 36%;
-    top: 42%;
-    transform: rotate(16deg);
-    animation: lineDriftD 10.8s ease-in-out infinite;
+.pathC {
+    stroke: rgba(96, 165, 250, 0.54);
+    animation: pathFlowC 13.8s ease-in-out infinite;
 }
 
-.lineE {
-    width: 348px;
-    left: 20%;
-    top: 52%;
-    transform: rotate(-12deg);
-    animation: lineDriftE 11.6s ease-in-out infinite;
+.pathD {
+    stroke: rgba(56, 189, 248, 0.5);
+    animation: pathFlowD 11.8s ease-in-out infinite;
 }
 
-.lineF {
-    width: 286px;
-    left: 44%;
-    top: 60%;
-    transform: rotate(18deg);
-    animation: lineDriftF 9.9s ease-in-out infinite;
-}
-
-.lineG {
-    width: 332px;
-    left: 10%;
-    top: 68%;
-    transform: rotate(-6deg);
-    animation: lineDriftG 12.2s ease-in-out infinite;
-}
-
-.lineH {
-    width: 278px;
-    left: 40%;
-    top: 74%;
-    transform: rotate(14deg);
-    animation: lineDriftH 10.2s ease-in-out infinite;
+.pathE {
+    stroke: rgba(45, 212, 191, 0.5);
+    animation: pathFlowE 14.4s ease-in-out infinite;
 }
 
 .node {
@@ -152,120 +129,94 @@
 }
 
 .nodeA {
-    left: 30%;
-    top: 16%;
-    animation: nodePulseA 6.8s ease-in-out infinite;
+    left: 22%;
+    top: 20%;
+    animation: nodeFloatA 8s ease-in-out infinite;
 }
 
 .nodeB {
-    left: 58%;
-    top: 22%;
-    animation: nodePulseB 7.4s ease-in-out infinite;
+    left: 48%;
+    top: 16%;
+    animation: nodeFloatB 8.4s ease-in-out infinite;
 }
 
 .nodeC {
-    left: 24%;
-    top: 40%;
-    animation: nodePulseC 8.2s ease-in-out infinite;
+    left: 68%;
+    top: 32%;
+    animation: nodeFloatC 9.2s ease-in-out infinite;
 }
 
 .nodeD {
-    left: 68%;
-    top: 48%;
-    animation: nodePulseD 7.8s ease-in-out infinite;
+    left: 34%;
+    top: 52%;
+    animation: nodeFloatD 8.6s ease-in-out infinite;
 }
 
 .nodeE {
-    left: 36%;
-    top: 62%;
-    animation: nodePulseE 8.6s ease-in-out infinite;
+    left: 62%;
+    top: 66%;
+    animation: nodeFloatE 9.4s ease-in-out infinite;
 }
 
 .nodeF {
-    left: 72%;
-    top: 70%;
-    animation: nodePulseF 7.6s ease-in-out infinite;
+    left: 78%;
+    top: 78%;
+    animation: nodeFloatF 9.8s ease-in-out infinite;
 }
 
-.nodeG {
-    left: 52%;
-    top: 80%;
-    animation: nodePulseG 8.4s ease-in-out infinite;
+@keyframes pathFlowA {
+    0%, 100% { transform: translate3d(0, 0, 0); stroke-dashoffset: 0; opacity: 0.52; }
+    50% { transform: translate3d(-8px, -10px, 0); stroke-dashoffset: 22; opacity: 0.74; }
 }
 
-@keyframes lineDriftA {
-    0%, 100% { transform: rotate(-14deg) translate3d(0, 0, 0); opacity: 0.52; }
-    50% { transform: rotate(-9deg) translate3d(-10px, -8px, 0); opacity: 0.76; }
+@keyframes pathFlowB {
+    0%, 100% { transform: translate3d(0, 0, 0); stroke-dashoffset: 8; opacity: 0.46; }
+    50% { transform: translate3d(10px, -8px, 0); stroke-dashoffset: 30; opacity: 0.7; }
 }
 
-@keyframes lineDriftB {
-    0%, 100% { transform: rotate(10deg) translate3d(0, 0, 0); opacity: 0.46; }
-    50% { transform: rotate(14deg) translate3d(10px, -6px, 0); opacity: 0.72; }
+@keyframes pathFlowC {
+    0%, 100% { transform: translate3d(0, 0, 0); stroke-dashoffset: 14; opacity: 0.5; }
+    50% { transform: translate3d(-10px, 8px, 0); stroke-dashoffset: 36; opacity: 0.72; }
 }
 
-@keyframes lineDriftC {
-    0%, 100% { transform: rotate(-8deg) translate3d(0, 0, 0); opacity: 0.5; }
-    50% { transform: rotate(-3deg) translate3d(-12px, 8px, 0); opacity: 0.74; }
+@keyframes pathFlowD {
+    0%, 100% { transform: translate3d(0, 0, 0); stroke-dashoffset: 4; opacity: 0.44; }
+    50% { transform: translate3d(8px, -8px, 0); stroke-dashoffset: 24; opacity: 0.68; }
 }
 
-@keyframes lineDriftD {
-    0%, 100% { transform: rotate(16deg) translate3d(0, 0, 0); opacity: 0.48; }
-    50% { transform: rotate(12deg) translate3d(10px, -8px, 0); opacity: 0.7; }
+@keyframes pathFlowE {
+    0%, 100% { transform: translate3d(0, 0, 0); stroke-dashoffset: 10; opacity: 0.42; }
+    50% { transform: translate3d(-8px, 8px, 0); stroke-dashoffset: 34; opacity: 0.66; }
 }
 
-@keyframes lineDriftE {
-    0%, 100% { transform: rotate(-12deg) translate3d(0, 0, 0); opacity: 0.5; }
-    50% { transform: rotate(-6deg) translate3d(-10px, 8px, 0); opacity: 0.72; }
+@keyframes nodeFloatA {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.52; }
+    50% { transform: translateY(-9px) scale(1.22); opacity: 0.84; }
 }
 
-@keyframes lineDriftF {
-    0%, 100% { transform: rotate(18deg) translate3d(0, 0, 0); opacity: 0.44; }
-    50% { transform: rotate(13deg) translate3d(12px, -8px, 0); opacity: 0.68; }
+@keyframes nodeFloatB {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.48; }
+    50% { transform: translateY(8px) scale(1.18); opacity: 0.8; }
 }
 
-@keyframes lineDriftG {
-    0%, 100% { transform: rotate(-6deg) translate3d(0, 0, 0); opacity: 0.46; }
-    50% { transform: rotate(-1deg) translate3d(-12px, 6px, 0); opacity: 0.7; }
+@keyframes nodeFloatC {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.46; }
+    50% { transform: translateY(-8px) scale(1.18); opacity: 0.78; }
 }
 
-@keyframes lineDriftH {
-    0%, 100% { transform: rotate(14deg) translate3d(0, 0, 0); opacity: 0.42; }
-    50% { transform: rotate(10deg) translate3d(10px, -8px, 0); opacity: 0.66; }
+@keyframes nodeFloatD {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.44; }
+    50% { transform: translateY(8px) scale(1.16); opacity: 0.76; }
 }
 
-@keyframes nodePulseA {
-    0%, 100% { transform: scale(1); opacity: 0.54; }
-    50% { transform: scale(1.28); opacity: 0.9; }
+@keyframes nodeFloatE {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.42; }
+    50% { transform: translateY(-8px) scale(1.15); opacity: 0.74; }
 }
 
-@keyframes nodePulseB {
-    0%, 100% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.24); opacity: 0.84; }
-}
-
-@keyframes nodePulseC {
-    0%, 100% { transform: scale(1); opacity: 0.56; }
-    50% { transform: scale(1.22); opacity: 0.86; }
-}
-
-@keyframes nodePulseD {
-    0%, 100% { transform: scale(1); opacity: 0.48; }
-    50% { transform: scale(1.2); opacity: 0.8; }
-}
-
-@keyframes nodePulseE {
-    0%, 100% { transform: scale(1); opacity: 0.46; }
-    50% { transform: scale(1.2); opacity: 0.78; }
-}
-
-@keyframes nodePulseF {
-    0%, 100% { transform: scale(1); opacity: 0.44; }
-    50% { transform: scale(1.2); opacity: 0.76; }
-}
-
-@keyframes nodePulseG {
-    0%, 100% { transform: scale(1); opacity: 0.42; }
-    50% { transform: scale(1.18); opacity: 0.74; }
+@keyframes nodeFloatF {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
+    50% { transform: translateY(8px) scale(1.14); opacity: 0.7; }
 }
 
 @media (max-width: 1000px) {
@@ -274,12 +225,8 @@
         gap: 26px;
     }
 
-    .visualPanel,
-    .networkField {
+    .visualPanel {
         min-height: 300px;
-    }
-
-    .networkField {
         width: 100%;
         margin-left: 0;
     }

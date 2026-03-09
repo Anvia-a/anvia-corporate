@@ -40,24 +40,20 @@ export default function Company() {
 
                     <AnimateOnScroll delay={180}>
                         <div className={styles.visualPanel} aria-hidden="true">
-                            <div className={styles.networkField}>
-                                <span className={`${styles.networkLine} ${styles.lineA}`} />
-                                <span className={`${styles.networkLine} ${styles.lineB}`} />
-                                <span className={`${styles.networkLine} ${styles.lineC}`} />
-                                <span className={`${styles.networkLine} ${styles.lineD}`} />
-                                <span className={`${styles.networkLine} ${styles.lineE}`} />
-                                <span className={`${styles.networkLine} ${styles.lineF}`} />
-                                <span className={`${styles.networkLine} ${styles.lineG}`} />
-                                <span className={`${styles.networkLine} ${styles.lineH}`} />
+                            <svg className={styles.networkSvg} viewBox="0 0 640 420" preserveAspectRatio="xMidYMid slice">
+                                <path className={`${styles.organicLine} ${styles.pathA}`} d="M-40 110 C 120 40, 220 180, 360 130 C 500 80, 580 210, 720 150" />
+                                <path className={`${styles.organicLine} ${styles.pathB}`} d="M-20 180 C 120 130, 240 240, 360 200 C 510 150, 600 280, 700 250" />
+                                <path className={`${styles.organicLine} ${styles.pathC}`} d="M-40 250 C 120 210, 220 320, 340 280 C 500 220, 600 340, 720 300" />
+                                <path className={`${styles.organicLine} ${styles.pathD}`} d="M20 60 C 160 20, 260 130, 390 90 C 520 50, 590 140, 700 110" />
+                                <path className={`${styles.organicLine} ${styles.pathE}`} d="M0 320 C 130 290, 230 390, 360 360 C 500 320, 580 390, 700 370" />
+                            </svg>
 
-                                <span className={`${styles.node} ${styles.nodeA}`} />
-                                <span className={`${styles.node} ${styles.nodeB}`} />
-                                <span className={`${styles.node} ${styles.nodeC}`} />
-                                <span className={`${styles.node} ${styles.nodeD}`} />
-                                <span className={`${styles.node} ${styles.nodeE}`} />
-                                <span className={`${styles.node} ${styles.nodeF}`} />
-                                <span className={`${styles.node} ${styles.nodeG}`} />
-                            </div>
+                            <span className={`${styles.node} ${styles.nodeA}`} />
+                            <span className={`${styles.node} ${styles.nodeB}`} />
+                            <span className={`${styles.node} ${styles.nodeC}`} />
+                            <span className={`${styles.node} ${styles.nodeD}`} />
+                            <span className={`${styles.node} ${styles.nodeE}`} />
+                            <span className={`${styles.node} ${styles.nodeF}`} />
                         </div>
                     </AnimateOnScroll>
                 </div>

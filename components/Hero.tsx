@@ -56,7 +56,7 @@ function initCanvas(canvas: HTMLCanvasElement) {
     window.addEventListener('mousemove', onMouseMove, { passive: true });
     window.addEventListener('mouseleave', onMouseLeave);
 
-    const lineCount = 80;
+    const lineCount = 120;
     const lines: Line[] = Array.from({ length: lineCount }, (_, i) => {
         const progress = i / (lineCount - 1);
         const dense = Math.pow(progress, 1.7);
@@ -120,13 +120,16 @@ function initCanvas(canvas: HTMLCanvasElement) {
             gradient.addColorStop(1, `hsla(${hue + 8}, 80%, 56%, ${line.alpha + boost})`);
             context.strokeStyle = gradient;
 
-            for (let x = -400; x <= w + 200; x += 6) {
+            for (let x = -400; x <= w + 200; x += 7) {
                 const baseY = sampleY(line, x, w, h, tick);
-                const localPull = mouse.active
-                    ? Math.max(0, 1 - Math.abs(x - mouse.x) / 230) * linePull
+                const dx = x - mouse.x;
+                const dyPoint = baseY - mouse.y;
+                const dist = Math.sqrt(dx * dx + dyPoint * dyPoint);
+                const pull = mouse.active && dist < 160
+                    ? Math.pow(1 - dist / 160, 2)
                     : 0;
-                const pullToMouse = (mouse.y - baseY) * (localPull * 0.24);
-                const elasticBend = Math.sin((x - mouse.x) * 0.02) * (localPull * 6);
+                const pullToMouse = (mouse.y - baseY) * (pull * 0.35);
+                const elasticBend = Math.sin((x - mouse.x) * 0.022) * (pull * 11);
                 const y = baseY + pullToMouse + elasticBend;
 
                 if (x === -400) context.moveTo(x, y);
