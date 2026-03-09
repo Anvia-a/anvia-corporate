@@ -84,6 +84,8 @@
 
 .letter {
     position: absolute;
+    left: var(--x0);
+    top: var(--y0);
     font-size: clamp(1.3rem, 2.2vw, 2.05rem);
     font-weight: 620;
     letter-spacing: 0.08em;
@@ -93,34 +95,79 @@
     animation-delay: var(--delay, 0s);
 }
 
-.letterA1 { --sx: -16%; --sy: 20%; --tx: 26%; --ty: 46%; --delay: 0s; }
-.letterN { --sx: 82%; --sy: 18%; --tx: 34%; --ty: 46%; --delay: 0.15s; }
-.letterE { --sx: 18%; --sy: 78%; --tx: 42%; --ty: 46%; --delay: 0.25s; }
-.letterW { --sx: 72%; --sy: 76%; --tx: 50%; --ty: 46%; --delay: 0.35s; }
-.letterV { --sx: 6%; --sy: 50%; --tx: 58%; --ty: 46%; --delay: 0.45s; }
-.letterI { --sx: 92%; --sy: 46%; --tx: 66%; --ty: 46%; --delay: 0.55s; }
-.letterA2 { --sx: 44%; --sy: 6%; --tx: 74%; --ty: 46%; --delay: 0.65s; }
+.letterA1 { --x0: -16%; --y0: 20%; --x1: 16%; --y1: 46%; --x2: 40%; --y2: 46%; --delay: 0s; }
+.letterN  { --x0: 84%;  --y0: 16%; --x1: 30%; --y1: 46%; --x2: 46%; --y2: 46%; --delay: 0.12s; }
+.letterE  { --x0: 18%;  --y0: 80%; --x1: 44%; --y1: 46%; --x2: 52%; --y2: 46%; --delay: 0.22s; }
+.letterW  { --x0: 74%;  --y0: 78%; --x1: 58%; --y1: 46%; --x2: 58%; --y2: 46%; --delay: 0.34s; }
+.letterV  { --x0: 6%;   --y0: 52%; --x1: 74%; --y1: 46%; --x2: 64%; --y2: 46%; --delay: 0.44s; }
+.letterI  { --x0: 94%;  --y0: 46%; --x1: 88%; --y1: 46%; --x2: 70%; --y2: 46%; --delay: 0.54s; }
+.letterA2 { --x0: 44%;  --y0: 6%;  --x1: 102%; --y1: 46%; --x2: 76%; --y2: 46%; --delay: 0.64s; }
 
 @keyframes gather {
     0%, 18% {
-        left: var(--sx);
-        top: var(--sy);
-        opacity: 0.54;
-        transform: scale(0.92);
+        left: var(--x0);
+        top: var(--y0);
+        opacity: 0.56;
+        transform: rotate(0deg) scale(0.92);
     }
 
-    42%, 68% {
-        left: var(--tx);
-        top: var(--ty);
+    19%, 44% {
+        left: calc(var(--x0) + 6%);
+        top: calc(var(--y0) - 4%);
+        opacity: 0.86;
+        transform: rotate(300deg) scale(1);
+    }
+
+    45%, 66% {
+        left: var(--x1);
+        top: var(--y1);
         opacity: 1;
-        transform: scale(1);
+        transform: rotate(360deg) scale(1.03);
     }
 
-    86%, 100% {
-        left: var(--tx);
-        top: var(--ty);
+    67%, 82% {
+        left: var(--x2);
+        top: var(--y2);
+        opacity: 0.42;
+        transform: rotate(360deg) scale(0.92);
+    }
+
+    83%, 100% {
+        left: var(--x2);
+        top: var(--y2);
         opacity: 0;
-        transform: scale(1.04);
+        transform: rotate(360deg) scale(0.88);
+    }
+}
+
+.finalWord {
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(1.35rem, 2.3vw, 2.15rem);
+    font-weight: 620;
+    letter-spacing: 0.06em;
+    color: rgba(43, 123, 237, 0.92);
+    text-shadow: 0 0 16px rgba(43, 123, 237, 0.24);
+    opacity: 0;
+    animation: finalReveal 10s ease-in-out infinite;
+}
+
+@keyframes finalReveal {
+    0%, 66% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.92);
+    }
+
+    74%, 86% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.04);
     }
 }
 

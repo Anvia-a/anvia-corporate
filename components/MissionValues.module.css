@@ -43,10 +43,10 @@
 .missionTextWrap::before {
     content: '';
     position: absolute;
-    width: 40px;
-    height: 40px;
-    left: calc(var(--mx) - 20px);
-    top: calc(var(--my) - 20px);
+    width: 52px;
+    height: 52px;
+    left: calc(var(--mx) - 26px);
+    top: calc(var(--my) - 26px);
     border-radius: 50%;
     background: rgba(7, 10, 15, 0.92);
     opacity: 0;
@@ -89,7 +89,7 @@
 
 .missionTextWrap:hover .missionTextSpot {
     opacity: 1;
-    clip-path: circle(20px at var(--mx) var(--my));
+    clip-path: circle(26px at var(--mx) var(--my));
 }
 
 .missionText p,
@@ -219,10 +219,10 @@
     display: flex;
     flex-direction: column;
     margin-top: 6px;
-    padding-top: 18px;
-    background: #f7fafc;
-    border-radius: 24px;
-    border: 1px solid rgba(15, 23, 42, 0.06);
+    padding-top: 0;
+    background: transparent;
+    border-radius: 0;
+    border: 0;
 }
 
 .valuesStatement {

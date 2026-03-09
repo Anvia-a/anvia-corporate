@@ -49,6 +49,8 @@ export default function Company() {
                                 <span className={`${styles.letter} ${styles.letterI}`}>I</span>
                                 <span className={`${styles.letter} ${styles.letterA2}`}>A</span>
 
+                                <span className={styles.finalWord}>Anvia</span>
+
                                 <span className={`${styles.spark} ${styles.sparkA}`} />
                                 <span className={`${styles.spark} ${styles.sparkB}`} />
                                 <span className={`${styles.spark} ${styles.sparkC}`} />
