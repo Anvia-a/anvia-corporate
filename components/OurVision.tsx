@@ -18,7 +18,7 @@ export default function OurVision() {
                                 <span className={styles.line}>時間は管理すべき</span>
                                 <span className={styles.line}>リソースではなく、</span>
                                 <span className={styles.line}>人生を形づくる</span>
-                                <span className={styles.line}>最も重要な価値だと</span>
+                                <span className={styles.line}><span className="gradient-text">最も重要な価値</span>だと</span>
                                 <span className={styles.line}>考えています。</span>
                             </h2>
                         </div>
@@ -47,7 +47,7 @@ export default function OurVision() {
                                     },
                                     {
                                         icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>,
-                                        label: '人間中心の設計',
+                                        label: 'ユーザー中心の設計',
                                         desc: 'ユーザーの体験を中心に、直感的で心地よいプロダクトを設計します。'
                                     },
                                     {

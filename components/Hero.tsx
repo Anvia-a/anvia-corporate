@@ -56,13 +56,18 @@ function initCanvas(canvas: HTMLCanvasElement) {
     window.addEventListener('mousemove', onMouseMove, { passive: true });
     window.addEventListener('mouseleave', onMouseLeave);
 
-    const lineCount = 44;
+    const lineCount = 56;
     const lines: Line[] = Array.from({ length: lineCount }, (_, i) => {
         const progress = i / (lineCount - 1);
-        const dense = Math.pow(progress, 1.6);
+        const dense = Math.pow(progress, 1.7);
+        const lowerCluster = Math.random() < 0.72;
+        const spread = lowerCluster
+            ? 14 + Math.random() * 210
+            : -220 + Math.random() * 170;
+
         return {
             slope: 0.28 + Math.random() * 0.2,
-            spread: (dense - 0.5) * 130,
+            spread,
             phase: Math.random() * Math.PI * 2,
             speed: 0.018 + Math.random() * 0.02,
             amplitude: 4 + Math.random() * 10,
@@ -114,9 +119,9 @@ function initCanvas(canvas: HTMLCanvasElement) {
             gradient.addColorStop(1, `hsla(${hue + 8}, 78%, 58%, ${line.alpha + boost})`);
             context.strokeStyle = gradient;
 
-            for (let x = -180; x <= w + 80; x += 6) {
+            for (let x = -320; x <= w + 120; x += 6) {
                 const y = sampleY(line, x, w, h, tick);
-                if (x === -180) context.moveTo(x, y);
+                if (x === -320) context.moveTo(x, y);
                 else context.lineTo(x, y);
             }
 
@@ -159,7 +164,7 @@ function HeroText() {
         <div className={styles.textContent}>
             <p className={styles.eyebrow}>
                 <span className={styles.eyebrowLine} />
-                テクノロジー · デザイン · 時間
+                Technology · Design · Time
             </p>
 
             <h1 className={styles.headline}>
@@ -220,5 +225,3 @@ export default function Hero() {
         </section>
     );
 }
-
-

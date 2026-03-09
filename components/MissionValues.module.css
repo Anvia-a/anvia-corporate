@@ -17,9 +17,9 @@
 .missionRow {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(220px, 0.82fr);
-    gap: 18px;
-    margin-bottom: 48px;
+    grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+    gap: 12px;
+    margin-bottom: 44px;
 }
 
 .missionText {
@@ -40,7 +40,7 @@
 
 .timeGraphic {
     position: relative;
-    min-height: 230px;
+    min-height: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,9 +50,9 @@
 
 .reelViewport {
     position: relative;
-    width: 360px;
-    height: 220px;
-    perspective: 920px;
+    width: 520px;
+    height: 300px;
+    perspective: 1280px;
     mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%);
 }
@@ -83,19 +83,19 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 300px;
-    height: 300px;
+    width: 420px;
+    height: 420px;
     transform: translate(-50%, -50%);
     transform-style: preserve-3d;
-    animation: sphereYaw 6.5s linear infinite;
+    animation: sphereYaw 4.4s linear infinite;
 }
 
 .reelBand {
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 240px;
-    height: 240px;
+    width: 332px;
+    height: 332px;
     transform-style: preserve-3d;
 }
 
@@ -105,25 +105,25 @@
     left: 50%;
     top: 50%;
     transform-style: preserve-3d;
-    transform: translate(-50%, -50%) rotateX(calc(var(--i) * var(--step))) translateZ(122px);
-    font-size: 1.9rem;
+    transform: translate(-50%, -50%) rotateX(calc(var(--i) * var(--step))) translateZ(166px);
+    font-size: 2.2rem;
     font-weight: 700;
     color: #0f172a;
     letter-spacing: -0.02em;
-    opacity: 0.16;
+    opacity: 0.2;
     filter: blur(0.16px);
     line-height: 1;
     text-shadow: 0 8px 20px rgba(37, 99, 235, 0.12);
 }
 
 .reelBandA {
-    transform: translate(-50%, -50%) rotateY(-14deg);
-    animation: reelSpinA 1.2s linear infinite;
+    transform: translate(-50%, -50%) rotateY(-16deg);
+    animation: reelSpinA 0.9s linear infinite;
 }
 
 .reelBandB {
-    transform: translate(-50%, -50%) rotateY(14deg) scale(0.9);
-    animation: reelSpinB 1.35s linear infinite;
+    transform: translate(-50%, -50%) rotateY(16deg) scale(0.9);
+    animation: reelSpinB 1.02s linear infinite;
 }
 
 .valuesBlock {
@@ -242,17 +242,17 @@
 }
 
 @keyframes reelSpinA {
-    0% { transform: translate(-50%, -50%) rotateY(-14deg) rotateX(0deg); }
-    44% { transform: translate(-50%, -50%) rotateY(-14deg) rotateX(-240deg); }
-    50% { transform: translate(-50%, -50%) rotateY(-14deg) rotateX(-240deg); }
-    100% { transform: translate(-50%, -50%) rotateY(-14deg) rotateX(-360deg); }
+    0% { transform: translate(-50%, -50%) rotateY(-16deg) rotateX(0deg); }
+    40% { transform: translate(-50%, -50%) rotateY(-16deg) rotateX(-250deg); }
+    62% { transform: translate(-50%, -50%) rotateY(-16deg) rotateX(-250deg); }
+    100% { transform: translate(-50%, -50%) rotateY(-16deg) rotateX(-360deg); }
 }
 
 @keyframes reelSpinB {
-    0% { transform: translate(-50%, -50%) rotateY(14deg) scale(0.9) rotateX(0deg); }
-    46% { transform: translate(-50%, -50%) rotateY(14deg) scale(0.9) rotateX(-252deg); }
-    52% { transform: translate(-50%, -50%) rotateY(14deg) scale(0.9) rotateX(-252deg); }
-    100% { transform: translate(-50%, -50%) rotateY(14deg) scale(0.9) rotateX(-360deg); }
+    0% { transform: translate(-50%, -50%) rotateY(16deg) scale(0.9) rotateX(0deg); }
+    42% { transform: translate(-50%, -50%) rotateY(16deg) scale(0.9) rotateX(-260deg); }
+    64% { transform: translate(-50%, -50%) rotateY(16deg) scale(0.9) rotateX(-260deg); }
+    100% { transform: translate(-50%, -50%) rotateY(16deg) scale(0.9) rotateX(-360deg); }
 }
 
 @media (max-width: 1200px) {
@@ -276,27 +276,27 @@
     }
 
     .timeGraphic {
-        min-height: 156px;
+        min-height: 172px;
     }
 
     .reelViewport {
-        width: 280px;
-        height: 150px;
+        width: 320px;
+        height: 180px;
     }
 
     .reelSphere {
-        width: 210px;
-        height: 210px;
+        width: 240px;
+        height: 240px;
     }
 
     .reelBand {
-        width: 170px;
-        height: 170px;
+        width: 188px;
+        height: 188px;
     }
 
     .reelBand span {
-        transform: translate(-50%, -50%) rotateX(calc(var(--i) * var(--step))) translateZ(88px);
-        font-size: 1.35rem;
+        transform: translate(-50%, -50%) rotateX(calc(var(--i) * var(--step))) translateZ(96px);
+        font-size: 1.42rem;
     }
 }
 

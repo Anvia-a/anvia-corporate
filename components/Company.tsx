@@ -42,9 +42,17 @@ export default function Company() {
                         <div className={styles.visualPanel} aria-hidden="true">
                             <div className={styles.objectWrap}>
                                 <div className={styles.objectCore}>
-                                    <span className={`${styles.typoBand} ${styles.bandOne}`}>ANVIA ANVIA ANVIA ANVIA ANVIA</span>
-                                    <span className={`${styles.typoBand} ${styles.bandTwo}`}>TIME FLOW TIME FLOW TIME FLOW</span>
-                                    <span className={`${styles.typoBand} ${styles.bandThree}`}>SYNC CORE SYNC CORE SYNC CORE</span>
+                                    <div className={styles.coreMesh}>
+                                        <span className={`${styles.facet} ${styles.facetA}`} />
+                                        <span className={`${styles.facet} ${styles.facetB}`} />
+                                        <span className={`${styles.facet} ${styles.facetC}`} />
+                                        <span className={`${styles.facet} ${styles.facetD}`} />
+                                        <span className={`${styles.facet} ${styles.facetE}`} />
+                                    </div>
+
+                                    <span className={`${styles.typoBand} ${styles.bandOne}`}>ANVIA ・ TIME FLOW ・ DESIGN SYSTEM ・</span>
+                                    <span className={`${styles.typoBand} ${styles.bandTwo}`}>SIMPLICITY ・ USER FIRST ・ ANVIA ・</span>
+                                    <span className={`${styles.typoBand} ${styles.bandThree}`}>TIME FLOW ・ DESIGN SYSTEM ・ USER FIRST ・</span>
                                     <span className={styles.coreGlow} />
                                 </div>
 
