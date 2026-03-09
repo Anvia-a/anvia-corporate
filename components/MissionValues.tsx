@@ -56,11 +56,7 @@ export default function MissionValues() {
                                             <span className={styles.bubbleCategory}>{v.category}</span>
                                             <h4 className={styles.bubbleTitle}>{v.title}</h4>
                                             <p className={styles.bubbleText}>{v.text}</p>
-                                            <div className={styles.bubbleArrow}>
-                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                                                    <path d="M4 10h12M10 5l6 5-6 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                </svg>
-                                            </div>
+                                            <div className={styles.bubbleArrow} aria-hidden="true">⇀</div>
                                         </div>
                                     </div>
                                 ))}
@@ -72,3 +68,4 @@ export default function MissionValues() {
         </section>
     );
 }
+

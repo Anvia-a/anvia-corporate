@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
@@ -59,7 +59,7 @@ export default function PrivacyPolicy() {
                         </p>
 
                         <p style={{ marginBottom: '24px', lineHeight: 1.8 }}>
-                            株式会社Anvia 個人情報管理担当<br />
+                            株式会社Anvia<br />
                             所在地：東京都渋谷区円山町5-5 Navi渋谷V 3階
                         </p>
                     </div>
@@ -69,3 +69,4 @@ export default function PrivacyPolicy() {
         </>
     );
 }
+

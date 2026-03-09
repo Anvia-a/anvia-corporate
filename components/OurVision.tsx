@@ -15,11 +15,11 @@ export default function OurVision() {
                             <p className="section-label">Our Vision</p>
                             <h2 className="section-heading">
                                 <span className={styles.line}>私たちは、</span>
-                                <span className={styles.line}>時間は管理すべきリソースではなく、</span>
+                                <span className={styles.line}>時間は管理すべき</span>
+                                <span className={styles.line}>リソースではなく、</span>
                                 <span className={styles.line}>人生を形づくる</span>
-                                <span className={styles.line}>
-                                    <span className="gradient-text">最も重要な価値</span>だと考えています。
-                                </span>
+                                <span className={styles.line}>最も重要な価値だと</span>
+                                <span className={styles.line}>考えています。</span>
                             </h2>
                         </div>
                     </AnimateOnScroll>
@@ -70,3 +70,4 @@ export default function OurVision() {
         </section>
     );
 }
+

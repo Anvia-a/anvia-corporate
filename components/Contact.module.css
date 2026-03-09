@@ -16,7 +16,7 @@
 }
 
 .headerRow {
-    margin-bottom: 24px;
+    margin-bottom: 12px;
 }
 
 .viewPortContainer {
@@ -83,7 +83,7 @@
     border: 1px solid var(--color-gray-100);
     padding: 24px 28px;
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
-    margin-top: -28px;
+    margin-top: -72px;
 }
 
 .tabs {
@@ -270,4 +270,5 @@
         padding: 22px;
     }
 }
+
 

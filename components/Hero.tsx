@@ -42,7 +42,7 @@ function initCanvas(canvas: HTMLCanvasElement) {
             frequency: 0.0035 + Math.random() * 0.002,
             speed: 0.017 + Math.random() * 0.018,
             phase: Math.random() * Math.PI * 2,
-            alpha: 0.028 + Math.random() * 0.03,
+            alpha: 0.05 + Math.random() * 0.04,
             width: 0.65 + Math.random() * 0.75,
         };
     });
@@ -51,7 +51,7 @@ function initCanvas(canvas: HTMLCanvasElement) {
         const w = window.innerWidth;
         const h = window.innerHeight;
 
-        context.fillStyle = '#ffffff';
+        context.fillStyle = '#fcfdff';
         context.fillRect(0, 0, w, h);
 
         t += 1;
@@ -163,4 +163,5 @@ export default function Hero() {
         </section>
     );
 }
+
 
