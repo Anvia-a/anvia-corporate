@@ -29,10 +29,12 @@ export default function MissionValues() {
 
                         <div className={styles.missionRow}>
                             <AnimateOnScroll>
-                                <div className={styles.missionText}>
-                                    <p>人々の<span className={styles.accentWord}>時間</span>を<span className={styles.accentWord}>取り戻す</span>。<br />それが私たちのミッションです。</p>
-                                    <p>日常には、気づかないうちに多くの摩擦や無駄な作業が存在します。<br />私たちはテクノロジーとデザインの力でそれらを取り除き、<br />人々が<span className={styles.accentWord}>本当に価値のあること</span>に時間を使える世界をつくります。</p>
-                                    <p>Anviaは<br />“Make time work better.”<br />という思想のもと、<br />より<span className={styles.accentWord}>シンプル</span>で<span className={styles.accentWord}>軽やか</span>な体験を生み出すプロダクトを設計・開発しています。</p>
+                                <div className={styles.missionTextPanel}>
+                                    <div className={styles.missionText}>
+                                        <p className={styles.missionLead}>人々の<span className={styles.accentWord}>時間</span>を<span className={styles.accentWord}>取り戻す</span>。<br />それが私たちのミッションです。</p>
+                                        <p>日常には、気づかないうちに多くの摩擦や無駄な作業が存在します。<br />私たちはテクノロジーとデザインの力でそれらを取り除き、<br />人々が<span className={styles.accentWord}>本当に価値のあること</span>に時間を使える世界をつくります。</p>
+                                        <p>Anviaは<br />“Make time work better.”<br />という思想のもと、<br />より<span className={styles.accentWord}>シンプル</span>で<span className={styles.accentWord}>軽やか</span>な体験を生み出すプロダクトを設計・開発しています。</p>
+                                    </div>
                                 </div>
                             </AnimateOnScroll>
 
@@ -73,6 +75,15 @@ export default function MissionValues() {
                                 <p className="section-label">Values</p>
                             </div>
 
+                            <AnimateOnScroll delay={120}>
+                                <div className={styles.valuesStatement}>
+                                    <p>私たちの考え方は、<span className={styles.accentWord}>シンプル</span>です。</p>
+                                    <p>人の<span className={styles.accentWord}>時間</span>を尊重するプロダクトをつくること。</p>
+                                    <p>日常の<span className={styles.accentWord}>摩擦を減らす</span>設計を積み重ねること。</p>
+                                    <p>テクノロジーで、人に<span className={styles.accentWord}>時間を返す</span>こと。</p>
+                                </div>
+                            </AnimateOnScroll>
+
                             <div className={styles.valuesBubbles}>
                                 {[
                                     { category: 'Simplicity first', title: 'シンプルを第一に', text: '複雑さを増やすのではなく、本質的な価値だけを残す。私たちは不要な機能や装飾を削ぎ落とし、本当に意味のある体験だけを設計します。' },
@@ -90,15 +101,6 @@ export default function MissionValues() {
                                     </div>
                                 ))}
                             </div>
-
-                            <AnimateOnScroll delay={120}>
-                                <div className={styles.valuesStatement}>
-                                    <p>私たちの考え方は、<span className={styles.accentWord}>シンプル</span>です。</p>
-                                    <p>人の<span className={styles.accentWord}>時間</span>を尊重するプロダクトをつくること。</p>
-                                    <p>日常の<span className={styles.accentWord}>摩擦を減らす</span>設計を積み重ねること。</p>
-                                    <p>テクノロジーで、人に<span className={styles.accentWord}>時間を返す</span>こと。</p>
-                                </div>
-                            </AnimateOnScroll>
                         </div>
                     </div>
                 </AnimateOnScroll>

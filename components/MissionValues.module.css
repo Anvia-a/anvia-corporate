@@ -22,6 +22,34 @@
     margin-bottom: 44px;
 }
 
+.missionTextPanel {
+    position: relative;
+    border-radius: 22px;
+    border: 1px solid rgba(35, 52, 91, 0.08);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.72));
+    overflow: hidden;
+    transition: border-color 0.38s ease, box-shadow 0.38s ease, transform 0.38s ease;
+}
+
+.missionTextPanel::before {
+    content: '';
+    position: absolute;
+    inset: -24%;
+    background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(99, 215, 255, 0.26), rgba(77, 154, 255, 0.14) 42%, rgba(255, 255, 255, 0) 70%);
+    opacity: 0;
+    transition: opacity 0.34s ease;
+    pointer-events: none;
+}
+
+.missionTextPanel:hover {
+    border-color: rgba(74, 144, 255, 0.26);
+    box-shadow: 0 14px 28px rgba(61, 111, 195, 0.1);
+}
+
+.missionTextPanel:hover::before {
+    opacity: 1;
+}
+
 .missionText {
     display: flex;
     flex-direction: column;
@@ -32,10 +60,19 @@
     max-width: 720px;
     position: relative;
     z-index: 2;
+    padding: 26px 24px;
 }
 
 .missionText p {
     margin: 0;
+}
+
+.missionLead {
+    font-size: clamp(1.62rem, 2.35vw, 2.05rem);
+    line-height: 1.45;
+    font-weight: 520;
+    letter-spacing: -0.01em;
+    color: var(--color-gray-800);
 }
 
 .accentWord {
@@ -144,13 +181,27 @@
     flex-direction: column;
 }
 
+.valuesStatement {
+    margin-top: 0;
+    margin-bottom: 18px;
+    max-width: 760px;
+    color: var(--color-gray-600);
+    font-size: 1rem;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+}
+
+.valuesStatement p {
+    margin: 0;
+}
+
 .valuesBubbles {
     display: flex;
     position: relative;
     width: 100%;
     justify-content: center;
     align-items: center;
-    padding: 26px 8px 20px;
+    padding: 8px 8px 20px;
 }
 
 .valueBubble {
@@ -249,19 +300,6 @@
     transform: translateX(2px);
 }
 
-.valuesStatement {
-    margin-top: 8px;
-    max-width: 760px;
-    color: var(--color-gray-600);
-    font-size: 1rem;
-    line-height: 1.8;
-    letter-spacing: 0.01em;
-}
-
-.valuesStatement p {
-    margin: 0;
-}
-
 @keyframes sphereYaw {
     from { transform: translate(-50%, -50%) rotateY(0deg); }
     to { transform: translate(-50%, -50%) rotateY(360deg); }
@@ -341,6 +379,11 @@
     .missionText {
         font-size: 1rem;
         margin-bottom: 0;
+        padding: 20px 18px;
+    }
+
+    .missionLead {
+        font-size: 1.4rem;
     }
 
     .valuesStatement {

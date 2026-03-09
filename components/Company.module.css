@@ -67,199 +67,200 @@
     width: 100%;
     height: 100%;
     min-height: 360px;
+    transform-style: preserve-3d;
 }
 
 .layer {
     position: absolute;
-    border-radius: 42px;
-    opacity: 0.56;
-    mix-blend-mode: multiply;
-    background: linear-gradient(140deg, rgba(190, 242, 255, 0.72), rgba(96, 165, 250, 0.62) 50%, rgba(34, 211, 238, 0.52));
-    box-shadow: 0 14px 34px rgba(56, 136, 219, 0.16);
-    backdrop-filter: blur(1px);
+    border-radius: 999px;
+    opacity: 0.54;
+    background: linear-gradient(120deg, rgba(198, 246, 255, 0.28), rgba(95, 177, 255, 0.42) 40%, rgba(36, 192, 219, 0.34));
+    filter: blur(0.2px);
+    box-shadow: 0 12px 30px rgba(53, 119, 202, 0.14);
 }
 
 .layerA {
-    left: 46%;
-    top: 18%;
-    width: 180px;
-    height: 104px;
-    transform: rotate(-18deg);
-    animation: layerFloatA 8.8s ease-in-out infinite;
+    width: 280px;
+    height: 34px;
+    left: 38%;
+    top: 24%;
+    transform: rotate(-16deg);
+    animation: streamA 10.8s ease-in-out infinite;
 }
 
 .layerB {
-    left: 56%;
-    top: 30%;
-    width: 210px;
-    height: 118px;
-    transform: rotate(12deg);
-    animation: layerFloatB 9.6s ease-in-out infinite;
+    width: 248px;
+    height: 28px;
+    left: 50%;
+    top: 33%;
+    transform: rotate(10deg);
+    animation: streamB 9.6s ease-in-out infinite;
 }
 
 .layerC {
-    left: 38%;
-    top: 36%;
-    width: 190px;
-    height: 110px;
-    transform: rotate(-6deg);
-    animation: layerFloatC 8.2s ease-in-out infinite;
+    width: 312px;
+    height: 30px;
+    left: 34%;
+    top: 42%;
+    transform: rotate(-8deg);
+    animation: streamC 11.2s ease-in-out infinite;
 }
 
 .layerD {
-    left: 52%;
-    top: 46%;
-    width: 220px;
-    height: 122px;
-    transform: rotate(-14deg);
-    animation: layerFloatD 10.1s ease-in-out infinite;
+    width: 260px;
+    height: 26px;
+    left: 48%;
+    top: 51%;
+    transform: rotate(18deg);
+    animation: streamD 10.2s ease-in-out infinite;
 }
 
 .layerE {
-    left: 34%;
-    top: 54%;
-    width: 170px;
-    height: 98px;
-    transform: rotate(17deg);
-    animation: layerFloatE 9.2s ease-in-out infinite;
+    width: 292px;
+    height: 32px;
+    left: 36%;
+    top: 60%;
+    transform: rotate(-12deg);
+    animation: streamE 11.8s ease-in-out infinite;
 }
 
 .layerF {
-    left: 58%;
-    top: 60%;
-    width: 188px;
-    height: 104px;
-    transform: rotate(8deg);
-    animation: layerFloatF 8.6s ease-in-out infinite;
+    width: 236px;
+    height: 24px;
+    left: 54%;
+    top: 68%;
+    transform: rotate(14deg);
+    animation: streamF 9.8s ease-in-out infinite;
 }
 
 .particle {
     position: absolute;
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 999px;
-    background: radial-gradient(circle at 35% 35%, #f0fdff 0%, #6ee7ff 45%, #3b82f6 100%);
-    box-shadow: 0 0 10px rgba(99, 222, 255, 0.62), 0 0 22px rgba(56, 136, 219, 0.24);
+    background: radial-gradient(circle at 35% 35%, #f1fdff 0%, #7be6ff 44%, #3b82f6 100%);
+    box-shadow: 0 0 10px rgba(93, 222, 255, 0.52);
+    opacity: 0.56;
 }
 
 .particleA {
-    left: 42%;
-    top: 26%;
-    animation: particleDriftA 8.4s ease-in-out infinite;
+    left: 44%;
+    top: 20%;
+    animation: particleA 8.8s ease-in-out infinite;
 }
 
 .particleB {
-    left: 74%;
-    top: 32%;
-    animation: particleDriftB 9.2s ease-in-out infinite;
+    left: 72%;
+    top: 30%;
+    animation: particleB 9.6s ease-in-out infinite;
 }
 
 .particleC {
-    left: 66%;
-    top: 70%;
-    animation: particleDriftC 8.8s ease-in-out infinite;
+    left: 64%;
+    top: 56%;
+    animation: particleC 10.2s ease-in-out infinite;
 }
 
 .particleD {
-    left: 36%;
+    left: 40%;
     top: 66%;
-    animation: particleDriftD 10s ease-in-out infinite;
+    animation: particleD 9.2s ease-in-out infinite;
 }
 
 .particleE {
-    left: 82%;
-    top: 52%;
-    animation: particleDriftE 9.4s ease-in-out infinite;
+    left: 78%;
+    top: 62%;
+    animation: particleE 10.4s ease-in-out infinite;
 }
 
 .wisp {
     position: absolute;
     border-radius: 999px;
-    border: 1px solid rgba(89, 184, 255, 0.2);
-    opacity: 0.5;
+    border: 1px solid rgba(102, 191, 255, 0.18);
+    opacity: 0.42;
 }
 
 .wispA {
-    left: 44%;
-    top: 40%;
-    width: 240px;
-    height: 108px;
-    transform: rotate(-20deg);
-    animation: wispRotateA 12s linear infinite;
+    width: 280px;
+    height: 120px;
+    left: 40%;
+    top: 38%;
+    transform: rotate(-12deg);
+    animation: wispA 13s linear infinite;
 }
 
 .wispB {
-    left: 48%;
-    top: 42%;
-    width: 212px;
-    height: 96px;
-    transform: rotate(18deg);
-    animation: wispRotateB 10.6s linear infinite;
+    width: 240px;
+    height: 104px;
+    left: 52%;
+    top: 46%;
+    transform: rotate(16deg);
+    animation: wispB 11.2s linear infinite;
 }
 
-@keyframes layerFloatA {
-    0%, 100% { transform: rotate(-18deg) translate3d(0, 0, 0); }
-    50% { transform: rotate(-12deg) translate3d(-8px, -12px, 0); }
+@keyframes streamA {
+    0%, 100% { transform: rotate(-16deg) translate3d(0, 0, 0); }
+    50% { transform: rotate(-11deg) translate3d(-12px, -10px, 0); }
 }
 
-@keyframes layerFloatB {
-    0%, 100% { transform: rotate(12deg) translate3d(0, 0, 0); }
-    50% { transform: rotate(16deg) translate3d(10px, -8px, 0); }
+@keyframes streamB {
+    0%, 100% { transform: rotate(10deg) translate3d(0, 0, 0); }
+    50% { transform: rotate(14deg) translate3d(10px, -8px, 0); }
 }
 
-@keyframes layerFloatC {
-    0%, 100% { transform: rotate(-6deg) translate3d(0, 0, 0); }
-    50% { transform: rotate(-2deg) translate3d(-10px, 10px, 0); }
+@keyframes streamC {
+    0%, 100% { transform: rotate(-8deg) translate3d(0, 0, 0); }
+    50% { transform: rotate(-3deg) translate3d(-14px, 8px, 0); }
 }
 
-@keyframes layerFloatD {
-    0%, 100% { transform: rotate(-14deg) translate3d(0, 0, 0); }
-    50% { transform: rotate(-9deg) translate3d(12px, -10px, 0); }
+@keyframes streamD {
+    0%, 100% { transform: rotate(18deg) translate3d(0, 0, 0); }
+    50% { transform: rotate(13deg) translate3d(12px, -9px, 0); }
 }
 
-@keyframes layerFloatE {
-    0%, 100% { transform: rotate(17deg) translate3d(0, 0, 0); }
-    50% { transform: rotate(11deg) translate3d(-8px, 9px, 0); }
+@keyframes streamE {
+    0%, 100% { transform: rotate(-12deg) translate3d(0, 0, 0); }
+    50% { transform: rotate(-7deg) translate3d(-10px, 9px, 0); }
 }
 
-@keyframes layerFloatF {
-    0%, 100% { transform: rotate(8deg) translate3d(0, 0, 0); }
-    50% { transform: rotate(12deg) translate3d(8px, -8px, 0); }
+@keyframes streamF {
+    0%, 100% { transform: rotate(14deg) translate3d(0, 0, 0); }
+    50% { transform: rotate(9deg) translate3d(10px, -8px, 0); }
 }
 
-@keyframes particleDriftA {
-    0%, 100% { transform: translateY(0); opacity: 0.55; }
-    50% { transform: translateY(-10px); opacity: 0.82; }
-}
-
-@keyframes particleDriftB {
+@keyframes particleA {
     0%, 100% { transform: translateY(0); opacity: 0.48; }
-    50% { transform: translateY(9px); opacity: 0.76; }
+    50% { transform: translateY(-10px); opacity: 0.72; }
 }
 
-@keyframes particleDriftC {
-    0%, 100% { transform: translateY(0); opacity: 0.5; }
-    50% { transform: translateY(-8px); opacity: 0.74; }
-}
-
-@keyframes particleDriftD {
+@keyframes particleB {
     0%, 100% { transform: translateY(0); opacity: 0.44; }
-    50% { transform: translateY(8px); opacity: 0.72; }
+    50% { transform: translateY(9px); opacity: 0.68; }
 }
 
-@keyframes particleDriftE {
+@keyframes particleC {
     0%, 100% { transform: translateY(0); opacity: 0.42; }
-    50% { transform: translateY(-9px); opacity: 0.68; }
+    50% { transform: translateY(-8px); opacity: 0.66; }
 }
 
-@keyframes wispRotateA {
-    from { transform: rotate(-20deg) rotateZ(0deg); }
-    to { transform: rotate(-20deg) rotateZ(360deg); }
+@keyframes particleD {
+    0%, 100% { transform: translateY(0); opacity: 0.4; }
+    50% { transform: translateY(8px); opacity: 0.62; }
 }
 
-@keyframes wispRotateB {
-    from { transform: rotate(18deg) rotateZ(360deg); }
-    to { transform: rotate(18deg) rotateZ(0deg); }
+@keyframes particleE {
+    0%, 100% { transform: translateY(0); opacity: 0.36; }
+    50% { transform: translateY(-9px); opacity: 0.58; }
+}
+
+@keyframes wispA {
+    from { transform: rotate(-12deg) rotateZ(0deg); }
+    to { transform: rotate(-12deg) rotateZ(360deg); }
+}
+
+@keyframes wispB {
+    from { transform: rotate(16deg) rotateZ(360deg); }
+    to { transform: rotate(16deg) rotateZ(0deg); }
 }
 
 @media (max-width: 1000px) {
@@ -274,15 +275,15 @@
     }
 
     .layerA {
-        left: 36%;
+        left: 30%;
     }
 
     .layerB {
-        left: 52%;
+        left: 44%;
     }
 
     .layerD {
-        left: 48%;
+        left: 42%;
     }
 }
 
