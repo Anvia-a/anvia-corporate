@@ -56,14 +56,14 @@ function initCanvas(canvas: HTMLCanvasElement) {
     window.addEventListener('mousemove', onMouseMove, { passive: true });
     window.addEventListener('mouseleave', onMouseLeave);
 
-    const lineCount = 56;
+    const lineCount = 80;
     const lines: Line[] = Array.from({ length: lineCount }, (_, i) => {
         const progress = i / (lineCount - 1);
         const dense = Math.pow(progress, 1.7);
-        const lowerCluster = Math.random() < 0.72;
+        const lowerCluster = Math.random() < 0.74;
         const spread = lowerCluster
-            ? 14 + Math.random() * 210
-            : -220 + Math.random() * 170;
+            ? 8 + Math.random() * 232
+            : -238 + Math.random() * 186;
 
         return {
             slope: 0.28 + Math.random() * 0.2,
@@ -71,8 +71,8 @@ function initCanvas(canvas: HTMLCanvasElement) {
             phase: Math.random() * Math.PI * 2,
             speed: 0.018 + Math.random() * 0.02,
             amplitude: 4 + Math.random() * 10,
-            alpha: 0.06 + dense * 0.16,
-            width: 0.65 + Math.random() * 0.95,
+            alpha: 0.08 + dense * 0.18,
+            width: 0.7 + Math.random() * 1.0,
         };
     });
 
@@ -114,14 +114,14 @@ function initCanvas(canvas: HTMLCanvasElement) {
             context.lineWidth = line.width;
 
             const gradient = context.createLinearGradient(0, h, w, h * 0.1);
-            gradient.addColorStop(0, `hsla(${hue}, 52%, 78%, ${(line.alpha + boost) * 0.2})`);
-            gradient.addColorStop(0.56, `hsla(${hue}, 74%, 66%, ${(line.alpha + boost) * 0.8})`);
-            gradient.addColorStop(1, `hsla(${hue + 8}, 78%, 58%, ${line.alpha + boost})`);
+            gradient.addColorStop(0, `hsla(${hue}, 56%, 74%, ${(line.alpha + boost) * 0.28})`);
+            gradient.addColorStop(0.56, `hsla(${hue}, 78%, 62%, ${(line.alpha + boost) * 0.9})`);
+            gradient.addColorStop(1, `hsla(${hue + 8}, 80%, 56%, ${line.alpha + boost})`);
             context.strokeStyle = gradient;
 
-            for (let x = -320; x <= w + 120; x += 6) {
+            for (let x = -400; x <= w + 200; x += 6) {
                 const y = sampleY(line, x, w, h, tick);
-                if (x === -320) context.moveTo(x, y);
+                if (x === -400) context.moveTo(x, y);
                 else context.lineTo(x, y);
             }
 

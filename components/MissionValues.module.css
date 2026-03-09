@@ -50,9 +50,9 @@
 
 .reelViewport {
     position: relative;
-    width: 520px;
-    height: 300px;
-    perspective: 1280px;
+    width: 560px;
+    height: 320px;
+    perspective: 1320px;
     mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%);
 }
@@ -83,30 +83,30 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 420px;
-    height: 420px;
+    width: 430px;
+    height: 430px;
     transform: translate(-50%, -50%);
     transform-style: preserve-3d;
-    animation: sphereYaw 4.4s linear infinite;
+    animation: sphereYaw 4.2s linear infinite;
 }
 
 .reelBand {
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 332px;
-    height: 332px;
+    width: 336px;
+    height: 336px;
     transform-style: preserve-3d;
 }
 
 .reelBand span {
-    --step: 18deg;
+    --step: 10deg;
     position: absolute;
     left: 50%;
     top: 50%;
     transform-style: preserve-3d;
-    transform: translate(-50%, -50%) rotateX(calc(var(--i) * var(--step))) translateZ(166px);
-    font-size: 2.2rem;
+    transform: translate(-50%, -50%) rotateX(calc(var(--i) * var(--step))) translateZ(170px);
+    font-size: 2.05rem;
     font-weight: 700;
     color: #0f172a;
     letter-spacing: -0.02em;
@@ -117,13 +117,13 @@
 }
 
 .reelBandA {
-    transform: translate(-50%, -50%) rotateY(-16deg);
-    animation: reelSpinA 0.9s linear infinite;
+    transform: translate(-50%, -50%) rotateY(-20deg) rotateZ(12deg);
+    animation: reelSpinA 0.94s linear infinite;
 }
 
 .reelBandB {
-    transform: translate(-50%, -50%) rotateY(16deg) scale(0.9);
-    animation: reelSpinB 1.02s linear infinite;
+    transform: translate(-50%, -50%) rotateY(20deg) rotateZ(-14deg) scale(0.92);
+    animation: reelSpinB 1.08s linear infinite;
 }
 
 .valuesBlock {
@@ -236,23 +236,36 @@
     transform: translateX(2px);
 }
 
+.valuesStatement {
+    margin-top: 28px;
+    max-width: 760px;
+    color: var(--color-gray-600);
+    font-size: 1rem;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+}
+
+.valuesStatement p {
+    margin: 0;
+}
+
 @keyframes sphereYaw {
     from { transform: translate(-50%, -50%) rotateY(0deg); }
     to { transform: translate(-50%, -50%) rotateY(360deg); }
 }
 
 @keyframes reelSpinA {
-    0% { transform: translate(-50%, -50%) rotateY(-16deg) rotateX(0deg); }
-    40% { transform: translate(-50%, -50%) rotateY(-16deg) rotateX(-250deg); }
-    62% { transform: translate(-50%, -50%) rotateY(-16deg) rotateX(-250deg); }
-    100% { transform: translate(-50%, -50%) rotateY(-16deg) rotateX(-360deg); }
+    0% { transform: translate(-50%, -50%) rotateY(-20deg) rotateZ(12deg) rotateX(0deg); }
+    36% { transform: translate(-50%, -50%) rotateY(26deg) rotateZ(72deg) rotateX(-250deg); }
+    57% { transform: translate(-50%, -50%) rotateY(26deg) rotateZ(72deg) rotateX(-250deg); }
+    100% { transform: translate(-50%, -50%) rotateY(-20deg) rotateZ(132deg) rotateX(-360deg); }
 }
 
 @keyframes reelSpinB {
-    0% { transform: translate(-50%, -50%) rotateY(16deg) scale(0.9) rotateX(0deg); }
-    42% { transform: translate(-50%, -50%) rotateY(16deg) scale(0.9) rotateX(-260deg); }
-    64% { transform: translate(-50%, -50%) rotateY(16deg) scale(0.9) rotateX(-260deg); }
-    100% { transform: translate(-50%, -50%) rotateY(16deg) scale(0.9) rotateX(-360deg); }
+    0% { transform: translate(-50%, -50%) rotateY(20deg) rotateZ(-14deg) scale(0.92) rotateX(0deg); }
+    38% { transform: translate(-50%, -50%) rotateY(-24deg) rotateZ(-80deg) scale(0.92) rotateX(-266deg); }
+    59% { transform: translate(-50%, -50%) rotateY(-24deg) rotateZ(-80deg) scale(0.92) rotateX(-266deg); }
+    100% { transform: translate(-50%, -50%) rotateY(20deg) rotateZ(-142deg) scale(0.92) rotateX(-360deg); }
 }
 
 @media (max-width: 1200px) {
@@ -308,6 +321,11 @@
     .missionText {
         font-size: 1rem;
         margin-bottom: 0;
+    }
+
+    .valuesStatement {
+        font-size: 0.95rem;
+        line-height: 1.75;
     }
 
     .valueBubble {

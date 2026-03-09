@@ -1,12 +1,20 @@
 ﻿'use client';
 
+import { useMemo } from 'react';
 import AnimateOnScroll from './AnimateOnScroll';
 import styles from './MissionValues.module.css';
 
-const timeMarks = ['08:30', '09:12', '10:45', '11:38', '12:05', '13:47', '14:20', '16:10', '18:55', '21:05'];
+const timeMarks = ['08:30', '09:12', '10:45', '11:38', '12:05', '13:47', '14:20', '16:10', '18:55', '21:05', '22:40', '23:10', '00:30'];
 
 export default function MissionValues() {
-    const ringValues = [...timeMarks, ...timeMarks];
+    const ringValues = [...timeMarks, ...timeMarks, ...timeMarks];
+    const spinConfig = useMemo(() => ({
+        sphere: `${3.6 + Math.random() * 1.2}s`,
+        bandA: `${0.86 + Math.random() * 0.26}s`,
+        bandB: `${0.92 + Math.random() * 0.32}s`,
+        delayA: `${-(Math.random() * 1.8).toFixed(2)}s`,
+        delayB: `${-(Math.random() * 1.8).toFixed(2)}s`,
+    }), []);
 
     return (
         <section id="mission" className={`section ${styles.missionValues}`}>
@@ -28,13 +36,19 @@ export default function MissionValues() {
 
                             <div className={styles.timeGraphic} aria-hidden="true">
                                 <div className={styles.reelViewport}>
-                                    <div className={styles.reelSphere}>
-                                        <div className={`${styles.reelBand} ${styles.reelBandA}`}>
+                                    <div className={styles.reelSphere} style={{ animationDuration: spinConfig.sphere } as React.CSSProperties}>
+                                        <div
+                                            className={`${styles.reelBand} ${styles.reelBandA}`}
+                                            style={{ animationDuration: spinConfig.bandA, animationDelay: spinConfig.delayA } as React.CSSProperties}
+                                        >
                                             {ringValues.map((value, i) => (
                                                 <span key={`a-${value}-${i}`} style={{ '--i': i } as React.CSSProperties}>{value}</span>
                                             ))}
                                         </div>
-                                        <div className={`${styles.reelBand} ${styles.reelBandB}`}>
+                                        <div
+                                            className={`${styles.reelBand} ${styles.reelBandB}`}
+                                            style={{ animationDuration: spinConfig.bandB, animationDelay: spinConfig.delayB } as React.CSSProperties}
+                                        >
                                             {ringValues.map((value, i) => (
                                                 <span key={`b-${value}-${i}`} style={{ '--i': i } as React.CSSProperties}>{value}</span>
                                             ))}
@@ -66,6 +80,15 @@ export default function MissionValues() {
                                     </div>
                                 ))}
                             </div>
+
+                            <AnimateOnScroll delay={120}>
+                                <div className={styles.valuesStatement}>
+                                    <p>Our approach is simple.</p>
+                                    <p>Build products that respect people&apos;s time.</p>
+                                    <p>Design systems that remove friction from everyday life.</p>
+                                    <p>Use technology to return time to people.</p>
+                                </div>
+                            </AnimateOnScroll>
                         </div>
                     </div>
                 </AnimateOnScroll>
