@@ -5,10 +5,10 @@ import styles from './Company.module.css';
 
 const companyInfo = [
     { label: '会社名', value: '株式会社Anvia' },
-    { label: '代表者', value: '安藤 大輔' },
+    { label: '代表取締役', value: '田代 彩也' },
     { label: '設立', value: '2025年12月' },
-    { label: '所在地', value: '東京都渋谷区神南1-5-5 Navi神南V 3F' },
-    { label: '事業領域', value: 'プロダクト開発・サービス改善支援' },
+    { label: '所在地', value: '東京都渋谷区円山町5-5 Navi渋谷V 3階' },
+    { label: '事業内容', value: 'プロダクト開発・サービス運営' },
 ];
 
 export default function Company() {
@@ -40,18 +40,14 @@ export default function Company() {
 
                     <AnimateOnScroll delay={180}>
                         <div className={styles.visualPanel} aria-hidden="true">
-                            <div className={styles.ringOne} />
-                            <div className={styles.ringTwo} />
-                            <div className={styles.nodeCore} />
-                            <span className={`${styles.node} ${styles.nodeA}`} />
-                            <span className={`${styles.node} ${styles.nodeB}`} />
-                            <span className={`${styles.node} ${styles.nodeC}`} />
-                            <span className={`${styles.node} ${styles.nodeD}`} />
-                            <svg className={styles.lineLayer} viewBox="0 0 280 280" fill="none">
-                                <path d="M140 40 L220 96 L200 206 L80 236 L44 132 Z" />
-                                <path d="M140 40 L80 236" />
-                                <path d="M220 96 L44 132" />
-                            </svg>
+                            <div className={styles.prismCore} />
+                            <div className={styles.prismFaceA} />
+                            <div className={styles.prismFaceB} />
+                            <div className={styles.prismFaceC} />
+                            <div className={styles.orbitRing} />
+                            <div className={styles.sparkA} />
+                            <div className={styles.sparkB} />
+                            <div className={styles.gridGlow} />
                         </div>
                     </AnimateOnScroll>
                 </div>

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import AnimateOnScroll from './AnimateOnScroll';
 import styles from './MissionValues.module.css';
@@ -12,13 +12,32 @@ export default function MissionValues() {
                         <div className={styles.sectionHeader}>
                             <p className="section-label">Mission</p>
                         </div>
-                        <AnimateOnScroll>
-                            <div className={styles.missionText}>
-                                <p>人々の時間を取り戻す。<br />それが私たちのミッションです。</p>
-                                <p>日常には、気づかないうちに多くの摩擦や無駄な作業が存在します。<br />私たちはテクノロジーとデザインの力でそれらを取り除き、<br />人々が本当に価値のあることに時間を使える世界をつくります。</p>
-                                <p>Anviaは<br />“Make time work better.”<br />という思想のもと、<br />よりシンプルで軽やかな体験を生み出すプロダクトを設計・開発しています。</p>
+
+                        <div className={styles.missionRow}>
+                            <AnimateOnScroll>
+                                <div className={styles.missionText}>
+                                    <p>人々の時間を取り戻す。<br />それが私たちのミッションです。</p>
+                                    <p>日常には、気づかないうちに多くの摩擦や無駄な作業が存在します。<br />私たちはテクノロジーとデザインの力でそれらを取り除き、<br />人々が本当に価値のあることに時間を使える世界をつくります。</p>
+                                    <p>Anviaは<br />“Make time work better.”<br />という思想のもと、<br />よりシンプルで軽やかな体験を生み出すプロダクトを設計・開発しています。</p>
+                                </div>
+                            </AnimateOnScroll>
+
+                            <div className={styles.timeGraphic} aria-hidden="true">
+                                <div className={styles.timeLayerA}>
+                                    <span>08:30</span>
+                                    <span>10:45</span>
+                                    <span>14:20</span>
+                                    <span>21:05</span>
+                                </div>
+                                <div className={styles.timeLayerB}>
+                                    <span>09:12</span>
+                                    <span>11:38</span>
+                                    <span>16:10</span>
+                                    <span>23:47</span>
+                                </div>
+                                <div className={styles.timeLine} />
                             </div>
-                        </AnimateOnScroll>
+                        </div>
 
                         <div className={styles.valuesBlock}>
                             <div className={styles.sectionHeader}>
@@ -37,7 +56,11 @@ export default function MissionValues() {
                                             <span className={styles.bubbleCategory}>{v.category}</span>
                                             <h4 className={styles.bubbleTitle}>{v.title}</h4>
                                             <p className={styles.bubbleText}>{v.text}</p>
-                                            <div className={styles.bubbleArrow}>→</div>
+                                            <div className={styles.bubbleArrow}>
+                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                                                    <path d="M4 10h12M10 5l6 5-6 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                </svg>
+                                            </div>
                                         </div>
                                     </div>
                                 ))}

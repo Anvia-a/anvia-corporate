@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import AnimateOnScroll from './AnimateOnScroll';
@@ -22,7 +22,6 @@ export default function Contact() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setLoading(true);
-        // Simulate async submit
         await new Promise((r) => setTimeout(r, 1200));
         setLoading(false);
         setSubmitted(true);
@@ -30,22 +29,18 @@ export default function Contact() {
 
     return (
         <section id="contact" className={`section ${styles.contact}`}>
-            {/* bg */}
             <div className={styles.bgBlob} />
 
             <div className="container">
                 <AnimateOnScroll>
                     <div className={styles.headerRow}>
                         <p className="section-label">Contact</p>
-                        <h2 className="section-heading">
-                            お問い合わせ
-                        </h2>
+                        <h2 className="section-heading">お問い合わせ</h2>
                     </div>
                 </AnimateOnScroll>
 
                 <div className={styles.viewPortContainer}>
                     <div className={styles.grid}>
-                        {/* ── Left info panel ── */}
                         <AnimateOnScroll delay={100}>
                             <div className={styles.infoPanel}>
                                 <p className={styles.infoLead}>
@@ -71,10 +66,8 @@ export default function Contact() {
                             </div>
                         </AnimateOnScroll>
 
-                        {/* ── Right form panel ── */}
                         <AnimateOnScroll delay={200}>
                             <div className={styles.formPanel}>
-                                {/* Tab switch */}
                                 <div className={styles.tabs}>
                                     <button
                                         className={`${styles.tab} ${tab === 'individual' ? styles.tabActive : ''}`}
@@ -145,7 +138,6 @@ export default function Contact() {
     );
 }
 
-/* ── Sub-components ───────────────────────────── */
 function FormField({
     label,
     name,

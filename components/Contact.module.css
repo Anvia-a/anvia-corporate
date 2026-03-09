@@ -2,8 +2,7 @@
     background: var(--color-gray-50);
     position: relative;
     overflow: hidden;
-    padding: 18px 0 52px;
-    /* Pull up by reducing top padding */
+    padding: 44px 0 68px;
 }
 
 .bgBlob {
@@ -17,21 +16,25 @@
 }
 
 .headerRow {
-    margin-bottom: 14px;
+    margin-bottom: 24px;
+}
+
+.viewPortContainer {
+    position: relative;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: 1fr 1.3fr;
-    gap: 30px;
+    grid-template-columns: 1fr 1.24fr;
+    gap: 40px;
     align-items: flex-start;
 }
 
-/* 笏笏 Info Panel 笏笏笏笏笏笏笏笏笏笏笏笏笏笏笏笏笏笏笏 */
 .infoPanel {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    padding-top: 6px;
 }
 
 .infoLead {
@@ -40,52 +43,6 @@
     line-height: 1.75;
 }
 
-.infoItems {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.infoItem {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-}
-
-.infoIcon {
-    width: 36px;
-    height: 36px;
-    border-radius: var(--radius-md);
-    background: var(--color-white);
-    border: 1px solid var(--color-gray-100);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-gray-500);
-    flex-shrink: 0;
-}
-
-.infoLabel {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--color-gray-400);
-    margin-bottom: 2px;
-}
-
-.infoValue {
-    font-size: 0.9375rem;
-    color: var(--color-gray-800, #1f2937);
-    font-weight: 450;
-    transition: color var(--transition-fast);
-}
-
-.infoValue:hover {
-    color: var(--color-violet);
-}
-
-/* 笏笏 Socials 笏笏笏笏笏笏笏笏笏笏笏笏笏笏笏笏笏笏笏笏笏笏 */
 .socials {
     padding-top: 20px;
     border-top: 1px solid var(--color-gray-100);
@@ -103,7 +60,7 @@
 .socialLinks {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
 }
 
 .socialLink {
@@ -120,29 +77,26 @@
     color: var(--color-violet);
 }
 
-/* 笏笏 Form Panel 笏笏笏笏笏笏笏笏笏笏笏笏笏笏笏笏笏笏笏 */
 .formPanel {
     background: var(--color-white);
     border-radius: var(--radius-xl);
     border: 1px solid var(--color-gray-100);
-    padding: 12px 18px;
-    /* Reduced from 20px 24px */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    padding: 24px 28px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
+    margin-top: -28px;
 }
 
-/* Tabs */
 .tabs {
     display: flex;
     background: var(--color-gray-100);
     border-radius: var(--radius-full);
     padding: 3px;
-    margin-bottom: 14px;
-    /* Reduced from 28px */
+    margin-bottom: 20px;
     width: fit-content;
 }
 
 .tab {
-    padding: 8px 22px;
+    padding: 9px 22px;
     border-radius: var(--radius-full);
     font-size: 0.875rem;
     font-weight: 500;
@@ -157,23 +111,22 @@
     box-shadow: var(--shadow-sm);
 }
 
-/* Form */
 .form {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 10px;
 }
 
 .fieldRow {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 14px;
 }
 
 .field {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
 }
 
 .label {
@@ -190,7 +143,7 @@
 
 .input {
     width: 100%;
-    padding: 10px 14px;
+    padding: 11px 14px;
     border-radius: var(--radius-md);
     border: 1.5px solid var(--color-gray-200);
     background: var(--color-white);
@@ -212,8 +165,7 @@
 
 .textarea {
     resize: vertical;
-    min-height: 54px;
-    /* Reduced from 80px */
+    min-height: 84px;
 }
 
 .selectWrap {
@@ -240,7 +192,7 @@
     justify-content: center;
     padding: 14px !important;
     font-size: 1rem !important;
-    margin-top: 4px;
+    margin-top: 6px;
 }
 
 .spinner {
@@ -259,7 +211,6 @@
     }
 }
 
-/* Success */
 .success {
     text-align: center;
     padding: 48px 20px;
@@ -299,10 +250,14 @@
     margin-top: 8px;
 }
 
-/* Responsive */
 @media (max-width: 960px) {
     .grid {
         grid-template-columns: 1fr;
+        gap: 26px;
+    }
+
+    .formPanel {
+        margin-top: 0;
     }
 }
 
@@ -312,6 +267,7 @@
     }
 
     .formPanel {
-        padding: 24px;
+        padding: 22px;
     }
 }
+

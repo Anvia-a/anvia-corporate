@@ -10,7 +10,7 @@
 .infoWrapper {
     width: 100%;
     display: grid;
-    grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.9fr);
+    grid-template-columns: minmax(0, 1.38fr) minmax(300px, 0.95fr);
     gap: 48px;
     align-items: stretch;
 }
@@ -58,87 +58,184 @@
 .visualPanel {
     position: relative;
     border-radius: 28px;
-    border: 1px solid var(--color-gray-100);
-    background: linear-gradient(160deg, #fafcff 0%, #f4f8ff 45%, #f8fafc 100%);
-    min-height: 320px;
+    border: 1px solid rgba(14, 116, 144, 0.12);
+    background: linear-gradient(165deg, #f7fbff 0%, #ecf7ff 46%, #eef9ff 100%);
+    min-height: 340px;
     overflow: hidden;
 }
 
-.ringOne,
-.ringTwo {
+.prismCore,
+.prismFaceA,
+.prismFaceB,
+.prismFaceC {
     position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-style: preserve-3d;
+}
+
+.prismCore {
+    width: 120px;
+    height: 120px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(56, 189, 248, 0.7), rgba(37, 99, 235, 0.65));
+    filter: blur(0.2px);
+    animation: floatCore 7.5s ease-in-out infinite;
+}
+
+.prismFaceA,
+.prismFaceB,
+.prismFaceC {
+    width: 170px;
+    height: 170px;
+    border-radius: 20px;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    background: linear-gradient(140deg, rgba(255, 255, 255, 0.22), rgba(56, 189, 248, 0.14));
+    backdrop-filter: blur(1px);
+}
+
+.prismFaceA {
+    transform: translate(-50%, -50%) rotate(24deg);
+    animation: driftA 8.2s ease-in-out infinite;
+}
+
+.prismFaceB {
+    transform: translate(-50%, -50%) rotate(-16deg);
+    animation: driftB 9.4s ease-in-out infinite;
+}
+
+.prismFaceC {
+    transform: translate(-50%, -50%) rotate(58deg);
+    animation: driftC 10.3s ease-in-out infinite;
+}
+
+.orbitRing {
+    position: absolute;
+    inset: 22% 18%;
     border-radius: 999px;
     border: 1px solid rgba(37, 99, 235, 0.24);
+    animation: ringSpin 12s linear infinite;
 }
 
-.ringOne {
-    width: 220px;
-    height: 220px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: orbitSlow 9.5s linear infinite;
-}
-
-.ringTwo {
-    width: 156px;
-    height: 156px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-color: rgba(13, 148, 136, 0.2);
-    animation: orbitSlowReverse 8.2s linear infinite;
-}
-
-.nodeCore {
+.sparkA,
+.sparkB {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    transform: translate(-50%, -50%);
-    background: #2563eb;
-    box-shadow: 0 0 0 8px rgba(37, 99, 235, 0.12);
+    background: rgba(14, 165, 233, 0.8);
+    box-shadow: 0 0 0 7px rgba(14, 165, 233, 0.12);
 }
 
-.node {
+.sparkA {
+    top: 28%;
+    right: 24%;
+    animation: sparkMoveA 6.2s ease-in-out infinite;
+}
+
+.sparkB {
+    bottom: 24%;
+    left: 24%;
+    animation: sparkMoveB 5.4s ease-in-out infinite;
+}
+
+.gridGlow {
     position: absolute;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #0d9488;
-    box-shadow: 0 0 0 5px rgba(13, 148, 136, 0.14);
+    inset: 0;
+    background-image:
+        linear-gradient(to right, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(37, 99, 235, 0.07) 1px, transparent 1px);
+    background-size: 38px 38px;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 82%);
+    opacity: 0.42;
+    animation: gridShift 9s linear infinite;
 }
 
-.nodeA { top: 30%; left: 68%; }
-.nodeB { top: 64%; left: 68%; }
-.nodeC { top: 38%; left: 34%; }
-.nodeD { top: 70%; left: 38%; }
+@keyframes floatCore {
+    0%,
+    100% {
+        transform: translate(-50%, -50%) rotate(45deg) translateY(0);
+    }
 
-.lineLayer {
-    position: absolute;
-    inset: 14% 14%;
-    width: 72%;
-    height: 72%;
-    stroke: rgba(37, 99, 235, 0.26);
-    stroke-width: 1.4;
-    animation: pulseLine 5.6s ease-in-out infinite;
+    50% {
+        transform: translate(-50%, -50%) rotate(48deg) translateY(-8px);
+    }
 }
 
-@keyframes orbitSlow {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
+@keyframes driftA {
+    0%,
+    100% {
+        transform: translate(-50%, -50%) rotate(24deg) translateX(0);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) rotate(28deg) translateX(6px);
+    }
 }
 
-@keyframes orbitSlowReverse {
-    from { transform: translate(-50%, -50%) rotate(360deg); }
-    to { transform: translate(-50%, -50%) rotate(0deg); }
+@keyframes driftB {
+    0%,
+    100% {
+        transform: translate(-50%, -50%) rotate(-16deg) translateY(0);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) rotate(-11deg) translateY(6px);
+    }
 }
 
-@keyframes pulseLine {
-    0%, 100% { opacity: 0.34; }
-    50% { opacity: 0.64; }
+@keyframes driftC {
+    0%,
+    100% {
+        transform: translate(-50%, -50%) rotate(58deg) translateX(0);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) rotate(53deg) translateX(-6px);
+    }
+}
+
+@keyframes ringSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes sparkMoveA {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(-9px, 7px);
+    }
+}
+
+@keyframes sparkMoveB {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(10px, -8px);
+    }
+}
+
+@keyframes gridShift {
+    from {
+        background-position: 0 0, 0 0;
+    }
+
+    to {
+        background-position: 38px 0, 0 38px;
+    }
 }
 
 @media (max-width: 1000px) {
