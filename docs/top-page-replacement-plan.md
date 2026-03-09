@@ -1,29 +1,22 @@
-# Top page replacement plan (Phase 2)
+﻿# Top Page Replacement Plan
 
-## New top-page structure
-
-1. Hero
-2. Vision
-3. Mission
-4. Service
-5. Company
-6. Contact
-
-## Files to modify
-
-- `components/home/HomePage.tsx`
+## Target structure
+- `app/page.tsx` (entry)
+- `components/antigravity/HomePage.tsx` (composition)
+- `components/antigravity/Header.tsx`
+- `components/antigravity/Hero.tsx`
+- `components/antigravity/Vision.tsx`
+- `components/antigravity/Mission.tsx`
+- `components/antigravity/Service.tsx`
+- `components/antigravity/Company.tsx`
+- `components/antigravity/Contact.tsx`
+- `components/antigravity/useRevealAnimation.ts`
 - `app/globals.css`
-- `app/page.tsx` (entrypoint, already delegated)
 
-## Cleanup candidates
+## Intended result
+- Top page is modular and readable.
+- Broken text/HTML is removed.
+- Each section can be edited independently.
 
-- `components/home/Section.tsx` (unused after direct section replacement)
-- Legacy styles and sections not referenced from `HomePage`
-
-## Keep (build foundation)
-
-- `package.json`
-- `tsconfig.json`
-- `next.config.mjs`
-- `next-env.d.ts`
-- `app/layout.tsx`
+## Cleanup policy
+Do not delete legacy files yet. First complete implementation and verify usage.
