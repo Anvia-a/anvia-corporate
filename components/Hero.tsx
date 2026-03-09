@@ -33,17 +33,18 @@ function initCanvas(canvas: HTMLCanvasElement) {
     resize();
     window.addEventListener('resize', resize);
 
-    const lineCount = 30;
+    const lineCount = 28;
     const lines: Line[] = Array.from({ length: lineCount }, (_, i) => {
         const progress = i / (lineCount - 1);
+        const baseY = 0.56 + progress * 0.62;
         return {
-            baseY: -0.22 + progress * 1.45,
-            amplitude: 14 + Math.random() * 18,
-            frequency: 0.0032 + Math.random() * 0.0018,
-            speed: 0.018 + Math.random() * 0.02,
+            baseY,
+            amplitude: 8 + Math.random() * 16,
+            frequency: 0.0028 + Math.random() * 0.0016,
+            speed: 0.018 + Math.random() * 0.018,
             phase: Math.random() * Math.PI * 2,
-            alpha: 0.09 + Math.random() * 0.06,
-            width: 0.8 + Math.random() * 0.9,
+            alpha: 0.06 + Math.random() * 0.06 + Math.max(0, baseY - 0.8) * 0.08,
+            width: 0.7 + Math.random() * 0.9,
         };
     });
 
@@ -60,21 +61,23 @@ function initCanvas(canvas: HTMLCanvasElement) {
             context.beginPath();
             context.lineWidth = line.width;
 
-            const hue = 202 + (index % 4) * 6;
+            const hue = 204 + (index % 4) * 6;
             const gradient = context.createLinearGradient(0, h, w, 0);
-            gradient.addColorStop(0, `hsla(${hue}, 58%, 74%, ${line.alpha * 0.35})`);
-            gradient.addColorStop(0.45, `hsla(${hue}, 64%, 68%, ${line.alpha})`);
-            gradient.addColorStop(1, `hsla(${hue + 8}, 70%, 62%, ${line.alpha * 0.9})`);
+            gradient.addColorStop(0, `hsla(${hue}, 54%, 76%, ${line.alpha * 0.22})`);
+            gradient.addColorStop(0.55, `hsla(${hue}, 62%, 70%, ${line.alpha * 0.75})`);
+            gradient.addColorStop(1, `hsla(${hue + 8}, 70%, 64%, ${line.alpha})`);
             context.strokeStyle = gradient;
 
             for (let x = -80; x <= w + 80; x += 6) {
-                const diagonalShift = (1 - x / w) * (h * 0.34);
-                const travel = t * line.speed;
+                const xRatio = x / w;
+                const sweepUp = -xRatio * (h * 0.38);
+                const rightBottomBias = Math.pow(Math.max(0, xRatio), 2.4) * (h * 0.22);
                 const y =
                     h * line.baseY +
-                    diagonalShift +
-                    Math.sin(x * line.frequency + travel + line.phase) * line.amplitude +
-                    Math.sin(x * line.frequency * 0.5 - travel * 0.72 + line.phase) * (line.amplitude * 0.3);
+                    sweepUp +
+                    rightBottomBias +
+                    Math.sin(x * line.frequency + t * line.speed + line.phase) * line.amplitude +
+                    Math.sin(x * line.frequency * 0.52 - t * line.speed * 0.66 + line.phase) * (line.amplitude * 0.3);
 
                 if (x === -80) {
                     context.moveTo(x, y);

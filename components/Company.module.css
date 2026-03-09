@@ -67,74 +67,108 @@
     width: 100%;
     height: 100%;
     min-height: 340px;
-    transform-style: preserve-3d;
 }
 
 .objectCore {
     position: absolute;
     left: 50%;
     top: 48%;
-    width: 188px;
-    height: 188px;
-    transform: translate(-50%, -50%) rotateX(16deg) rotateY(-18deg);
+    width: 196px;
+    height: 196px;
+    transform: translate(-50%, -50%) rotateX(18deg) rotateY(-20deg);
     transform-style: preserve-3d;
-    animation: coreRotate 9.5s linear infinite;
+    animation: coreSpin 10s linear infinite;
 }
 
-.faceMain,
+.faceFront,
 .faceLeft,
 .faceRight,
-.faceTop {
+.faceTop,
+.faceHighlight {
     position: absolute;
     inset: 0;
-    border-radius: 18px;
+    border-radius: 20px;
 }
 
-.faceMain {
-    background: linear-gradient(150deg, #7dd3fc 8%, #38bdf8 36%, #2563eb 92%);
-    clip-path: polygon(50% 0%, 100% 34%, 84% 100%, 16% 100%, 0% 34%);
+.faceFront {
+    clip-path: polygon(50% 2%, 98% 30%, 86% 100%, 14% 100%, 2% 30%);
+    background: linear-gradient(160deg, #bff6ff 4%, #56d4ff 38%, #2457d8 94%);
+    box-shadow: inset -18px -22px 28px rgba(16, 42, 132, 0.38);
 }
 
 .faceLeft {
-    background: linear-gradient(165deg, rgba(37, 99, 235, 0.92), rgba(30, 64, 175, 0.86));
-    clip-path: polygon(0% 34%, 50% 0%, 50% 66%, 20% 88%);
+    clip-path: polygon(2% 30%, 50% 2%, 50% 70%, 20% 90%);
+    background: linear-gradient(170deg, rgba(36, 87, 216, 0.95), rgba(27, 59, 176, 0.9));
 }
 
 .faceRight {
-    background: linear-gradient(165deg, rgba(103, 232, 249, 0.85), rgba(56, 189, 248, 0.7));
-    clip-path: polygon(50% 0%, 100% 34%, 80% 88%, 50% 66%);
+    clip-path: polygon(50% 2%, 98% 30%, 80% 90%, 50% 70%);
+    background: linear-gradient(165deg, rgba(125, 235, 255, 0.92), rgba(58, 171, 245, 0.75));
 }
 
 .faceTop {
-    background: linear-gradient(135deg, rgba(186, 230, 253, 0.88), rgba(125, 211, 252, 0.26));
-    clip-path: polygon(28% 24%, 50% 8%, 72% 24%, 50% 38%);
+    clip-path: polygon(28% 22%, 50% 8%, 72% 22%, 50% 36%);
+    background: linear-gradient(135deg, rgba(223, 249, 255, 0.96), rgba(130, 221, 255, 0.28));
 }
 
-.ringOuter,
-.ringInner {
+.faceHighlight {
+    clip-path: polygon(50% 38%, 80% 90%, 56% 100%, 50% 70%);
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.18), rgba(40, 118, 230, 0.36));
+}
+
+.orbitA,
+.orbitB,
+.orbitC {
     position: absolute;
     left: 50%;
     top: 48%;
-    border-radius: 999px;
-    border: 5px solid transparent;
+    width: 260px;
+    height: 260px;
+    transform: translate(-50%, -50%);
 }
 
-.ringOuter {
-    width: 264px;
-    height: 264px;
-    transform: translate(-50%, -50%) rotate(12deg);
-    border-top-color: rgba(14, 165, 233, 0.78);
-    border-right-color: rgba(37, 99, 235, 0.72);
-    animation: ringSpin 6.6s linear infinite;
+.orbitA {
+    animation: orbitSpin 5.8s linear infinite;
 }
 
-.ringInner {
-    width: 212px;
-    height: 212px;
-    transform: translate(-50%, -50%) rotate(-8deg);
-    border-top-color: rgba(56, 189, 248, 0.72);
-    border-left-color: rgba(30, 64, 175, 0.7);
-    animation: ringSpinReverse 5.4s linear infinite;
+.orbitB {
+    width: 228px;
+    height: 228px;
+    animation: orbitSpinReverse 4.6s linear infinite;
+}
+
+.orbitC {
+    width: 294px;
+    height: 294px;
+    animation: orbitSpin 7.2s linear infinite;
+}
+
+.star {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    transform: translate(-50%, -50%) translateX(50%);
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #dcfbff 0%, #6ee7ff 42%, #2563eb 100%);
+    box-shadow: 0 0 10px rgba(94, 234, 255, 0.8), 0 0 22px rgba(59, 130, 246, 0.35);
+}
+
+.orbitA .star {
+    transform: translate(-50%, -50%) translateX(130px);
+}
+
+.orbitB .star {
+    width: 6px;
+    height: 6px;
+    transform: translate(-50%, -50%) translateX(114px);
+}
+
+.orbitC .star {
+    width: 5px;
+    height: 5px;
+    transform: translate(-50%, -50%) translateX(148px);
 }
 
 .shardA,
@@ -142,42 +176,42 @@
 .shardC,
 .shardD {
     position: absolute;
-    width: 34px;
-    height: 20px;
-    background: linear-gradient(135deg, rgba(125, 211, 252, 0.96), rgba(37, 99, 235, 0.82));
-    clip-path: polygon(12% 50%, 44% 0%, 100% 22%, 72% 100%, 20% 84%);
+    width: 30px;
+    height: 18px;
+    background: linear-gradient(135deg, rgba(133, 234, 255, 0.98), rgba(37, 99, 235, 0.82));
+    clip-path: polygon(10% 50%, 45% 0%, 100% 24%, 72% 100%, 20% 86%);
 }
 
 .shardA {
-    left: calc(50% - 126px);
+    left: calc(50% - 124px);
     top: calc(48% - 78px);
-    animation: shardFloatA 4.2s ease-in-out infinite;
+    animation: shardFloatA 4.4s ease-in-out infinite;
 }
 
 .shardB {
-    left: calc(50% + 104px);
-    top: calc(48% - 34px);
-    animation: shardFloatB 3.8s ease-in-out infinite;
+    left: calc(50% + 102px);
+    top: calc(48% - 32px);
+    animation: shardFloatB 3.7s ease-in-out infinite;
 }
 
 .shardC {
-    left: calc(50% - 112px);
-    top: calc(48% + 54px);
-    animation: shardFloatC 4.8s ease-in-out infinite;
+    left: calc(50% - 110px);
+    top: calc(48% + 60px);
+    animation: shardFloatC 4.9s ease-in-out infinite;
 }
 
 .shardD {
-    left: calc(50% + 86px);
-    top: calc(48% + 80px);
-    animation: shardFloatD 4.4s ease-in-out infinite;
+    left: calc(50% + 84px);
+    top: calc(48% + 84px);
+    animation: shardFloatD 4.3s ease-in-out infinite;
 }
 
 .shadow {
     position: absolute;
     left: 50%;
-    top: calc(48% + 144px);
-    width: 240px;
-    height: 34px;
+    top: calc(48% + 148px);
+    width: 230px;
+    height: 32px;
     transform: translateX(-50%);
     border-radius: 50%;
     background: radial-gradient(ellipse, rgba(37, 99, 235, 0.24) 0%, rgba(37, 99, 235, 0) 72%);
@@ -185,33 +219,33 @@
     animation: shadowPulse 4.2s ease-in-out infinite;
 }
 
-@keyframes coreRotate {
+@keyframes coreSpin {
     from {
-        transform: translate(-50%, -50%) rotateX(16deg) rotateY(-18deg) rotateZ(0deg);
+        transform: translate(-50%, -50%) rotateX(18deg) rotateY(-20deg) rotateZ(0deg);
     }
 
     to {
-        transform: translate(-50%, -50%) rotateX(16deg) rotateY(-18deg) rotateZ(360deg);
+        transform: translate(-50%, -50%) rotateX(18deg) rotateY(-20deg) rotateZ(360deg);
     }
 }
 
-@keyframes ringSpin {
+@keyframes orbitSpin {
     from {
-        transform: translate(-50%, -50%) rotate(12deg);
+        transform: translate(-50%, -50%) rotate(0deg);
     }
 
     to {
-        transform: translate(-50%, -50%) rotate(372deg);
+        transform: translate(-50%, -50%) rotate(360deg);
     }
 }
 
-@keyframes ringSpinReverse {
+@keyframes orbitSpinReverse {
     from {
-        transform: translate(-50%, -50%) rotate(352deg);
+        transform: translate(-50%, -50%) rotate(360deg);
     }
 
     to {
-        transform: translate(-50%, -50%) rotate(-8deg);
+        transform: translate(-50%, -50%) rotate(0deg);
     }
 }
 
@@ -284,18 +318,35 @@
     }
 
     .objectCore {
-        width: 156px;
-        height: 156px;
+        width: 158px;
+        height: 158px;
     }
 
-    .ringOuter {
-        width: 224px;
-        height: 224px;
+    .orbitA {
+        width: 212px;
+        height: 212px;
     }
 
-    .ringInner {
-        width: 178px;
-        height: 178px;
+    .orbitB {
+        width: 186px;
+        height: 186px;
+    }
+
+    .orbitC {
+        width: 242px;
+        height: 242px;
+    }
+
+    .orbitA .star {
+        transform: translate(-50%, -50%) translateX(106px);
+    }
+
+    .orbitB .star {
+        transform: translate(-50%, -50%) translateX(93px);
+    }
+
+    .orbitC .star {
+        transform: translate(-50%, -50%) translateX(121px);
     }
 }
 

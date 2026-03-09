@@ -42,13 +42,17 @@ export default function Company() {
                         <div className={styles.visualPanel} aria-hidden="true">
                             <div className={styles.objectWrap}>
                                 <div className={styles.objectCore}>
-                                    <span className={styles.faceMain} />
+                                    <span className={styles.faceFront} />
                                     <span className={styles.faceLeft} />
                                     <span className={styles.faceRight} />
                                     <span className={styles.faceTop} />
+                                    <span className={styles.faceHighlight} />
                                 </div>
-                                <span className={styles.ringOuter} />
-                                <span className={styles.ringInner} />
+
+                                <div className={styles.orbitA}><span className={styles.star} /></div>
+                                <div className={styles.orbitB}><span className={styles.star} /></div>
+                                <div className={styles.orbitC}><span className={styles.star} /></div>
+
                                 <span className={styles.shardA} />
                                 <span className={styles.shardB} />
                                 <span className={styles.shardC} />
