@@ -224,22 +224,21 @@
     border-radius: 0;
     border: 0;
 }
-
-.valuesStatement {
-    margin: 0 0 18px;
+    .valuesStatement {
+    margin: 0 auto 18px;
     padding: 0 20px;
-    max-width: none;
+    max-width: 900px;
+    width: 100%;
     color: var(--color-gray-600);
     font-size: clamp(1.1rem, 1.6vw, 1.5rem);
     font-weight: 520;
     line-height: 1.45;
     letter-spacing: -0.01em;
+    text-align: center;
     white-space: nowrap !important;
     text-wrap: nowrap;
     overflow-wrap: normal;
     word-break: keep-all;
-    width: max-content;
-    max-inline-size: none;
 }
 
 .valuesStatement p {
@@ -440,14 +439,16 @@
     .missionLead {
         font-size: 1.4rem;
     }
-
     .valuesStatement {
-        margin: 0 0 18px;
+        margin: 0 auto 18px;
         padding: 0 16px;
+        max-width: 900px;
+        width: 100%;
         font-size: clamp(1.1rem, 1.6vw, 1.5rem);
         font-weight: 520;
         line-height: 1.45;
         letter-spacing: -0.01em;
+        text-align: center;
         white-space: nowrap !important;
         text-wrap: nowrap;
         overflow-wrap: normal;
@@ -463,6 +464,12 @@
         transform: scale(1.12) translateY(-4px);
     }
 }
+
+
+
+
+
+
 
 
 
