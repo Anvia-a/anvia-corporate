@@ -104,7 +104,11 @@ export default function MissionValues() {
 
                             <AnimateOnScroll delay={120}>
                                 <div className={styles.valuesStatement}>
-                                    <p>私たちは、<span className={styles.accentWord}>シンプル</span>な設計で人の<span className={styles.accentWord}>時間</span>を守り、日常の<span className={styles.accentWord}>摩擦</span>を減らし、テクノロジーで<span className={styles.accentWord}>時間を返す</span>ことを大切にしています。</p>
+                                    <p>
+                                        私たちは、<span className={styles.accentWord}>シンプル</span>な設計で人の<span className={styles.accentWord}>時間</span>を守り、
+                                        <br />
+                                        日常の<span className={styles.accentWord}>摩擦</span>を減らし、テクノロジーで<span className={styles.accentWord}>時間を返す</span>ことを大切にしています。
+                                    </p>
                                 </div>
                             </AnimateOnScroll>
 
@@ -132,5 +136,6 @@ export default function MissionValues() {
         </section>
     );
 }
+
 
 
