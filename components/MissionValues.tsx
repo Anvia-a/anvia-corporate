@@ -1,22 +1,44 @@
 ﻿'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import AnimateOnScroll from './AnimateOnScroll';
 import styles from './MissionValues.module.css';
 
 const timeMarks = ['08:30', '09:12', '10:45', '11:38', '12:05', '13:47', '14:20', '16:10', '18:55', '21:05', '22:40', '23:10', '00:30'];
 
+function MissionTextContent({ accentClass }: { accentClass: string }) {
+    return (
+        <>
+            <p className={styles.missionLead}>人々の<span className={accentClass}>時間</span>を<span className={accentClass}>取り戻す</span>。<br />それが私たちのミッションです。</p>
+            <p>日常には、気づかないうちに多くの摩擦や無駄な作業が存在します。<br />私たちはテクノロジーとデザインの力でそれらを取り除き、<br />人々が<span className={accentClass}>本当に価値のあること</span>に時間を使える世界をつくります。</p>
+            <p>Anviaは<br />“Make time work better.”<br />という思想のもと、<br />より<span className={accentClass}>シンプル</span>で<span className={accentClass}>軽やか</span>な体験を生み出すプロダクトを設計・開発しています。</p>
+        </>
+    );
+}
+
 export default function MissionValues() {
     const ringValues = [...timeMarks, ...timeMarks, ...timeMarks];
+    const missionTextRef = useRef<HTMLDivElement>(null);
+
     const spinConfig = useMemo(() => ({
-        sphere: `${3.6 + Math.random() * 1.2}s`,
-        bandA: `${0.86 + Math.random() * 0.26}s`,
-        bandB: `${0.92 + Math.random() * 0.32}s`,
-        bandC: `${0.9 + Math.random() * 0.3}s`,
+        sphere: `${3.2 + Math.random() * 1.2}s`,
+        bandA: `${0.78 + Math.random() * 0.22}s`,
+        bandB: `${0.82 + Math.random() * 0.24}s`,
+        bandC: `${0.8 + Math.random() * 0.24}s`,
         delayA: `${-(Math.random() * 1.8).toFixed(2)}s`,
         delayB: `${-(Math.random() * 1.8).toFixed(2)}s`,
         delayC: `${-(Math.random() * 1.8).toFixed(2)}s`,
     }), []);
+
+    function handleMissionMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+        const el = missionTextRef.current;
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        el.style.setProperty('--mx', `${x}px`);
+        el.style.setProperty('--my', `${y}px`);
+    }
 
     return (
         <section id="mission" className={`section ${styles.missionValues}`}>
@@ -29,11 +51,16 @@ export default function MissionValues() {
 
                         <div className={styles.missionRow}>
                             <AnimateOnScroll>
-                                <div className={styles.missionTextPanel}>
+                                <div
+                                    ref={missionTextRef}
+                                    className={styles.missionTextWrap}
+                                    onMouseMove={handleMissionMouseMove}
+                                >
                                     <div className={styles.missionText}>
-                                        <p className={styles.missionLead}>人々の<span className={styles.accentWord}>時間</span>を<span className={styles.accentWord}>取り戻す</span>。<br />それが私たちのミッションです。</p>
-                                        <p>日常には、気づかないうちに多くの摩擦や無駄な作業が存在します。<br />私たちはテクノロジーとデザインの力でそれらを取り除き、<br />人々が<span className={styles.accentWord}>本当に価値のあること</span>に時間を使える世界をつくります。</p>
-                                        <p>Anviaは<br />“Make time work better.”<br />という思想のもと、<br />より<span className={styles.accentWord}>シンプル</span>で<span className={styles.accentWord}>軽やか</span>な体験を生み出すプロダクトを設計・開発しています。</p>
+                                        <MissionTextContent accentClass={styles.accentWord} />
+                                    </div>
+                                    <div className={styles.missionTextSpot} aria-hidden="true">
+                                        <MissionTextContent accentClass={styles.accentWordSpot} />
                                     </div>
                                 </div>
                             </AnimateOnScroll>
@@ -79,7 +106,7 @@ export default function MissionValues() {
                                 <div className={styles.valuesStatement}>
                                     <p>私たちの考え方は、<span className={styles.accentWord}>シンプル</span>です。</p>
                                     <p>人の<span className={styles.accentWord}>時間</span>を尊重するプロダクトをつくること。</p>
-                                    <p>日常の<span className={styles.accentWord}>摩擦を減らす</span>設計を積み重ねること。</p>
+                                    <p>日常の<span className={styles.accentWord}>摩擦</span>を減らす設計を積み重ねること。</p>
                                     <p>テクノロジーで、人に<span className={styles.accentWord}>時間を返す</span>こと。</p>
                                 </div>
                             </AnimateOnScroll>
