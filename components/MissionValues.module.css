@@ -230,9 +230,10 @@
     padding: 0 20px;
     max-width: none;
     color: var(--color-gray-600);
-    font-size: clamp(0.72rem, 0.92vw, 0.94rem);
-    line-height: 1.7;
-    letter-spacing: 0.002em;
+    font-size: clamp(1.62rem, 2.35vw, 2.05rem);
+    font-weight: 520;
+    line-height: 1.45;
+    letter-spacing: -0.01em;
     white-space: nowrap !important;
     text-wrap: nowrap;
     overflow-wrap: normal;
@@ -443,11 +444,12 @@
     .valuesStatement {
         margin: 0 0 18px;
         padding: 0 16px;
-        font-size: clamp(0.66rem, 2.1vw, 0.78rem);
-        line-height: 1.65;
-        letter-spacing: 0.001em;
+        font-size: clamp(1.62rem, 2.35vw, 2.05rem);
+        font-weight: 520;
+        line-height: 1.45;
+        letter-spacing: -0.01em;
         white-space: nowrap !important;
-    text-wrap: nowrap;
+        text-wrap: nowrap;
         overflow-wrap: normal;
         word-break: keep-all;
     }
@@ -461,6 +463,10 @@
         transform: scale(1.12) translateY(-4px);
     }
 }
+
+
+
+
 
 
 
