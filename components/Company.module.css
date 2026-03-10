@@ -82,85 +82,165 @@
     min-height: 390px;
 }
 
-.letter {
+.glyph {
     position: absolute;
     left: var(--x0);
     top: var(--y0);
-    font-size: clamp(1.3rem, 2.2vw, 2.05rem);
-    font-weight: 620;
-    letter-spacing: 0.08em;
-    color: rgba(56, 139, 255, 0.86);
-    text-shadow: 0 0 14px rgba(56, 139, 255, 0.22);
-    animation: gather 10s ease-in-out infinite;
+    font-size: clamp(1.2rem, 2.15vw, 1.95rem);
+    font-weight: 600;
+    color: rgba(71, 136, 233, 0.88);
+    text-shadow: 0 0 12px rgba(56, 139, 255, 0.2);
+    transform: translate(-50%, -50%);
+}
+
+.coreGlyph {
+    animation: coreTimeline 12.5s ease-in-out infinite;
     animation-delay: var(--delay, 0s);
 }
 
-.letterA1 { --x0: -16%; --y0: 20%; --x1: 16%; --y1: 46%; --x2: 40%; --y2: 46%; --delay: 0s; }
-.letterN  { --x0: 84%;  --y0: 16%; --x1: 30%; --y1: 46%; --x2: 46%; --y2: 46%; --delay: 0.12s; }
-.letterE  { --x0: 18%;  --y0: 80%; --x1: 44%; --y1: 46%; --x2: 52%; --y2: 46%; --delay: 0.22s; }
-.letterW  { --x0: 74%;  --y0: 78%; --x1: 58%; --y1: 46%; --x2: 58%; --y2: 46%; --delay: 0.34s; }
-.letterV  { --x0: 6%;   --y0: 52%; --x1: 74%; --y1: 46%; --x2: 64%; --y2: 46%; --delay: 0.44s; }
-.letterI  { --x0: 94%;  --y0: 46%; --x1: 88%; --y1: 46%; --x2: 70%; --y2: 46%; --delay: 0.54s; }
-.letterA2 { --x0: 44%;  --y0: 6%;  --x1: 102%; --y1: 46%; --x2: 76%; --y2: 46%; --delay: 0.64s; }
+.extraGlyph {
+    animation: extraTimeline 12.5s ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+    color: rgba(90, 133, 188, 0.74);
+}
 
-@keyframes gather {
-    0%, 18% {
+.c1 { --x0: 8%; --y0: 20%; --x1: 18%; --y1: 50%; --x2: 44%; --y2: 49%; --x3: 50%; --y3: 50%; --delay: 0s; }
+.c2 { --x0: 88%; --y0: 18%; --x1: 34%; --y1: 50%; --x2: 48%; --y2: 49%; --x3: 50%; --y3: 50%; --delay: 0.08s; }
+.c3 { --x0: 20%; --y0: 80%; --x1: 44%; --y1: 50%; --x2: 52%; --y2: 49%; --x3: 50%; --y3: 50%; --delay: 0.16s; }
+.c4 { --x0: 80%; --y0: 82%; --x1: 54%; --y1: 50%; --x2: 56%; --y2: 49%; --x3: 50%; --y3: 50%; --delay: 0.24s; }
+.c5 { --x0: 6%; --y0: 54%; --x1: 68%; --y1: 50%; --x2: 60%; --y2: 49%; --x3: 50%; --y3: 50%; --delay: 0.32s; }
+.c6 { --x0: 94%; --y0: 46%; --x1: 78%; --y1: 50%; --x2: 64%; --y2: 49%; --x3: 50%; --y3: 50%; --delay: 0.4s; }
+.c7 { --x0: 46%; --y0: 8%; --x1: 90%; --y1: 50%; --x2: 68%; --y2: 49%; --x3: 50%; --y3: 50%; --delay: 0.48s; }
+
+.e1 { --x0: 15%; --y0: 12%; --x1: 26%; --y1: 24%; --x2: 12%; --y2: 30%; --x3: 50%; --y3: 50%; --delay: 0.06s; }
+.e2 { --x0: 30%; --y0: 10%; --x1: 44%; --y1: 18%; --x2: 26%; --y2: 20%; --x3: 50%; --y3: 50%; --delay: 0.14s; }
+.e3 { --x0: 44%; --y0: 12%; --x1: 56%; --y1: 22%; --x2: 38%; --y2: 14%; --x3: 50%; --y3: 50%; --delay: 0.22s; }
+.e4 { --x0: 60%; --y0: 10%; --x1: 72%; --y1: 20%; --x2: 54%; --y2: 14%; --x3: 50%; --y3: 50%; --delay: 0.3s; }
+.e5 { --x0: 76%; --y0: 12%; --x1: 84%; --y1: 26%; --x2: 70%; --y2: 18%; --x3: 50%; --y3: 50%; --delay: 0.38s; }
+.e6 { --x0: 86%; --y0: 30%; --x1: 90%; --y1: 42%; --x2: 84%; --y2: 34%; --x3: 50%; --y3: 50%; --delay: 0.46s; }
+.e7 { --x0: 90%; --y0: 50%; --x1: 86%; --y1: 62%; --x2: 90%; --y2: 54%; --x3: 50%; --y3: 50%; --delay: 0.54s; }
+.e8 { --x0: 84%; --y0: 70%; --x1: 78%; --y1: 80%; --x2: 86%; --y2: 74%; --x3: 50%; --y3: 50%; --delay: 0.62s; }
+.e9 { --x0: 70%; --y0: 86%; --x1: 64%; --y1: 86%; --x2: 74%; --y2: 90%; --x3: 50%; --y3: 50%; --delay: 0.7s; }
+.e10{ --x0: 50%; --y0: 90%; --x1: 46%; --y1: 84%; --x2: 52%; --y2: 92%; --x3: 50%; --y3: 50%; --delay: 0.78s; }
+.e11{ --x0: 30%; --y0: 86%; --x1: 30%; --y1: 78%; --x2: 24%; --y2: 90%; --x3: 50%; --y3: 50%; --delay: 0.86s; }
+.e12{ --x0: 14%; --y0: 72%; --x1: 14%; --y1: 60%; --x2: 8%; --y2: 74%; --x3: 50%; --y3: 50%; --delay: 0.94s; }
+.e13{ --x0: 10%; --y0: 46%; --x1: 12%; --y1: 34%; --x2: 6%; --y2: 46%; --x3: 50%; --y3: 50%; --delay: 1.02s; }
+
+@keyframes coreTimeline {
+    0%, 8% {
         left: var(--x0);
         top: var(--y0);
-        opacity: 0.56;
-        transform: rotate(0deg) scale(0.92);
+        opacity: 0;
+        filter: blur(4px);
+        transform: translate(-50%, -50%) scale(0.88);
     }
 
-    19%, 44% {
-        left: calc(var(--x0) + 6%);
-        top: calc(var(--y0) - 4%);
-        opacity: 0.86;
-        transform: rotate(300deg) scale(1);
+    9%, 28% {
+        left: var(--x0);
+        top: var(--y0);
+        opacity: 0.85;
+        filter: blur(0);
+        transform: translate(-50%, -50%) rotate(220deg) scale(1);
     }
 
-    45%, 66% {
+    29%, 48% {
         left: var(--x1);
         top: var(--y1);
+        opacity: 0.92;
+        transform: translate(-50%, -50%) rotate(380deg) scale(1.03);
+    }
+
+    49%, 64% {
+        left: var(--x2);
+        top: var(--y2);
         opacity: 1;
-        transform: rotate(360deg) scale(1.03);
+        transform: translate(-50%, -50%) rotate(360deg) scale(1.04);
     }
 
-    67%, 82% {
-        left: var(--x2);
-        top: var(--y2);
-        opacity: 0.42;
-        transform: rotate(360deg) scale(0.92);
+    65%, 74% {
+        left: calc(var(--x2) + 8%);
+        top: calc(var(--y2) - 10%);
+        opacity: 0.9;
+        transform: translate(-50%, -50%) rotate(390deg) scale(0.96);
     }
 
-    83%, 100% {
-        left: var(--x2);
-        top: var(--y2);
+    75%, 86% {
+        left: var(--x3);
+        top: var(--y3);
+        opacity: 0.26;
+        transform: translate(-50%, -50%) rotate(400deg) scale(0.86);
+    }
+
+    87%, 100% {
+        left: var(--x0);
+        top: var(--y0);
         opacity: 0;
-        transform: rotate(360deg) scale(0.88);
+        filter: blur(3px);
+        transform: translate(-50%, -50%) scale(0.82);
+    }
+}
+
+@keyframes extraTimeline {
+    0%, 8% {
+        left: var(--x0);
+        top: var(--y0);
+        opacity: 0;
+        filter: blur(5px);
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+
+    9%, 44% {
+        left: var(--x1);
+        top: var(--y1);
+        opacity: 0.62;
+        filter: blur(0);
+        transform: translate(-50%, -50%) rotate(330deg) scale(0.94);
+    }
+
+    45%, 64% {
+        left: var(--x2);
+        top: var(--y2);
+        opacity: 0.14;
+        transform: translate(-50%, -50%) rotate(360deg) scale(0.86);
+    }
+
+    65%, 78% {
+        left: calc(var(--x2) + 10%);
+        top: calc(var(--y2) + 10%);
+        opacity: 0.48;
+        transform: translate(-50%, -50%) rotate(390deg) scale(0.9);
+    }
+
+    79%, 100% {
+        left: var(--x3);
+        top: var(--y3);
+        opacity: 0;
+        filter: blur(4px);
+        transform: translate(-50%, -50%) scale(0.8);
     }
 }
 
 .finalWord {
     position: absolute;
     left: 50%;
-    top: 46%;
+    top: 50%;
     transform: translate(-50%, -50%);
-    font-size: clamp(1.35rem, 2.3vw, 2.15rem);
-    font-weight: 620;
+    font-size: clamp(1.4rem, 2.4vw, 2.2rem);
+    font-weight: 630;
     letter-spacing: 0.06em;
-    color: rgba(43, 123, 237, 0.92);
-    text-shadow: 0 0 16px rgba(43, 123, 237, 0.24);
+    color: rgba(41, 116, 227, 0.94);
+    text-shadow: 0 0 18px rgba(41, 116, 227, 0.26);
     opacity: 0;
-    animation: finalReveal 10s ease-in-out infinite;
+    animation: finalReveal 12.5s ease-in-out infinite;
 }
 
 @keyframes finalReveal {
-    0%, 66% {
+    0%, 76% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.92);
+        transform: translate(-50%, -50%) scale(0.9);
     }
 
-    74%, 86% {
+    82%, 91% {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
@@ -180,10 +260,10 @@
     box-shadow: 0 0 10px rgba(93, 222, 255, 0.55);
 }
 
-.sparkA { left: 18%; top: 20%; animation: sparkFloatA 6.8s ease-in-out infinite; }
-.sparkB { left: 78%; top: 26%; animation: sparkFloatB 7.2s ease-in-out infinite; }
-.sparkC { left: 24%; top: 70%; animation: sparkFloatC 7.8s ease-in-out infinite; }
-.sparkD { left: 70%; top: 74%; animation: sparkFloatD 8.2s ease-in-out infinite; }
+.sparkA { left: 16%; top: 18%; animation: sparkFloatA 7.2s ease-in-out infinite; }
+.sparkB { left: 78%; top: 24%; animation: sparkFloatB 7.6s ease-in-out infinite; }
+.sparkC { left: 22%; top: 72%; animation: sparkFloatC 8s ease-in-out infinite; }
+.sparkD { left: 72%; top: 76%; animation: sparkFloatD 8.4s ease-in-out infinite; }
 
 @keyframes sparkFloatA { 0%,100%{transform:translateY(0);opacity:.48;} 50%{transform:translateY(-9px);opacity:.78;} }
 @keyframes sparkFloatB { 0%,100%{transform:translateY(0);opacity:.44;} 50%{transform:translateY(8px);opacity:.72;} }

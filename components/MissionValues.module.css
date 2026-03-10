@@ -34,66 +34,48 @@
     margin-bottom: 44px;
 }
 
-.missionTextWrap {
+.missionTextPanel {
     position: relative;
-    --mx: -120px;
-    --my: -120px;
+    border-radius: 22px;
+    border: 1px solid rgba(35, 52, 91, 0.08);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.72));
+    overflow: hidden;
+    transition: border-color 0.38s ease, box-shadow 0.38s ease, transform 0.38s ease;
 }
 
-.missionTextWrap::before {
+.missionTextPanel::before {
     content: '';
     position: absolute;
-    width: 52px;
-    height: 52px;
-    left: calc(var(--mx) - 26px);
-    top: calc(var(--my) - 26px);
-    border-radius: 50%;
-    background: rgba(7, 10, 15, 0.92);
+    inset: -24%;
+    background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(99, 215, 255, 0.26), rgba(77, 154, 255, 0.14) 42%, rgba(255, 255, 255, 0) 70%);
     opacity: 0;
-    transition: opacity 0.16s ease;
+    transition: opacity 0.34s ease;
     pointer-events: none;
-    z-index: 1;
 }
 
-.missionTextWrap:hover::before {
+.missionTextPanel:hover {
+    border-color: rgba(74, 144, 255, 0.26);
+    box-shadow: 0 14px 28px rgba(61, 111, 195, 0.1);
+}
+
+.missionTextPanel:hover::before {
     opacity: 1;
 }
 
-.missionText,
-.missionTextSpot {
+.missionText {
     display: flex;
     flex-direction: column;
     gap: 20px;
     font-size: 1.0625rem;
+    color: var(--color-gray-600);
     line-height: 1.8;
     max-width: 720px;
-    padding: 0;
-}
-
-.missionText {
-    color: var(--color-gray-600);
     position: relative;
-    z-index: 0;
-}
-
-.missionTextSpot {
-    position: absolute;
-    inset: 0;
-    color: #ffffff;
-    pointer-events: none;
     z-index: 2;
-    opacity: 0;
-    clip-path: circle(0px at var(--mx) var(--my));
-    transition: opacity 0.16s ease, clip-path 0.08s linear;
+    padding: 26px 24px;
 }
 
-.missionTextWrap:hover .missionTextSpot {
-    opacity: 1;
-    clip-path: circle(26px at var(--mx) var(--my));
-}
-
-.missionText p,
-.missionTextSpot p {
+.missionText p {
     margin: 0;
 }
 
@@ -105,21 +87,12 @@
     color: var(--color-gray-800);
 }
 
-.missionTextSpot .missionLead {
-    color: #ffffff;
-}
-
 .accentWord {
     font-weight: 650;
     background: linear-gradient(92deg, #3479ff, #26b7c6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-}
-
-.accentWordSpot {
-    font-weight: 650;
-    color: #ffffff;
 }
 
 .timeGraphic {
@@ -219,10 +192,10 @@
     display: flex;
     flex-direction: column;
     margin-top: 6px;
-    padding-top: 0;
-    background: transparent;
-    border-radius: 0;
-    border: 0;
+    padding-top: 18px;
+    background: #f7fafc;
+    border-radius: 24px;
+    border: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .valuesStatement {
@@ -420,10 +393,10 @@
         padding: 80px 0;
     }
 
-    .missionText,
-    .missionTextSpot {
+    .missionText {
         font-size: 1rem;
         margin-bottom: 0;
+        padding: 20px 18px;
     }
 
     .missionLead {
