@@ -27,6 +27,10 @@
     align-items: stretch;
 }
 
+.infoBlock {
+    width: 100%;
+}
+
 .table {
     display: flex;
     flex-direction: column;
@@ -80,94 +84,270 @@
     width: 100%;
     height: 100%;
     min-height: 390px;
+    perspective: 900px;
+    transform-style: preserve-3d;
 }
 
-.letter {
+.glyph {
     position: absolute;
-    left: var(--x0);
-    top: var(--y0);
-    font-size: clamp(1.3rem, 2.2vw, 2.05rem);
-    font-weight: 620;
+    left: 50%;
+    top: 42%;
+    font-size: clamp(1rem, 1.8vw, 1.62rem);
+    font-weight: 580;
     letter-spacing: 0.08em;
-    color: rgba(56, 139, 255, 0.86);
-    text-shadow: 0 0 14px rgba(56, 139, 255, 0.22);
-    animation: gather 10s ease-in-out infinite;
+    color: rgba(44, 121, 232, 0.9);
+    text-shadow: 0 0 10px rgba(72, 179, 243, 0.23);
+    opacity: 0;
+    filter: blur(3px);
+    transform: translate3d(-50%, -50%, 0) rotate(0deg) scale(0.86);
+    will-change: transform, opacity, filter, color;
+    animation: glyphTimeline 12.8s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
     animation-delay: var(--delay, 0s);
 }
 
-.letterA1 { --x0: -16%; --y0: 20%; --x1: 16%; --y1: 46%; --x2: 40%; --y2: 46%; --delay: 0s; }
-.letterN  { --x0: 84%;  --y0: 16%; --x1: 30%; --y1: 46%; --x2: 46%; --y2: 46%; --delay: 0.12s; }
-.letterE  { --x0: 18%;  --y0: 80%; --x1: 44%; --y1: 46%; --x2: 52%; --y2: 46%; --delay: 0.22s; }
-.letterW  { --x0: 74%;  --y0: 78%; --x1: 58%; --y1: 46%; --x2: 58%; --y2: 46%; --delay: 0.34s; }
-.letterV  { --x0: 6%;   --y0: 52%; --x1: 74%; --y1: 46%; --x2: 64%; --y2: 46%; --delay: 0.44s; }
-.letterI  { --x0: 94%;  --y0: 46%; --x1: 88%; --y1: 46%; --x2: 70%; --y2: 46%; --delay: 0.54s; }
-.letterA2 { --x0: 44%;  --y0: 6%;  --x1: 102%; --y1: 46%; --x2: 76%; --y2: 46%; --delay: 0.64s; }
+.coreGlyph {
+    color: rgba(35, 114, 228, 0.92);
+    text-shadow: 0 0 12px rgba(78, 182, 250, 0.26);
+    letter-spacing: 0.11em;
+}
 
-@keyframes gather {
-    0%, 18% {
+.extraGlyph {
+    color: rgba(78, 134, 198, 0.68);
+    font-size: clamp(0.9rem, 1.55vw, 1.4rem);
+    text-shadow: 0 0 8px rgba(102, 170, 232, 0.18);
+}
+
+.c1 {
+    --x0: 10%;
+    --y0: 22%;
+    --xw1: 30%;
+    --yw1: 18%;
+    --xw2: 22%;
+    --yw2: 64%;
+    --xa: 28%;
+    --ya: 48%;
+    --xb: 24%;
+    --yb: 34%;
+    --xn: 44%;
+    --yn: 48%;
+    --delay: 0.00s;
+}
+
+.c2 {
+    --x0: 84%;
+    --y0: 14%;
+    --xw1: 76%;
+    --yw1: 36%;
+    --xw2: 46%;
+    --yw2: 22%;
+    --xa: 44%;
+    --ya: 48%;
+    --xb: 50%;
+    --yb: 30%;
+    --xn: 46.5%;
+    --yn: 48%;
+    --delay: 0.05s;
+}
+
+.c3 {
+    --x0: 18%;
+    --y0: 82%;
+    --xw1: 56%;
+    --yw1: 72%;
+    --xw2: 72%;
+    --yw2: 44%;
+    --xa: 49%;
+    --ya: 48%;
+    --xb: 68%;
+    --yb: 29%;
+    --xn: 49%;
+    --yn: 48%;
+    --delay: 0.10s;
+}
+
+.c4 {
+    --x0: 74%;
+    --y0: 78%;
+    --xw1: 36%;
+    --yw1: 70%;
+    --xw2: 24%;
+    --yw2: 40%;
+    --xa: 54%;
+    --ya: 48%;
+    --xb: 80%;
+    --yb: 35%;
+    --xn: 51.5%;
+    --yn: 48%;
+    --delay: 0.14s;
+}
+
+.c5 {
+    --x0: 8%;
+    --y0: 54%;
+    --xw1: 20%;
+    --yw1: 28%;
+    --xw2: 62%;
+    --yw2: 16%;
+    --xa: 68%;
+    --ya: 48%;
+    --xb: 58%;
+    --yb: 62%;
+    --xn: 53%;
+    --yn: 48%;
+    --delay: 0.18s;
+}
+
+.c6 {
+    --x0: 96%;
+    --y0: 52%;
+    --xw1: 72%;
+    --yw1: 62%;
+    --xw2: 34%;
+    --yw2: 74%;
+    --xa: 73%;
+    --ya: 48%;
+    --xb: 74%;
+    --yb: 58%;
+    --xn: 55%;
+    --yn: 48%;
+    --delay: 0.23s;
+}
+
+.c7 {
+    --x0: 46%;
+    --y0: 6%;
+    --xw1: 58%;
+    --yw1: 18%;
+    --xw2: 88%;
+    --yw2: 56%;
+    --xa: 78%;
+    --ya: 48%;
+    --xb: 88%;
+    --yb: 50%;
+    --xn: 57%;
+    --yn: 48%;
+    --delay: 0.28s;
+}
+
+.e1  { --x0: 6%;  --y0: 10%; --xw1: 28%; --yw1: 24%; --xw2: 36%; --yw2: 52%; --xa: 30%; --ya: 24%; --xb: 14%; --yb: 16%; --xn: 43%; --yn: 47%; --delay: 0.02s; }
+.e2  { --x0: 20%; --y0: 14%; --xw1: 12%; --yw1: 38%; --xw2: 48%; --yw2: 24%; --xa: 38%; --ya: 24%; --xb: 22%; --yb: 20%; --xn: 44.5%; --yn: 47%; --delay: 0.04s; }
+.e3  { --x0: 34%; --y0: 16%; --xw1: 48%; --yw1: 10%; --xw2: 58%; --yw2: 26%; --xa: 46%; --ya: 24%; --xb: 34%; --yb: 18%; --xn: 46%; --yn: 47%; --delay: 0.06s; }
+.e4  { --x0: 52%; --y0: 12%; --xw1: 70%; --yw1: 12%; --xw2: 78%; --yw2: 28%; --xa: 54%; --ya: 24%; --xb: 46%; --yb: 20%; --xn: 47.5%; --yn: 47%; --delay: 0.08s; }
+.e5  { --x0: 72%; --y0: 10%; --xw1: 86%; --yw1: 22%; --xw2: 74%; --yw2: 36%; --xa: 62%; --ya: 24%; --xb: 58%; --yb: 18%; --xn: 49%; --yn: 47%; --delay: 0.10s; }
+.e6  { --x0: 88%; --y0: 16%; --xw1: 92%; --yw1: 38%; --xw2: 72%; --yw2: 48%; --xa: 70%; --ya: 24%; --xb: 70%; --yb: 20%; --xn: 50.5%; --yn: 47%; --delay: 0.12s; }
+.e7  { --x0: 96%; --y0: 28%; --xw1: 84%; --yw1: 52%; --xw2: 64%; --yw2: 62%; --xa: 78%; --ya: 24%; --xb: 82%; --yb: 22%; --xn: 52%; --yn: 47%; --delay: 0.14s; }
+.e8  { --x0: 94%; --y0: 48%; --xw1: 72%; --yw1: 72%; --xw2: 50%; --yw2: 78%; --xa: 86%; --ya: 24%; --xb: 90%; --yb: 26%; --xn: 53.5%; --yn: 47%; --delay: 0.16s; }
+.e9  { --x0: 82%; --y0: 72%; --xw1: 56%; --yw1: 82%; --xw2: 34%; --yw2: 78%; --xa: 28%; --ya: 68%; --xb: 80%; --yb: 74%; --xn: 45%; --yn: 50%; --delay: 0.18s; }
+.e10 { --x0: 62%; --y0: 86%; --xw1: 38%; --yw1: 80%; --xw2: 20%; --yw2: 66%; --xa: 44%; --ya: 68%; --xb: 66%; --yb: 78%; --xn: 46.5%; --yn: 50%; --delay: 0.20s; }
+.e11 { --x0: 40%; --y0: 88%; --xw1: 24%; --yw1: 70%; --xw2: 18%; --yw2: 48%; --xa: 50%; --ya: 68%; --xb: 50%; --yb: 82%; --xn: 48%; --yn: 50%; --delay: 0.22s; }
+.e12 { --x0: 22%; --y0: 84%; --xw1: 16%; --yw1: 58%; --xw2: 26%; --yw2: 36%; --xa: 58%; --ya: 68%; --xb: 36%; --yb: 78%; --xn: 49.5%; --yn: 50%; --delay: 0.24s; }
+.e13 { --x0: 10%; --y0: 70%; --xw1: 22%; --yw1: 42%; --xw2: 40%; --yw2: 28%; --xa: 68%; --ya: 68%; --xb: 24%; --yb: 70%; --xn: 51%; --yn: 50%; --delay: 0.26s; }
+
+@keyframes glyphTimeline {
+    0% {
         left: var(--x0);
         top: var(--y0);
-        opacity: 0.56;
-        transform: rotate(0deg) scale(0.92);
-    }
-
-    19%, 44% {
-        left: calc(var(--x0) + 6%);
-        top: calc(var(--y0) - 4%);
-        opacity: 0.86;
-        transform: rotate(300deg) scale(1);
-    }
-
-    45%, 66% {
-        left: var(--x1);
-        top: var(--y1);
-        opacity: 1;
-        transform: rotate(360deg) scale(1.03);
-    }
-
-    67%, 82% {
-        left: var(--x2);
-        top: var(--y2);
-        opacity: 0.42;
-        transform: rotate(360deg) scale(0.92);
-    }
-
-    83%, 100% {
-        left: var(--x2);
-        top: var(--y2);
         opacity: 0;
-        transform: rotate(360deg) scale(0.88);
+        filter: blur(4px);
+        transform: translate3d(-50%, -50%, -16px) rotate(-18deg) scale(0.82);
+    }
+
+    8% {
+        left: var(--x0);
+        top: var(--y0);
+        opacity: 0.9;
+        filter: blur(0.4px);
+        transform: translate3d(-50%, -50%, 6px) rotate(6deg) scale(0.95);
+    }
+
+    20% {
+        left: var(--xw1);
+        top: var(--yw1);
+        opacity: 0.96;
+        filter: blur(0);
+        transform: translate3d(-50%, -50%, 18px) rotate(110deg) scale(1.02);
+    }
+
+    34% {
+        left: var(--xw2);
+        top: var(--yw2);
+        opacity: 0.9;
+        transform: translate3d(-50%, -50%, -8px) rotate(228deg) scale(0.98);
+    }
+
+    46% {
+        left: var(--xa);
+        top: var(--ya);
+        opacity: 1;
+        transform: translate3d(-50%, -50%, 0) rotate(360deg) scale(1.03);
+    }
+
+    58% {
+        left: var(--xa);
+        top: var(--ya);
+        opacity: 1;
+        transform: translate3d(-50%, -50%, 0) rotate(360deg) scale(1);
+    }
+
+    68% {
+        left: var(--xb);
+        top: var(--yb);
+        opacity: 0.82;
+        transform: translate3d(-50%, -50%, 2px) rotate(410deg) scale(0.95);
+    }
+
+    80% {
+        left: var(--xn);
+        top: var(--yn);
+        opacity: 0.4;
+        transform: translate3d(-50%, -50%, 10px) rotate(460deg) scale(0.88);
+    }
+
+    92% {
+        left: var(--xn);
+        top: var(--yn);
+        opacity: 0;
+        filter: blur(1px);
+        transform: translate3d(-50%, -50%, 14px) rotate(480deg) scale(0.82);
+    }
+
+    100% {
+        left: var(--x0);
+        top: var(--y0);
+        opacity: 0;
+        filter: blur(4px);
+        transform: translate3d(-50%, -50%, -16px) rotate(-18deg) scale(0.82);
     }
 }
 
 .finalWord {
     position: absolute;
     left: 50%;
-    top: 46%;
+    top: 48%;
     transform: translate(-50%, -50%);
-    font-size: clamp(1.35rem, 2.3vw, 2.15rem);
-    font-weight: 620;
-    letter-spacing: 0.06em;
+    font-size: clamp(1.45rem, 2.45vw, 2.2rem);
+    font-weight: 640;
+    letter-spacing: 0.08em;
     color: rgba(43, 123, 237, 0.92);
-    text-shadow: 0 0 16px rgba(43, 123, 237, 0.24);
+    text-shadow: 0 0 18px rgba(43, 123, 237, 0.26);
     opacity: 0;
-    animation: finalReveal 10s ease-in-out infinite;
+    animation: finalReveal 12.8s ease-in-out infinite;
 }
 
 @keyframes finalReveal {
-    0%, 66% {
+    0%, 76% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.92);
+        transform: translate(-50%, -50%) scale(0.9);
     }
 
-    74%, 86% {
+    84%, 92% {
         opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
+        transform: translate(-50%, -50%) scale(1.02);
     }
 
     100% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(1.04);
+        transform: translate(-50%, -50%) scale(1.06);
     }
 }
 
@@ -185,10 +365,10 @@
 .sparkC { left: 24%; top: 70%; animation: sparkFloatC 7.8s ease-in-out infinite; }
 .sparkD { left: 70%; top: 74%; animation: sparkFloatD 8.2s ease-in-out infinite; }
 
-@keyframes sparkFloatA { 0%,100%{transform:translateY(0);opacity:.48;} 50%{transform:translateY(-9px);opacity:.78;} }
-@keyframes sparkFloatB { 0%,100%{transform:translateY(0);opacity:.44;} 50%{transform:translateY(8px);opacity:.72;} }
-@keyframes sparkFloatC { 0%,100%{transform:translateY(0);opacity:.42;} 50%{transform:translateY(-8px);opacity:.7;} }
-@keyframes sparkFloatD { 0%,100%{transform:translateY(0);opacity:.4;} 50%{transform:translateY(9px);opacity:.68;} }
+@keyframes sparkFloatA { 0%,100% { transform: translateY(0); opacity: .48; } 50% { transform: translateY(-9px); opacity: .78; } }
+@keyframes sparkFloatB { 0%,100% { transform: translateY(0); opacity: .44; } 50% { transform: translateY(8px); opacity: .72; } }
+@keyframes sparkFloatC { 0%,100% { transform: translateY(0); opacity: .42; } 50% { transform: translateY(-8px); opacity: .7; } }
+@keyframes sparkFloatD { 0%,100% { transform: translateY(0); opacity: .4; } 50% { transform: translateY(9px); opacity: .68; } }
 
 .meaning {
     position: absolute;
@@ -212,6 +392,14 @@
         margin-left: 0;
     }
 
+    .glyph {
+        font-size: clamp(0.88rem, 2.8vw, 1.15rem);
+    }
+
+    .finalWord {
+        font-size: clamp(1.25rem, 4.8vw, 1.7rem);
+    }
+
     .meaning {
         left: 6%;
         right: 6%;
@@ -224,3 +412,4 @@
         gap: 4px;
     }
 }
+

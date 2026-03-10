@@ -11,6 +11,32 @@ const companyInfo = [
     { label: '事業内容', value: 'プロダクト開発・サービス運営' },
 ];
 
+const coreLetters = [
+    { ch: 'A', cls: styles.c1 },
+    { ch: 'N', cls: styles.c2 },
+    { ch: 'E', cls: styles.c3 },
+    { ch: 'W', cls: styles.c4 },
+    { ch: 'V', cls: styles.c5 },
+    { ch: 'I', cls: styles.c6 },
+    { ch: 'A', cls: styles.c7 },
+];
+
+const extraLetters = [
+    { ch: 'R', cls: styles.e1 },
+    { ch: 'T', cls: styles.e2 },
+    { ch: 'L', cls: styles.e3 },
+    { ch: 'M', cls: styles.e4 },
+    { ch: 'S', cls: styles.e5 },
+    { ch: 'P', cls: styles.e6 },
+    { ch: 'C', cls: styles.e7 },
+    { ch: 'D', cls: styles.e8 },
+    { ch: 'H', cls: styles.e9 },
+    { ch: 'U', cls: styles.e10 },
+    { ch: 'Y', cls: styles.e11 },
+    { ch: 'O', cls: styles.e12 },
+    { ch: 'B', cls: styles.e13 },
+];
+
 export default function Company() {
     return (
         <section id="company" className={`section ${styles.company}`}>
@@ -41,13 +67,13 @@ export default function Company() {
                     <AnimateOnScroll delay={180}>
                         <div className={styles.visualPanel} aria-hidden="true">
                             <div className={styles.nameField}>
-                                <span className={`${styles.letter} ${styles.letterA1}`}>A</span>
-                                <span className={`${styles.letter} ${styles.letterN}`}>N</span>
-                                <span className={`${styles.letter} ${styles.letterE}`}>E</span>
-                                <span className={`${styles.letter} ${styles.letterW}`}>W</span>
-                                <span className={`${styles.letter} ${styles.letterV}`}>V</span>
-                                <span className={`${styles.letter} ${styles.letterI}`}>I</span>
-                                <span className={`${styles.letter} ${styles.letterA2}`}>A</span>
+                                {coreLetters.map((l) => (
+                                    <span key={`core-${l.cls}`} className={`${styles.glyph} ${styles.coreGlyph} ${l.cls}`}>{l.ch}</span>
+                                ))}
+
+                                {extraLetters.map((l) => (
+                                    <span key={`extra-${l.cls}`} className={`${styles.glyph} ${styles.extraGlyph} ${l.cls}`}>{l.ch}</span>
+                                ))}
 
                                 <span className={styles.finalWord}>Anvia</span>
 
