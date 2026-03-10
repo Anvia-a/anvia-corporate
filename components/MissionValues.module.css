@@ -228,15 +228,23 @@
 .valuesStatement {
     margin: 0 0 18px;
     padding: 0 20px;
-    max-width: 760px;
+    max-width: none;
     color: var(--color-gray-600);
-    font-size: 1rem;
-    line-height: 1.8;
-    letter-spacing: 0.01em;
+    font-size: clamp(0.72rem, 0.92vw, 0.94rem);
+    line-height: 1.7;
+    letter-spacing: 0.002em;
+    white-space: nowrap !important;
+    overflow-wrap: normal;
+    word-break: keep-all;
+    width: max-content;
+    max-inline-size: none;
 }
 
 .valuesStatement p {
     margin: 0;
+    white-space: nowrap !important;
+    overflow-wrap: normal;
+    word-break: keep-all;
 }
 
 .valuesBubbles {
@@ -431,9 +439,14 @@
     }
 
     .valuesStatement {
-        font-size: 0.95rem;
-        line-height: 1.75;
+        margin: 0 0 18px;
         padding: 0 16px;
+        font-size: clamp(0.66rem, 2.1vw, 0.78rem);
+        line-height: 1.65;
+        letter-spacing: 0.001em;
+        white-space: nowrap !important;
+        overflow-wrap: normal;
+        word-break: keep-all;
     }
 
     .valueBubble {
@@ -445,3 +458,6 @@
         transform: scale(1.12) translateY(-4px);
     }
 }
+
+
+
