@@ -50,7 +50,7 @@
     border-radius: 50%;
     background: rgba(7, 10, 15, 0.92);
     opacity: 0;
-    transition: opacity 0.16s ease;
+    transition: opacity 0.04s linear;
     pointer-events: none;
     z-index: 1;
 }
@@ -84,7 +84,7 @@
     z-index: 2;
     opacity: 0;
     clip-path: circle(0px at var(--mx) var(--my));
-    transition: opacity 0.16s ease, clip-path 0.08s linear;
+    transition: opacity 0.04s linear;
 }
 
 .missionTextWrap:hover .missionTextSpot {

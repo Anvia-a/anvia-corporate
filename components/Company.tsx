@@ -37,6 +37,8 @@ const extraLetters = [
     { ch: 'B', cls: styles.e13 },
 ];
 
+const meaningText = 'Anvia comes from “A New Via” — a new way forward.';
+
 export default function Company() {
     return (
         <section id="company" className={`section ${styles.company}`}>
@@ -82,7 +84,19 @@ export default function Company() {
                                 <span className={`${styles.spark} ${styles.sparkC}`} />
                                 <span className={`${styles.spark} ${styles.sparkD}`} />
 
-                                <p className={styles.meaning}>Anvia comes from “A New Via” — a new way forward.</p>
+                                <p className={styles.meaning} aria-label={meaningText}>
+                                    {meaningText.split('').map((char, i) => (
+                                        <span
+                                            key={`meaning-${i}`}
+                                            className={styles.meaningChar}
+                                            style={{ '--i': i } as React.CSSProperties}
+                                        >
+                                            {char === ' ' ? '\u00A0' : char}
+                                        </span>
+                                    ))}
+                                    <span className={`${styles.meaningSpark} ${styles.meaningSparkA}`} />
+                                    <span className={`${styles.meaningSpark} ${styles.meaningSparkB}`} />
+                                </p>
                             </div>
                         </div>
                     </AnimateOnScroll>
