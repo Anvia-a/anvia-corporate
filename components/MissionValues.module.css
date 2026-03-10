@@ -225,7 +225,7 @@
     border: 0;
 }
     .valuesStatement {
-    margin: 0 auto 18px;
+    margin: 0 auto 48px;
     padding: 0 20px;
     max-width: 900px;
     width: 100%;
@@ -235,18 +235,18 @@
     line-height: 1.45;
     letter-spacing: -0.01em;
     text-align: center;
-    white-space: nowrap !important;
-    text-wrap: nowrap;
-    overflow-wrap: normal;
-    word-break: keep-all;
+    white-space: normal;
+    text-wrap: pretty;
+    overflow-wrap: anywhere;
+    word-break: normal;
 }
 
 .valuesStatement p {
     margin: 0;
-    white-space: nowrap !important;
-    text-wrap: nowrap;
-    overflow-wrap: normal;
-    word-break: keep-all;
+    white-space: normal;
+    text-wrap: pretty;
+    overflow-wrap: anywhere;
+    word-break: normal;
 }
 
 .valuesBubbles {
@@ -440,7 +440,7 @@
         font-size: 1.4rem;
     }
     .valuesStatement {
-        margin: 0 auto 18px;
+        margin: 0 auto 48px;
         padding: 0 16px;
         max-width: 900px;
         width: 100%;
@@ -449,10 +449,10 @@
         line-height: 1.45;
         letter-spacing: -0.01em;
         text-align: center;
-        white-space: nowrap !important;
-        text-wrap: nowrap;
-        overflow-wrap: normal;
-        word-break: keep-all;
+        white-space: normal;
+        text-wrap: pretty;
+        overflow-wrap: anywhere;
+        word-break: normal;
     }
 
     .valueBubble {
@@ -464,6 +464,7 @@
         transform: scale(1.12) translateY(-4px);
     }
 }
+
 
 
 
