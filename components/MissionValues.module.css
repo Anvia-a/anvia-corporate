@@ -234,6 +234,7 @@
     line-height: 1.7;
     letter-spacing: 0.002em;
     white-space: nowrap !important;
+    text-wrap: nowrap;
     overflow-wrap: normal;
     word-break: keep-all;
     width: max-content;
@@ -243,6 +244,7 @@
 .valuesStatement p {
     margin: 0;
     white-space: nowrap !important;
+    text-wrap: nowrap;
     overflow-wrap: normal;
     word-break: keep-all;
 }
@@ -445,6 +447,7 @@
         line-height: 1.65;
         letter-spacing: 0.001em;
         white-space: nowrap !important;
+    text-wrap: nowrap;
         overflow-wrap: normal;
         word-break: keep-all;
     }
@@ -458,6 +461,8 @@
         transform: scale(1.12) translateY(-4px);
     }
 }
+
+
 
 
 
